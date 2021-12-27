@@ -27,11 +27,11 @@ const Loginpage = () => {
 
             <Link to="/users" className='btn-login'>Iniciar Sesión</Link>
             </div>
-            <footer className='copyright'>
+            <div className='copyright'>
                 <p>Copyright © 2021 Open Bootcamp SL, Imagina Group</p>
                 <p>Todos los derechos reservados.</p>
                 <p>Política de Privacidad</p>
-            </footer>
+            </div>
         </div>
         
         
