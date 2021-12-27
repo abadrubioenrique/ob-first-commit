@@ -25,12 +25,12 @@ const Loginpage = () => {
                 <a className='recovery' href='https://www.google.es'>He olvidado la contraseña</a>
             </div>
 
-            <Link to="/users" className='btn-login'>Iniciar Sesión</Link>
+            {/* <div className='btn-login'>Iniciar Sesión</div> */}
             </div>
             <div className='copyright'>
                 <p>Copyright © 2021 Open Bootcamp SL, Imagina Group</p>
                 <p>Todos los derechos reservados.</p>
-                <p>Política de Privacidad</p>
+                <p class="privacy-policy">Política de Privacidad</p>
             </div>
         </div>
         
