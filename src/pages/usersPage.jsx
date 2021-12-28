@@ -5,10 +5,24 @@ import '../styles/users.scss';
 const Userspage = () => {
 
     //Students de prueba
-    const student1 = new Student('Álvaro Sánchez Monteagudo','Valencia','España','+34 657 85 25 46','asangudo@gmail.com',['Html&CSS','Angular'], LEVELS.REMOTE,false);
+    const student1 = new Student('Álvaro Sánchez Monteagudo','Valencia','España','+34 657 85 25 46','asangudo@gmail.com',['Html&CSS','Angular', 'React'], LEVELS.REMOTE,false);
     const student2 = new Student('Carlos Yuste Guerrero','Oviedo','España','+34 697 82 95 65','yguerrero@gmail.com',['Angular','React'], LEVELS.REMOTE,true);
     const student3 = new Student('Eustaquia Herrera Climent','Sevilla','España','+34 689 25 48 65','ecliment@gmail.com',['Html&CSS','React'], LEVELS.REMOTE,false);
+    
     const [students, setStudents] = useState([student1 , student2, student3]);
+    const [extra, setExtra] = useState(0);
+    useEffect(() => {
+        ExtraTags(student1)
+    },)
+
+    function ExtraTags(props){
+        let num = props.tags.length;
+        if(num>2){
+            setExtra(num-2)
+        }
+
+
+    }
 
     function ListItem(props) {
         // Correct! There is no need to specify the key here:
@@ -19,7 +33,15 @@ const Userspage = () => {
         <td>{props.country}</td>
         <td>{props.phonenumber}</td>
         <td>{props.mail}</td>
-        <td>{props.tags}</td>
+        <td><span className='table-tag'>{props.tags[0]}</span><span className='table-tag'>{props.tags[1]}</span>
+        
+            {(props.tags.length>2) 
+            ?  
+            (<span className='table-tag'>+{props.tags.length-2}</span>) 
+            : 
+            null }
+        
+        </td>
         </tr>
             );
       }
@@ -75,7 +97,10 @@ const Userspage = () => {
                             mail={number.mail}
                             tags={number.tags}
                             />
+                
+                        
                     )}
+                    
                     </tbody>
                 </table>
 
