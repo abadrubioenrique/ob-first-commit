@@ -11,15 +11,16 @@ const Userspage = () => {
     
     const [students, setStudents] = useState([student1 , student2, student3]);
 
+
     function ListItem(props) {
-        // Correct! There is no need to specify the key here:
+        
         return (
         <tr>
-        <td>{props.name}</td>
+        <td className='names'>{props.name}</td>
         <td>{props.city}</td>
         <td>{props.country}</td>
         <td>{props.phonenumber}</td>
-        <td>{props.mail}</td>++
+        <td>{props.mail}</td>
         <td><span className='table-tag'>{props.tags[0]}</span><span className='table-tag'>{props.tags[1]}</span>
         
             {(props.tags.length>2) 
@@ -32,6 +33,12 @@ const Userspage = () => {
         </tr>
             );
       }
+
+      //Ordenar lista A-Z y Z-A
+      const sort_lists = (key, inverse) =>
+      inverse
+        ? [...students].sort((b, a) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
+        : [...students].sort((a, b) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
 
     return (
         <div className='usersPage'>
@@ -66,12 +73,47 @@ const Userspage = () => {
                 <table>
                     <thead>
                         <tr>
-                            <th>Nombre <i className="bi bi-arrow-down-up"></i></th>
-                            <th>Ciudad <i className="bi bi-arrow-down-up"></i></th>
-                            <th>País <i className="bi bi-arrow-down-up"></i></th>
-                            <th>Teléfono <i className="bi bi-arrow-down-up"></i></th>
-                            <th>Correo electrónico <i className="bi bi-arrow-down-up"></i></th>
-                            <th className='tags'>Etiquetas <i className="bi bi-arrow-down-up"></i></th>
+                            <th onClick={() => {
+                                let newSortedList = sort_lists('name')
+                                if (newSortedList[0] === students[0]) newSortedList = sort_lists('name', true)
+                                setStudents(newSortedList)
+                            }}>
+                                Nombre 
+                                <i className="bi bi-arrow-down-up"></i>
+                            </th>
+                            <th onClick={() => {
+                                let newSortedList = sort_lists('city')
+                                if (newSortedList[0] === students[0]) newSortedList = sort_lists('city', true)
+                                setStudents(newSortedList)
+                            }}>
+                                Ciudad 
+                                <i className="bi bi-arrow-down-up"></i>
+                            </th>
+                            <th onClick={() => {
+                                let newSortedList = sort_lists('country')
+                                if (newSortedList[0] === students[0]) newSortedList = sort_lists('country', true)
+                                setStudents(newSortedList)
+                            }}>
+                                País 
+                                <i className="bi bi-arrow-down-up"></i>
+                            </th>
+                            <th className='phone'>Teléfono</th>
+                            <th onClick={() => {
+                                let newSortedList = sort_lists('mail')
+                                if (newSortedList[0] === students[0]) newSortedList = sort_lists('mail', true)
+                                setStudents(newSortedList)
+                            }}>
+                                Correo Electrónico 
+                                <i className="bi bi-arrow-down-up"></i>
+                            </th>
+                            <th className='tags' onClick={() => {
+                                let newSortedList = sort_lists('tags')
+                                if (newSortedList[0] === students[0]) newSortedList = sort_lists('tags', true)
+                                setStudents(newSortedList)
+                            }}>
+                                Etiquetas 
+                                <i className="bi bi-arrow-down-up"></i>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,16 +125,11 @@ const Userspage = () => {
                             phonenumber={number.phonenumber}
                             mail={number.mail}
                             tags={number.tags}
-                            />
-                
-                        
+                            />                        
                     )}
                     
                     </tbody>
                 </table>
-
-
-
                 </div>
                 </div>
                
@@ -139,8 +176,6 @@ const Userspage = () => {
                 </div>
                 </div>
             </div>
-
-
         </div>
     );
 }

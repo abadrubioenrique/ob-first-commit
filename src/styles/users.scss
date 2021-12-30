@@ -72,8 +72,6 @@
                 padding: 10px;
             }
         }
-
-
     }
 }
 
@@ -102,7 +100,6 @@
         color: $grey-black;
         margin-right: 24px;
         margin: 10px 24px 10px 0;
-
     }
     .search-bar{
         display: flex;
@@ -114,7 +111,6 @@
         border-radius: 8px;
         align-items: center;
         margin: 0 auto;
-
         input{
             border: none;
             background: none;
@@ -164,11 +160,9 @@
     i{
         padding-left: 10px;
     }
-    
     table{
         border-collapse: collapse;
     }
-
     th{
         cursor: pointer;
         align-items: center;
@@ -188,9 +182,20 @@
             padding: 15px 24px 15px 24px;
             border-top: 1px solid $grey-3;
             white-space: nowrap;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 18px;
             color: $grey-black;
         }
-
+    }
+    .phone{
+        cursor: default;
+    }
+    .names{
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 18px;
     }
     .tags{
         width: 100%;
