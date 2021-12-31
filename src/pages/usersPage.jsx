@@ -1,44 +1,30 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { LEVELS } from '../models/faceToFace-enum';
 import { Student } from '../models/student.class';
 import '../styles/users.scss';
-const Userspage = () => {
+const Userspage  = ()=> {
     
     //Students de prueba
     const student1 = new Student('Álvaro Sánchez Monteagudo','Valencia','España','+34 657 85 25 46','asangudo@gmail.com',['Html&CSS','Angular', 'React'], LEVELS.REMOTE,false);
     const student2 = new Student('Carlos Yuste Guerrero','Oviedo','España','+34 697 82 95 65','yguerrero@gmail.com',['Angular','React'], LEVELS.REMOTE,true);
     const student3 = new Student('Eustaquia Herrera Climent','Sevilla','España','+34 689 25 48 65','ecliment@gmail.com',['Html&CSS','React'], LEVELS.REMOTE,false);
-    
     const [students, setStudents] = useState([student1 , student2, student3]);
+    const alumnosFiltrados=students;
+    const [search, setSearch] = useState('');
 
-
-    function ListItem(props) {
-        
-        return (
-        <tr>
-        <td className='names'>{props.name}</td>
-        <td>{props.city}</td>
-        <td>{props.country}</td>
-        <td>{props.phonenumber}</td>
-        <td>{props.mail}</td>
-        <td><span className='table-tag'>{props.tags[0]}</span><span className='table-tag'>{props.tags[1]}</span>
-        
-            {(props.tags.length>2) 
-            ?  
-            (<span className='table-tag'>+{props.tags.length-2}</span>) 
-            : 
-            null }
-        
-        </td>
-        </tr>
-            );
-      }
-
-      //Ordenar lista A-Z y Z-A
-      const sort_lists = (key, inverse) =>
-      inverse
+        //Ordenar lista A-Z y Z-A
+        const sort_lists = (key, inverse) =>
+        inverse
         ? [...students].sort((b, a) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
         : [...students].sort((a, b) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
+    
+        //Busqueda
+        const studentFilter = students.filter((student)=>{
+        if(student.name.toLocaleLowerCase().includes(search.toLowerCase()) || student.mail.toLocaleLowerCase().includes(search.toLowerCase()) || student.city.toLocaleLowerCase().includes(search.toLowerCase())){
+            return student;
+        }
+        });
+
 
     return (
         <div className='usersPage'>
@@ -63,9 +49,11 @@ const Userspage = () => {
                     <h2>Alumnos</h2>
                     <div className='search-bar'>
                     <i className="bi bi-search search-icon"></i>
-                    <input type='text' placeholder='Buscar por Nombre, Email o Palabra clave...'/>
-
-
+                    <input 
+                    type='text' 
+                    value={search}
+                    onChange={(e)=> setSearch(e.target.value)}  
+                    placeholder='Buscar por Nombre, Email o Palabra clave...'/>
                     </div>
                     
                 </div>
@@ -117,17 +105,25 @@ const Userspage = () => {
                         </tr>
                     </thead>
                     <tbody>
-                    {students.map((number) =>
-                    <ListItem key={number.name}
-                            name={number.name}
-                            city={number.city} 
-                            country={number.country}
-                            phonenumber={number.phonenumber}
-                            mail={number.mail}
-                            tags={number.tags}
-                            />                        
-                    )}
                     
+                    {studentFilter.map((student) =>
+                        <tr key={student.name}>
+                        <td className='names'>{student.name}</td>
+                        <td>{student.city}</td>
+                        <td>{student.country}</td>
+                        <td>{student.phonenumber}</td>
+                        <td>{student.mail}</td>
+                        <td><span className='table-tag'>{student.tags[0]}</span><span className='table-tag'>{student.tags[1]}</span>
+                        
+                            {(student.tags.length>2) 
+                            ?  
+                            (<span className='table-tag'>+{student.tags.length-2}</span>) 
+                            : 
+                            null }
+                        
+                        </td>
+                        </tr>                   
+                    )}
                     </tbody>
                 </table>
                 </div>
