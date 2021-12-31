@@ -1,0 +1,263 @@
+@import 'styles.scss';
+
+.studentsPage {
+    font-family: $font;
+	position: absolute;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: $grey-1;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	right: 0;
+}
+
+.students-data {
+	position: absolute;
+	border: 1px solid;
+	border-radius: 20px;
+	border-color: $grey-3;
+	background-color: $white;
+	margin-bottom: 20px;
+	height: 784px;
+	width: calc(500px - 48px);
+	height: calc(784px - 10px);
+	padding: 24px;
+}
+
+.return {
+	text-decoration: none;
+	color: $grey-black;
+	font-weight: bold;
+	margin-left: 30px;
+	i {
+		margin-right: 12px;
+	}
+}
+
+.data-container {
+	display: grid;
+	grid-auto-flow: row dense;
+	grid-auto-columns: 1fr;
+	grid-auto-rows: 1fr;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1f 1fr 1fr 1fr 1fr;
+	gap: 20px 30px;
+	grid-template-areas: "a2 a2" "b2 c2" "d2 e2" "f2 g2" "h2 h2" "i2 i2";
+	justify-items: start;
+	width: 100%;
+	height: 10%;
+}
+
+.a2 {
+	grid-area: a2;
+	width: 100%;
+	.input-text {
+		margin-bottom: 0;
+		margin-right: 0;
+		height: calc(40px - 24px);
+	}
+}
+
+.b2 {
+	grid-area: b2;
+	width: 100%;
+	.input-text {
+		margin: 0;
+		margin-top: 12px;
+		padding-bottom: 10px;
+		height: 40px;
+		width: 100%;
+	}
+}
+
+.c2 {
+	grid-area: c2;
+	width: 100%;
+	.input-text {
+		margin: 0;
+		margin-top: 12px;
+		padding-bottom: 10px;
+		height: 40px;
+		width: 100%;
+	}
+}
+
+.d2 {
+	grid-area: d2;
+	width: 100%;
+	.input-text {
+		margin: 0;
+		margin-top: 12px;
+		padding-right: 0;
+		padding-bottom: 10px;
+		width: calc(100% - 12px);
+		height: calc(40px - 24px);
+	}
+}
+
+.e2 {
+	grid-area: e2;
+	width: 100%;
+	.input-text {
+		margin: 0;
+		margin-top: 12px;
+		padding-right: 0;
+		padding-bottom: 10px;
+		width: calc(100% - 12px);
+		height: calc(40px - 24px);
+	}
+}
+
+.f2 {
+	grid-area: f2;
+	width: 100%;
+	.input-text {
+		margin: 0;
+		margin-top: 12px;
+		padding-bottom: 10px;
+		height: 40px;
+		width: 100%;
+	}
+}
+
+.g2 {
+	grid-area: g2;
+	width: 100%;
+	.input-text {
+		margin: 0;
+		margin-top: 12px;
+		padding-bottom: 10px;
+		height: 40px;
+		width: 100%;
+	}
+}
+
+.h2 {
+	grid-area: h2;
+	width: 100%;
+}
+
+.i2 {
+	grid-area: i2;
+	width: 100%;
+    .input-text {
+		margin: 0;
+		margin-top: 12px;
+		padding-bottom: 10px;
+		height: 40px;
+		width: 100%;
+	}
+}
+
+.student-info {
+	position: relative;
+	display: flex;
+	width: 100%;
+	height: 114px;
+	z-index: 1;
+	margin-bottom: 24px;
+}
+
+.student-name {
+	display: block;
+	position: static;
+	font-style: normal;
+	width: 100%;
+	h1 {
+		height: 28px;
+		font-weight: 800;
+		font-size: 24px;
+		line-height: 28px;
+		margin: 0;
+		margin-top: 18px;
+		margin-left: 24px;
+		margin-bottom: 7px;
+	}
+}
+
+.student-img {
+	position: relative;
+	width: 90px;
+	height: 90px;
+	border: 4px solid $grey-3;
+	border-radius: 20px;
+}
+
+.student-ubication {
+	display: flex;
+	margin-left: 24px;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 16px;
+	height: 16px;
+	color: $grey-4;
+	p {
+		margin: 0;
+		margin-left: 11px;
+		margin-right: 8px;
+	}
+	span {
+		font-size: 12px;
+		margin-top: -1px;
+	}
+}
+
+.upload{
+	display: flex;
+	margin: 0;
+	padding: 0;
+	margin-top: 12px;
+}
+
+.btn-delete {
+	position: relative;
+	cursor: pointer;
+	background: white;
+	border: none;
+	color: $grey-black;
+	border-radius: 8px;
+	height: 40px;
+	padding: 12px;
+	padding-left: 32px;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 18px;
+	border: 1px solid $grey-3;
+	box-sizing: border-box;
+	border-radius: 8px;
+	margin-left: 10px;
+	i {
+		position: absolute;
+		left: 10px;
+		top: 13px;
+	}
+}
+
+.btn-upload{
+	position: relative;
+	cursor: pointer;
+	background: #A5A8B3;
+	border: none;
+	color: white;
+	border-radius: 8px;
+	height: 40px;
+	padding: 12px;
+	padding-left: 32px;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 18px;
+    i{
+        position: absolute;
+        left: 10px;
+        top: 13px;
+    }
+}
+
+
