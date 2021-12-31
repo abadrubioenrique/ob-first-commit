@@ -9,7 +9,6 @@ const Userspage  = ()=> {
     const student2 = new Student('Carlos Yuste Guerrero','Oviedo','España','+34 697 82 95 65','yguerrero@gmail.com',['Angular','React'], LEVELS.REMOTE,true);
     const student3 = new Student('Eustaquia Herrera Climent','Sevilla','España','+34 689 25 48 65','ecliment@gmail.com',['Html&CSS','React'], LEVELS.REMOTE,false);
     const [students, setStudents] = useState([student1 , student2, student3]);
-    const alumnosFiltrados=students;
     const [search, setSearch] = useState('');
 
         //Ordenar lista A-Z y Z-A
@@ -61,7 +60,7 @@ const Userspage  = ()=> {
                 <table>
                     <thead>
                         <tr>
-                            <th onClick={() => {
+                            <th className='th-name' onClick={() => {
                                 let newSortedList = sort_lists('name')
                                 if (newSortedList[0] === students[0]) newSortedList = sort_lists('name', true)
                                 setStudents(newSortedList)
@@ -69,7 +68,7 @@ const Userspage  = ()=> {
                                 Nombre 
                                 <i className="bi bi-arrow-down-up"></i>
                             </th>
-                            <th onClick={() => {
+                            <th className='th-place' onClick={() => {
                                 let newSortedList = sort_lists('city')
                                 if (newSortedList[0] === students[0]) newSortedList = sort_lists('city', true)
                                 setStudents(newSortedList)
@@ -77,7 +76,7 @@ const Userspage  = ()=> {
                                 Ciudad 
                                 <i className="bi bi-arrow-down-up"></i>
                             </th>
-                            <th onClick={() => {
+                            <th className='th-place'onClick={() => {
                                 let newSortedList = sort_lists('country')
                                 if (newSortedList[0] === students[0]) newSortedList = sort_lists('country', true)
                                 setStudents(newSortedList)
