@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { LEVELS } from '../models/faceToFace-enum';
 import { Student } from '../models/student.class';
 import '../styles/users.scss';
@@ -36,7 +37,7 @@ const Userspage  = ()=> {
                     <div className='user-icon'>
                         <h1>NA</h1>
                     </div>
-                    <div className='name'>UserName
+                    <div className='name'><Link to="/student">UserName</Link>
                     </div>
                     <i className="bi bi-chevron-down dropDown"></i>
                 </div>
