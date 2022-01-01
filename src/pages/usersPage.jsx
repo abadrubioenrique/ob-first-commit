@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import FilterComponent from '../components/filterComponent';
 import { LEVELS } from '../models/faceToFace-enum';
 import { Student } from '../models/student.class';
 import '../styles/users.scss';
@@ -128,51 +129,10 @@ const Userspage  = ()=> {
                 </table>
                 </div>
                 </div>
-               
-            <div className='search-filter'>
-                <h1>Filtros de búsqueda <i className="bi bi-trash"></i></h1>
-                <div className='campos'>
-                
-                <div className='tags-main'>
-                    <i className="bi bi-chevron-down tags"></i>
-                    <label className='credentials '>Etiquetas</label>
-                    <input className='input-text' type='text' placeholder='Escribe para buscar...'/>
-                </div>
-                <div className='tags-main'>
-                    <i className="bi bi-chevron-down tags"></i>
-                    <label className='credentials '>Pais</label>
-                    <input className='input-text' type='text' placeholder='Escribe para buscar...'/>
-                </div>
-                <div className='tags-main'>
-                    <i className="bi bi-chevron-down tags"></i>
-                    <label className='credentials '>Ciudad</label>
-                    <input className='input-text' type='text' placeholder='Escribe para buscar...'/>
-                </div>
-                <div className='tags-main'>
-                <label className='credentials '>Presencial/ a distancia</label>
-                <label className="remember-label">Presencial
-                    <input type="checkbox"/>
-                    <span className="checkmark"></span>
-                </label>
-                <label className="remember-label">En Remoto
-                    <input type="checkbox"/>
-                    <span className="checkmark"></span>
-                </label>
-                </div>
-                <div className='tags-main'>
-                <label className='credentials '>Posibilidad traslado</label>
-                <label className="remember-label">Si
-                    <input type="checkbox"/>
-                    <span className="checkmark"></span>
-                </label>
-                <label className="remember-label">No
-                    <input type="checkbox"/>
-                    <span className="checkmark"></span>
-                </label>
-                </div>
-                </div>
-            </div>
-        </div>
+                <FilterComponent>
+
+                </FilterComponent>
+               </div>
     );
 }
 

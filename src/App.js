@@ -5,6 +5,7 @@ import Notfoundpage from "./pages/404";
 import Studentpage from "./pages/studentPage";
 
 function App() {
+  
   return (
 <HashRouter>
   <Routes>
@@ -17,6 +18,7 @@ function App() {
 </HashRouter>
 
   );
+  
 }
 
 export default App;
