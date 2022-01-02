@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import FilterComponent from '../components/filterComponent';
+import TableComponent from '../components/tableComponent';
 import { LEVELS } from '../models/faceToFace-enum';
 import { Student } from '../models/student.class';
 import '../styles/users.scss';
@@ -107,30 +108,20 @@ const Userspage  = ()=> {
                     <tbody>
                     
                     {studentFilter.map((student) =>
-                        <tr key={student.name}>
-                        <td className='names'>{student.name}</td>
-                        <td>{student.city}</td>
-                        <td>{student.country}</td>
-                        <td>{student.phonenumber}</td>
-                        <td>{student.mail}</td>
-                        <td><span className='table-tag'>{student.tags[0]}</span><span className='table-tag'>{student.tags[1]}</span>
-                        
-                            {(student.tags.length>2) 
-                            ?  
-                            (<span className='table-tag'>+{student.tags.length-2}</span>) 
-                            : 
-                            null }
-                        
-                        </td>
-                        </tr>                   
+                        <TableComponent key={student.name}
+                            name={student.name}
+                            city={student.city} 
+                            country={student.country}
+                            phonenumber={student.phonenumber}
+                            mail={student.mail}
+                            tags={student.tags}>
+                        </TableComponent>  
                     )}
                     </tbody>
                 </table>
                 </div>
                 </div>
-                <FilterComponent>
-
-                </FilterComponent>
+                    <FilterComponent/>     
                </div>
     );
 }
