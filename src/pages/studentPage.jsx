@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/users.scss';
 import '../styles/student.scss';
+import '../styles/select.scss';
+import Tagcomponent from '../components/tagComponent';
+
 const Studentpage = () => {
     return (
     <div className='studentsPage'>
@@ -17,88 +21,76 @@ const Studentpage = () => {
                             <i className="bi bi-chevron-down dropDown"></i>
                         </div>
         </header>
-        <div class="usersPanel">
-            <div class="students-data">
-                <div class="student-info">
-                    <img class="student-img" src="https://st.depositphotos.com/2251265/2417/i/600/depositphotos_24172293-stock-photo-faceless-person-portrait.jpg"/>
-                        <div id="student-name" class="student-name"><h1>Nombre Alumno</h1>
-                            <div class="student-ubication">
-                                <i class="bi bi-geo-alt"></i>
+        <div className="usersPanel">
+            <div className="students-data">
+                <div className="student-info">
+                    <img className="student-img" src="https://st.depositphotos.com/2251265/2417/i/600/depositphotos_24172293-stock-photo-faceless-person-portrait.jpg"/>
+                        <div id="student-name" className="student-name"><h1>Nombre Alumno</h1>
+                            <div className="student-ubication">
+                                <i className="bi bi-geo-alt"></i>
                                 <p>City</p>
                                 <span>|</span>
                                 <p>Country</p>
                             </div>
                         </div>
                 </div>
-                    <div class="a2">
-                            <label class='credentials'>Nombre y Apellidos</label>
-                            <input class='input-text' type='text' placeholder='Ej: Juan Perez Lorca'/>
+                    <div className="a2">
+                            <label className='credentials'>Nombre y Apellidos</label>
+                            <input className='input-text' type='text' placeholder='Ej: Juan Perez Lorca'/>
                     </div>
-                    <div class="data-container">
-                        <div class="b2">
-                              <label class='credentials'>País</label>
-                              <select id="country" class='input-text' >
-                                  <option value="" disabled selected>Elige un país</option>
+                    <div className="data-container">
+                        <div className="b2">
+                              <label className='credentials'>País</label>
+                              <select id="country" className='input-text custom-select'>
                                   <option value="España">España</option>
                               </select>
               
                     </div>
-                        <div class="c2">
-                            <label class='credentials'>Ciudad</label>
-                            <select id="city" class='input-text'>
-                                <option value="" disabled selected>Elige una ciudad</option>
-                                <option value="Valencia">Valencia</option>
-                                <option value="Sevilla">Sevilla</option>
-                                <option value="Gijón">Gijón</option>
-                                <option value="Oviedo">Oviedo</option>
+                        <div className="c2">
+                            <label className='credentials'>Ciudad</label>
+                            <select className='input-text custom-select'>
+                                <option value="valencia">Valencia</option>
+                                <option value="oviedo">Oviedo</option>
+                                <option value="sevilla">Sevilla</option>
                             </select>
                         </div>
-                        <div class="d2">
-                            <label class='credentials'>Nº Teléfono</label>
-                            <input class='input-text' type='text' placeholder='Ej: +34 612 34 56 78'/>
+                        <div className="d2">
+                            <label className='credentials'>Nº Teléfono</label>
+                            <input className='input-text' type='text' placeholder='Ej: +34 612 34 56 78'/>
                         </div>
-                        <div class="e2">
-                            <label class='credentials'>Email</label>
-                            <input class='input-text' type='email' placeholder='Ej: user@mail.com'/>
+                        <div className="e2">
+                            <label className='credentials'>Email</label>
+                            <input className='input-text' type='email' placeholder='Ej: user@mail.com'/>
                         </div>
-                        <div class="f2">
-                            <label class='credentials'>Presencialidad</label>
-                            <select class='input-text'>
-                                <option value="-" disabled selected>Elige una opción</option>
+                        <div className="f2">
+                            <label className='credentials'>Presencialidad</label>
+                            <select className='input-text custom-select'>
                                 <option value="Si">Si</option>
                                 <option value="No">No</option>
                             </select>
                         </div>
-                        <div class="g2">
-                            <label class='credentials'>Traslado</label>
-                            <select class='input-text'>
-                                <option value="-" disabled selected>Elige una opción</option>
+                        <div className="g2">
+                            <label className='credentials'>Traslado</label>
+                            <select className='input-text custom-select'>
                                 <option value="Si">Si</option>
                                 <option value="No">No</option>
                             </select>
                         </div>
-                        <div class="h2">
-                            <label class='credentials'>Documento CV</label>
-                            <div class="upload">
-                                <button class="btn-upload">
+                        <div className="h2">
+                            <label className='credentials'>Documento CV</label>
+                            <div className="upload">
+                                <button className="btn-upload">
                                     Subir de nuevo
-                                    <i class="bi bi-cloud-arrow-up"></i>
+                                    <i className="bi bi-cloud-arrow-up"></i>
                                 </button>
-                                <button class="btn-delete">
+                                <button className="btn-delete">
                                 Borrar
-                                <i class="bi bi-trash"></i>
+                                <i className="bi bi-trash"></i>
                                 </button>
                             </div>
                         </div>
-                        <div class="i2">
-                            <label class='credentials '>Etiquetas</label>
-                            <div class="student-tags">
-                            <select class='input-text'>
-                                <option value="-" disabled selected>Elige una opción</option>
-                                <option value="Si">Si</option>
-                                <option value="No">No</option>
-                            </select>
-                            </div>
+                        <div className="i2">
+                            <Tagcomponent></Tagcomponent>
                         </div>
                     </div>
             </div>

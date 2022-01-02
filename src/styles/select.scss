@@ -11,7 +11,7 @@
   }
   
   .select {
-    width: 280px;
+    width: 100%;
     margin-bottom: 5px;
     &:focus{
         outline-color: $powergreen;
@@ -55,6 +55,7 @@
     -moz-appearance: none;
     height: 40px;
     width: calc(100%);
+    padding-top: 10px;
 
     
   }
