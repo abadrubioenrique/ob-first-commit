@@ -18,16 +18,18 @@ const FilterComponent = () => {
                 <i className="bi bi-chevron-down tags"></i>
                 <label className='credentials '>Pais</label>
                 <select className='input-text custom-select'>
-                    <option value="valencia">Valencia</option>
-                    <option value="oviedo">Oviedo</option>
-                    <option value="sevilla">Sevilla</option>
+                  <option selected disabled>Elija una opcion</option>  
+                  <option value="valencia">Valencia</option>
+                  <option value="oviedo">Oviedo</option>
+                  <option value="sevilla">Sevilla</option>
                 </select>
               </div>
               <div className='tags-main'>
                   <i className="bi bi-chevron-down tags"></i>
                   <label className='credentials '>Ciudad</label>
                 <select  className='input-text custom-select'>
-                    <option value="ESP">España</option>
+                  <option selected disabled>Elija una opcion</option>  
+                  <option value="ESP">España</option>
                 </select>
               </div>
               <div className='tags-main'>
