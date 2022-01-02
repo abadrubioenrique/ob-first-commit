@@ -14,18 +14,18 @@ const Userspage  = ()=> {
     const [students, setStudents] = useState([student1 , student2, student3]);
     const [search, setSearch] = useState('');
 
-        //Ordenar lista A-Z y Z-A
-        const sort_lists = (key, inverse) =>
-        inverse
-        ? [...students].sort((b, a) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
-        : [...students].sort((a, b) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
-    
-        //Busqueda
-        const studentFilter = students.filter((student)=>{
-        if(student.name.toLocaleLowerCase().includes(search.toLowerCase()) || student.mail.toLocaleLowerCase().includes(search.toLowerCase()) || student.city.toLocaleLowerCase().includes(search.toLowerCase())){
-            return student;
-        }
-        });
+    //Ordenar lista A-Z y Z-A
+    const sort_lists = (key, inverse) =>
+    inverse
+    ? [...students].sort((b, a) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
+    : [...students].sort((a, b) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
+
+    //Busqueda
+    const studentFilter = students.filter((student)=>{
+    if(student.name.toLocaleLowerCase().includes(search.toLowerCase()) || student.mail.toLocaleLowerCase().includes(search.toLowerCase()) || student.city.toLocaleLowerCase().includes(search.toLowerCase())){
+        return student;
+    }
+    });
 
 
     return (
