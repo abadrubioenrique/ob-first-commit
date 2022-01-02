@@ -13,18 +13,24 @@ const Studentpage = () => {
     return (
     <div className='studentsPage'>
         <header className='usersHeader'>
-                        <div className='title-users'>
-                        <h1 className='title'>OpenBootcamp <span className='subtitle'>| Alumnos</span></h1>
-                        </div>
-                        <div className='username'>
-                            <div className='user-icon'>
-                                <h1>NA</h1>
-                            </div>
-                            <div className='name'><Link to="/student">UserName</Link>
-                            </div>
-                            <i className="bi bi-chevron-down dropDown"></i>
-                        </div>
+            <div className='title-users'>
+            <h1 className='title'>OpenBootcamp <span className='subtitle'>| Alumnos</span></h1>
+            </div>
+            <div className='username'>
+                <div className='user-icon'>
+                    <h1>NA</h1>
+                </div>
+                <div className='name'>
+                <Link to="/student">UserName</Link>
+                </div>
+                <i className="bi bi-chevron-down dropDown"></i>
+            </div>
         </header>
+        <div class="student-cv">
+            <div class="pdf">
+                <embed src="https://www.mheducation.es/bcv/guide/capitulo/8448148681.pdf" type="application/pdf"/>
+            </div>
+        </div>
         <div className="usersPanel">
             <div className="students-data">
                 <div className="student-info">
