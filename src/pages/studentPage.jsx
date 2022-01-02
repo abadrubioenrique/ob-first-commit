@@ -1,11 +1,15 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Link } from 'react-router-dom';
+import { LEVELS } from '../models/faceToFace-enum';
 import '../styles/users.scss';
 import '../styles/student.scss';
 import '../styles/select.scss';
 import Tagcomponent from '../components/tagComponent';
 
 const Studentpage = () => {
+    const [name, setName] = useState('Nombre Alumno');
+    const [city, setCity] = useState('City');
+    const [country, setCountry] = useState('Country');
     return (
     <div className='studentsPage'>
         <header className='usersHeader'>
@@ -24,34 +28,35 @@ const Studentpage = () => {
         <div className="usersPanel">
             <div className="students-data">
                 <div className="student-info">
-                    <img className="student-img" src="https://st.depositphotos.com/2251265/2417/i/600/depositphotos_24172293-stock-photo-faceless-person-portrait.jpg"/>
-                        <div id="student-name" className="student-name"><h1>Nombre Alumno</h1>
+                    <img className="student-img" src="https://st.depositphotos.com/2251265/2417/i/600/depositphotos_24172293-stock-photo-faceless-person-portrait.jpg" alt='profile_img'/>
+                        <div id="student-name" className="student-name"><h1>{name}</h1>
                             <div className="student-ubication">
                                 <i className="bi bi-geo-alt"></i>
-                                <p>City</p>
+                                <p>{city}</p>
                                 <span>|</span>
-                                <p>Country</p>
+                                <p>{country}</p>
                             </div>
                         </div>
                 </div>
                     <div className="a2">
                             <label className='credentials'>Nombre y Apellidos</label>
-                            <input className='input-text' type='text' placeholder='Ej: Juan Perez Lorca'/>
+                            <input onChange={event => setName(event.target.value)} className='input-text' type='text' placeholder='Ej: Juan Perez Lorca'/>
                     </div>
                     <div className="data-container">
                         <div className="b2">
                               <label className='credentials'>País</label>
-                              <select id="country" className='input-text custom-select'>
-                                  <option value="España">España</option>
+                              <select onChange={event => setCountry(event.target.value)} id="country" className='input-text custom-select'>
+                                <option selected disabled>Elija una opcion</option>  
+                                <option value="España">España</option>
                               </select>
-              
                     </div>
                         <div className="c2">
                             <label className='credentials'>Ciudad</label>
-                            <select className='input-text custom-select'>
-                                <option value="valencia">Valencia</option>
-                                <option value="oviedo">Oviedo</option>
-                                <option value="sevilla">Sevilla</option>
+                            <select onChange={event => setCity(event.target.value)} className='input-text custom-select'>
+                                <option selected disabled>Elija una opcion</option>
+                                <option value="Valencia">Valencia</option>
+                                <option value="Oviedo">Oviedo</option>
+                                <option value="Sevilla">Sevilla</option>
                             </select>
                         </div>
                         <div className="d2">
@@ -65,13 +70,16 @@ const Studentpage = () => {
                         <div className="f2">
                             <label className='credentials'>Presencialidad</label>
                             <select className='input-text custom-select'>
-                                <option value="Si">Si</option>
-                                <option value="No">No</option>
+                                <option selected disabled>Elija una opcion</option>
+                                <option value={LEVELS.FACETOFACE}>Presencial</option>
+                                <option value={LEVELS.REMOTE}>En remoto</option>
+                                <option value={LEVELS.BOTH}>Presencial y en remoto </option>
                             </select>
                         </div>
                         <div className="g2">
                             <label className='credentials'>Traslado</label>
                             <select className='input-text custom-select'>
+                                <option selected disabled>Elija una opcion</option>
                                 <option value="Si">Si</option>
                                 <option value="No">No</option>
                             </select>

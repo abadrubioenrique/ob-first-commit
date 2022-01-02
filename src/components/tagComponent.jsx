@@ -32,6 +32,7 @@ const Tagcomponent = () => {
                     <option value="HTML&CSS">HTML&CSS</option>
                     <option value="REACT">REACT</option>
                     <option value="ANGULAR">ANGULAR</option>
+                    <option value="VUEJS">VUEJS</option>
                 </select>
             </div>) 
                 : null

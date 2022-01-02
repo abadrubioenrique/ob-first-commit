@@ -29,7 +29,6 @@ const Userspage  = ()=> {
 
     return (
         <div className='usersPage'>
-
             <header className='usersHeader'>
                 <div className='title-users'>
                 <h1 className='title'>OpenBootcamp <span className='subtitle'>| Alumnos</span></h1>

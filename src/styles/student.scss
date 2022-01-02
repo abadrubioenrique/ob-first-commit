@@ -24,9 +24,8 @@
 	border-color: $grey-3;
 	background-color: $white;
 	margin-bottom: 20px;
-	height: 784px;
+	min-height: calc(784px - 10px);
 	width: calc(500px - 48px);
-	height: calc(784px - 10px);
 	padding: 24px;
 }
 
@@ -51,7 +50,7 @@
 	grid-template-areas: "a2 a2" "b2 c2" "d2 e2" "f2 g2" "h2 h2" "i2 i2";
 	justify-items: start;
 	width: 100%;
-	height: 10%;
+	height: 76px;
 }
 
 .a2 {
@@ -148,13 +147,18 @@
 .i2 {
 	grid-area: i2;
 	width: 100%;
+	position: relative;
 
     .input-text {
 		margin: 0;
 		margin-top: 12px;
-		padding-bottom: 10px;
 		height: 20px;
 		width: calc(100% - 30px);
+	}
+	i{
+		position: absolute;
+		right: 15px;
+		top: 45px;
 	}
 }
 
@@ -162,7 +166,6 @@
 	position: relative;
 	display: flex;
 	width: 100%;
-	height: 114px;
 	z-index: 1;
 	margin-bottom: 24px;
 }
