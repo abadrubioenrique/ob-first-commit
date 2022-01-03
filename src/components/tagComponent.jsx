@@ -27,7 +27,7 @@ const Tagcomponent = () => {
             <label className='credentials '>Etiquetas</label>
             <input onClick={() => setFocus((f) => !f)} className='input-text' type='text' placeholder='Escribe para buscar...'/>
             {focus ? 
-            (<div className="container">
+            (<div className="tag-container">
                 <select multiple size={3} onChange={onChangeHandler} className="select">
                     <option value="HTML&CSS">HTML&CSS</option>
                     <option value="REACT">REACT</option>

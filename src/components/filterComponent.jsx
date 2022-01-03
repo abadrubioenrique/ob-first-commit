@@ -17,8 +17,8 @@ const FilterComponent = () => {
               <div className='tags-main'>
                 <i className="bi bi-chevron-down tags"></i>
                 <label className='credentials '>Pais</label>
-                <select className='input-text custom-select'>
-                  <option selected disabled>Elija una opcion</option>  
+                <select defaultValue="" className='input-text custom-select'>
+                  <option value="" disabled>Elija una opcion</option>  
                   <option value="valencia">Valencia</option>
                   <option value="oviedo">Oviedo</option>
                   <option value="sevilla">Sevilla</option>
@@ -27,8 +27,8 @@ const FilterComponent = () => {
               <div className='tags-main'>
                   <i className="bi bi-chevron-down tags"></i>
                   <label className='credentials '>Ciudad</label>
-                <select  className='input-text custom-select'>
-                  <option selected disabled>Elija una opcion</option>  
+                <select defaultValue=""  className='input-text custom-select'>
+                  <option value="" disabled>Elija una opcion</option>  
                   <option value="ESP">España</option>
                 </select>
               </div>

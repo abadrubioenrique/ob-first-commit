@@ -26,8 +26,8 @@ const Studentpage = () => {
                 <i className="bi bi-chevron-down dropDown"></i>
             </div>
         </header>
-        <div class="student-cv">
-            <div class="pdf">
+        <div className="student-cv">
+            <div className="pdf">
                 <embed src="https://www.mheducation.es/bcv/guide/capitulo/8448148681.pdf" type="application/pdf"/>
             </div>
         </div>
@@ -51,15 +51,15 @@ const Studentpage = () => {
                     <div className="data-container">
                         <div className="b2">
                               <label className='credentials'>País</label>
-                              <select onChange={event => setCountry(event.target.value)} id="country" className='input-text custom-select'>
-                                <option selected disabled>Elija una opcion</option>  
+                              <select defaultValue="" onChange={event => setCountry(event.target.value)} id="country" className='input-text custom-select'>
+                                <option value="" disabled>Elige una opcion</option>  
                                 <option value="España">España</option>
                               </select>
                     </div>
                         <div className="c2">
                             <label className='credentials'>Ciudad</label>
-                            <select onChange={event => setCity(event.target.value)} className='input-text custom-select'>
-                                <option selected disabled>Elija una opcion</option>
+                            <select defaultValue="" onChange={event => setCity(event.target.value)} className='input-text custom-select'>
+                                <option value="" disabled>Elige una opcion</option>
                                 <option value="Valencia">Valencia</option>
                                 <option value="Oviedo">Oviedo</option>
                                 <option value="Sevilla">Sevilla</option>
@@ -75,8 +75,8 @@ const Studentpage = () => {
                         </div>
                         <div className="f2">
                             <label className='credentials'>Presencialidad</label>
-                            <select className='input-text custom-select'>
-                                <option selected disabled>Elija una opcion</option>
+                            <select defaultValue="" className='input-text custom-select'>
+                            <option value="" disabled>Elige una opcion</option>
                                 <option value={LEVELS.FACETOFACE}>Presencial</option>
                                 <option value={LEVELS.REMOTE}>En remoto</option>
                                 <option value={LEVELS.BOTH}>Presencial y en remoto </option>
@@ -84,8 +84,8 @@ const Studentpage = () => {
                         </div>
                         <div className="g2">
                             <label className='credentials'>Traslado</label>
-                            <select className='input-text custom-select'>
-                                <option selected disabled>Elija una opcion</option>
+                            <select defaultValue="" className='input-text custom-select'>
+                                <option value="" disabled>Elige una opcion</option>
                                 <option value="Si">Si</option>
                                 <option value="No">No</option>
                             </select>
