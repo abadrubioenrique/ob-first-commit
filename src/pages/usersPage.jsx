@@ -34,7 +34,14 @@ const Userspage  = ()=> {
         <div className='usersPage'>
         <MenuComponent></MenuComponent>
             <header className='usersHeader'>
-            
+            <div className='global-search'>
+            <i className="bi bi-search search-icon"></i>
+                    <input 
+                    type='text' 
+                    value={search}
+                    onChange={(e)=> setSearch(e.target.value)}  
+                    placeholder='Buscar por Nombre, Email o Palabra clave...'/>
+            </div>
                 <div className='username'>
                     <div className='user-icon'>
                         <h1>NA</h1>

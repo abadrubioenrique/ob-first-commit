@@ -24,7 +24,9 @@
     width: calc(100% - 198px);
     height: 70px;
     z-index: 2;
-    background-color: red;
+    background-color: $white;
+    border-bottom: 1px solid;
+    border-color: $grey-3;
     .title{
         padding: 0;
         margin: 0;
@@ -41,6 +43,8 @@
         border-radius: 91px;
         background-color: $white;
         align-items: center;      
+        border: 1px solid;
+        border-color: $grey-3;
         .dropDown{
             padding-top: 4px;
             color: $grey-4;
@@ -138,6 +142,17 @@
     width: 16px;
     color: $grey-6;
     margin:0 17px;
+}
+
+.global-search{
+    margin-top: 25px;
+    margin-left: 25px;
+    input{
+        width: 600px;
+        border: none;
+        background: none;
+        outline: none;
+    }
 }
 
 .btn-add{
@@ -299,9 +314,7 @@
     }
 }
 
-.global-search-bar{
-    width: 500px;
-}
+
 @media screen and (max-width: 767px) {
     .table-responsive {
         width: 100%;
