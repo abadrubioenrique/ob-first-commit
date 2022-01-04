@@ -1,0 +1,87 @@
+@import 'styles.scss';
+
+
+.menu{
+    font-family: $font;
+    background-color: $blue-black;
+    font-family: $font;
+	position: fixed;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 198px;
+	height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    right: 0;
+
+}
+.menu_title{
+    padding: 22.5px 0 22.5px 0;
+
+    color: $white;
+    h1{
+        font-style: normal;
+        font-weight: 700 ;
+        font-size: 21px;
+        line-height: 25px;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 22.5px;
+        margin-left: 20px;
+    }
+    span{
+        font-weight:400;
+    }
+}
+
+.menu_container{
+    .menu_element{
+    cursor: pointer;
+    display: flex;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0;
+    padding: 0;
+    padding: 17px 0 17px 20px;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    h2{
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    }
+    i{
+        margin-right: 17.5px;
+    }
+    &:hover{
+        background: rgba(50, 212, 164, 0.15);
+        i{
+            color: $powergreen;
+        }
+        color: $white;
+
+    }
+    }
+}
+
+.active{
+
+    h2{
+        color: $white;
+    }
+    background: rgba(50, 212, 164, 0.15);
+    i{
+        color: $powergreen;
+    }
+
+
+}

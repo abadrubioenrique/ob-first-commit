@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import FilterComponent from '../components/filterComponent';
+import MenuComponent from '../components/menuComponent';
 import TableComponent from '../components/tableComponent';
 import { LEVELS } from '../models/faceToFace-enum';
 import { Student } from '../models/student.class';
@@ -31,10 +32,9 @@ const Userspage  = ()=> {
 
     return (
         <div className='usersPage'>
+        <MenuComponent></MenuComponent>
             <header className='usersHeader'>
-                <div className='title-users'>
-                <h1 className='title'>OpenBootcamp <span className='subtitle'>| Alumnos</span></h1>
-                </div>
+            
                 <div className='username'>
                     <div className='user-icon'>
                         <h1>NA</h1>
@@ -48,7 +48,7 @@ const Userspage  = ()=> {
             <div className='usersPanel'>
             <button className='btn-add'><i className="bi bi-plus-lg"></i> Añadir alumnos</button>
                 <div className='students'>
-                    <h2>Alumnos</h2>
+                    <h2>Clientes</h2>
                     <div className='search-bar'>
                     <i className="bi bi-search search-icon"></i>
                     <input 
@@ -59,6 +59,7 @@ const Userspage  = ()=> {
                     </div>
                     
                 </div>
+                
                 <div className='table-responsive'>
                 <table>
                     <thead>
@@ -120,9 +121,11 @@ const Userspage  = ()=> {
                     )}
                     </tbody>
                 </table>
+                
                 </div>
+                
                 </div>
-                    <FilterComponent/>     
+                <FilterComponent/>     
                </div>
     );
 }

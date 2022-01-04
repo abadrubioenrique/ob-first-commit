@@ -69,7 +69,7 @@ const ModalComponent = () => {
 
             </div>
             <div className="b">
-                <label className='credentials'>Ciudad</label>
+                <label className='credentials' >Ciudad</label>
                 <select defaultValue="" className='input-text custom-select'>
                     <option value="" disabled>Elige una opcion</option>  
                     <option>Valencia</option>

@@ -2,7 +2,7 @@
 
 .usersPage{
     font-family: $font;
-    position: absolute;
+    position: fixed;
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
@@ -15,14 +15,16 @@
     margin: 0;
     padding: 0;
     right: 0;
+    margin-left: 198px;
 }
 
 .usersHeader{
     display: flex;
     position: absolute;
-    width: 100%;
-    margin: 18px 40px 12px 0px;
-
+    width: calc(100% - 198px);
+    height: 70px;
+    z-index: 2;
+    background-color: red;
     .title{
         padding: 0;
         margin: 0;
@@ -33,7 +35,7 @@
         position: absolute;
         margin: 0;
         right: 80px;
-        top: -5px;
+        top: 15px;
         width: 167px;
         height: 40px;
         border-radius: 91px;
@@ -83,12 +85,15 @@
     display: flex;
     position: absolute;
     padding-top: 110px;
-    margin-left: 102px;
-    width: 70% ;
+    background-color: $white;
+    width: 100% ;
 
     .students{
         display: flex;
         margin: 0 ;
+        margin-left: 20px;
+        margin-bottom: 20px;
+
     }
     h2{
         position: static;
@@ -102,7 +107,7 @@
         line-height: 21px;
         font-feature-settings: 'pnum' on, 'lnum' on;
         color: $grey-black;
-        margin-right: 24px;
+        margin-right: 24x;
         margin: 10px 24px 10px 0;
     }
     .search-bar{
@@ -156,7 +161,7 @@
     overflow-x: auto;
     position: absolute;
     border: 1px solid;
-    border-radius: 15px;
+    border-top: none;
     border-color: $grey-3;
     margin-top: 54px;
     background-color: $white;
@@ -233,9 +238,9 @@
     position: absolute;
     width: 330px;
 
-    right: 0;
-    margin: 110px 102px 143px 40px;
-    border-radius: 20px;
+    right: 183px;
+    margin: 70px 0 143px 0;
+    height: 100%;
     box-sizing: border-box;
     border: 1px solid;
     border-color: $grey-3;
@@ -294,6 +299,9 @@
     }
 }
 
+.global-search-bar{
+    width: 500px;
+}
 @media screen and (max-width: 767px) {
     .table-responsive {
         width: 100%;
