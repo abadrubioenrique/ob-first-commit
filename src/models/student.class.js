@@ -1,4 +1,6 @@
 import { LEVELS } from "./faceToFace-enum";
+import { CANDIDATE_STATUS } from "./candidate-enum";
+
 export class Student{
     name='';
     city='';
@@ -8,9 +10,10 @@ export class Student{
     tags=[''];
     faceToFace=LEVELS.REMOTE;
     transfer=true;
+    status= CANDIDATE_STATUS.PDTE;
 
-    constructor(name,city,country,phonenumber,mail,tags,faceToFace,transfer){
-        this.name=name;
+    constructor(name,city,country,phonenumber,mail,tags,faceToFace,transfer, status){
+        this.name=name; 
         this.city=city;
         this.country=country;
         this.phonenumber=phonenumber;
@@ -18,5 +21,6 @@ export class Student{
         this.tags=tags;
         this.faceToFace=faceToFace;
         this.transfer=transfer;
+        this.status = status;
     }
 }

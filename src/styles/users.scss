@@ -101,8 +101,6 @@
         position: static;
         left: 0px;
         top: 10px;
-        width: 80px;
-        height: 20px;
         font-style: normal;
         font-weight: bold;
         font-size: 18px;
@@ -110,7 +108,7 @@
         font-feature-settings: 'pnum' on, 'lnum' on;
         color: $grey-black;
         margin-right: 24x;
-        margin: 10px 24px 10px 0;
+        margin: 10px 24px 10px 10px;
     }
     .search-bar{
         display: flex;
@@ -157,7 +155,7 @@
     position: fixed;
     cursor: pointer;
     height: 40px;
-    right: 347px;
+    right: 360px;
     padding: 5px 14px 5px 10px;
     border: 1px solid;
     border-color: $grey-3;
@@ -250,8 +248,7 @@
 .search-filter{
     position: absolute;
     width: 330px;
-
-    right: 183px;
+    right: 195px;
     margin: 70px 0 143px 0;
     height: 100%;
     box-sizing: border-box;

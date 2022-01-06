@@ -6,7 +6,6 @@ const TableComponent = (props) => {
         <td className='names'>{props.name}</td>
         <td>{props.city}, {props.country}</td>
         <td>{props.phonenumber}</td>
-        <td>{props.mail}</td>
         <td><span className='table-tag'>{props.tags[0]}</span><span className='table-tag'>{props.tags[1]}</span>
         
             {(props.tags.length>2) 
@@ -16,7 +15,7 @@ const TableComponent = (props) => {
             null }
         
         </td>
-        
+        <td>{props.status}</td>
         </tr>
             );
       
