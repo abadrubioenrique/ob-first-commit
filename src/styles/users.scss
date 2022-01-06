@@ -43,8 +43,6 @@
         border-radius: 91px;
         background-color: $white;
         align-items: center;      
-        border: 1px solid;
-        border-color: $grey-3;
         .dropDown{
             padding-top: 4px;
             color: $grey-4;
@@ -156,10 +154,10 @@
 }
 
 .btn-add{
-    position: absolute;
+    position: fixed;
     cursor: pointer;
     height: 40px;
-    right: 0px; 
+    right: 347px;
     padding: 5px 14px 5px 10px;
     border: 1px solid;
     border-color: $grey-3;

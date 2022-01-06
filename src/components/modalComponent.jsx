@@ -3,7 +3,7 @@ import { LEVELS } from '../models/faceToFace-enum';
 import '../styles/select.scss'
 import '../styles/modal.scss';
 import Tagcomponent from './tagComponent';
-const ModalComponent = () => {
+const ModalComponent = ({ setIsOpen }) => {
 
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
@@ -17,7 +17,7 @@ const ModalComponent = () => {
 
     <div className="modal-content">
        
-        <span onClick={handleClose} className="close">&times;</span>
+        <span onClick={() => setIsOpen(false)} className="close">&times;</span>
         <h1 className="modal-title">Nuevo Candidato</h1>
         <div className="modal-container">    
         <div className="a1">
@@ -111,8 +111,8 @@ const ModalComponent = () => {
     <div className="modal-footer">
         <div className="modal-buttons">
             <div className="align-rigth">
-            <button  type="submit" className="modal-btn modal-btn-disabled">Guardar</button>
-            <button  onClick={handleClose} id="cancelar" className="modal-btn" >Cancelar</button>
+            <button type="submit" className="modal-btn modal-btn-disabled">Guardar</button>
+            <button onClick={() => setIsOpen(false)} className="modal-btn cancel" >Cancelar</button>
         </div>
         </div>
         

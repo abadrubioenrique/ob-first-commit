@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 const Tagcomponent = () => {
     const [tags, setTags] = useState([]);
     const [focus, setFocus] = useState(false);
-  
+    let onRemove = true;
+
     //Añadir etiquetas
     const onChangeHandler = (event) => {
         const selectedOptions = event.currentTarget.selectedOptions;
@@ -19,6 +20,16 @@ const Tagcomponent = () => {
     function clearTags(){
         setTags([]);
         setFocus(false);
+    }
+
+    const removeTag = (arr, tag) =>{
+        var i = arr.indexOf(tag);
+        if(onRemove === true && i !== -1 ){
+            arr.splice(i, 1);
+            onRemove=false;
+        }
+        setTags(arr);
+        console.log(arr);
     }
 
     return (
@@ -39,11 +50,11 @@ const Tagcomponent = () => {
                 }
                 <div>
             {tags &&
-                tags.map((tag, index) => 
-                <p id={tag} className="selected_tags">{tag}
-                    <svg id={tag + "_closed"}  className="delete_tag bi bi-x-lg" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
-                    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                tags.map((tag) => 
+                <p key= {tag} id={tag}  className="selected_tags">{tag}
+                    <svg onClick={() => removeTag(tags, tag)} id={tag + "_closed"}  className="delete_tag bi bi-x-lg" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                    <path fillRule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                    <path fillRule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
                     </svg>
                 </p>
                 )}

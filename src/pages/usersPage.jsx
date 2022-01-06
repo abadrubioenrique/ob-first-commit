@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import FilterComponent from '../components/filterComponent';
+import HeaderComponent from '../components/headerComponent';
 import MenuComponent from '../components/menuComponent';
+import ModalComponent from '../components/modalComponent';
 import TableComponent from '../components/tableComponent';
 import { LEVELS } from '../models/faceToFace-enum';
 import { Student } from '../models/student.class';
@@ -14,46 +16,31 @@ const Userspage  = ()=> {
     const student3 = new Student('Eustaquia Herrera Climent','Sevilla','España','+34 689 25 48 65','ecliment@gmail.com',['Html&CSS','React'], LEVELS.REMOTE,false);
     const [students, setStudents] = useState([student1 , student2, student3]);
     const [search, setSearch] = useState('');
+    //Modal
+    const [isOpen, setIsOpen] = useState(false);
 
-        //Ordenar lista A-Z y Z-A
-        const sort_lists = (key, inverse) =>
-        inverse
-        ? [...students].sort((b, a) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
-        : [...students].sort((a, b) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
-    
-        //Busqueda
-        const studentFilter = students.filter((student)=>{
-        if(student.name.toLocaleLowerCase().includes(search.toLowerCase()) || student.mail.toLocaleLowerCase().includes(search.toLowerCase()) || student.city.toLocaleLowerCase().includes(search.toLowerCase())){
-            return student;
-        }
-        });
+    //Ordenar lista A-Z y Z-A
+    const sort_lists = (key, inverse) =>
+    inverse
+    ? [...students].sort((b, a) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
+    : [...students].sort((a, b) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
+
+    //Busqueda
+    const studentFilter = students.filter((student)=>{
+    if(student.name.toLocaleLowerCase().includes(search.toLowerCase()) || student.mail.toLocaleLowerCase().includes(search.toLowerCase()) || student.city.toLocaleLowerCase().includes(search.toLowerCase())){
+        return student;
+    }
+    });
         
-
+    console.log(isOpen);
 
     return (
         <div className='usersPage'>
-        <MenuComponent></MenuComponent>
-            <header className='usersHeader'>
-            <div className='global-search'>
-            <i className="bi bi-search search-icon"></i>
-                    <input 
-                    type='text' 
-                    value={search}
-                    onChange={(e)=> setSearch(e.target.value)}  
-                    placeholder='Buscar por Nombre, Email o Palabra clave...'/>
-            </div>
-                <div className='username'>
-                    <div className='user-icon'>
-                        <h1>NA</h1>
-                    </div>
-                    <div className='name'><Link to="/student">UserName</Link>
-                    </div>
-                    <i className="bi bi-chevron-down dropDown"></i>
-                </div>
-            </header>
-
+            <MenuComponent/>
+            <HeaderComponent/>
             <div className='usersPanel'>
-            <button className='btn-add'><i className="bi bi-plus-lg"></i> Añadir alumnos</button>
+            
+           
                 <div className='students'>
                     <h2>Clientes</h2>
                     <div className='search-bar'>
@@ -66,7 +53,7 @@ const Userspage  = ()=> {
                     </div>
                     
                 </div>
-                
+                <button onClick={() => setIsOpen(true)} className='btn-add'><i className="bi bi-plus-lg"></i> Añadir alumnos</button>
                 <div className='table-responsive'>
                 <table>
                     <thead>
@@ -133,7 +120,12 @@ const Userspage  = ()=> {
                 
                 </div>
                 <FilterComponent/>     
+                <div>
+                {isOpen ? <ModalComponent setIsOpen={setIsOpen} /> : null}
+                </div>
+                
                </div>
+               
     );
 }
 
