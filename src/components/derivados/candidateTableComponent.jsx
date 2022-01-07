@@ -9,25 +9,31 @@ const TableComponent = (props) => {
                     <td className='status-main'>
                         <span className='status bg-powerblue'>{props.status}</span>
                     </td>
-       )
+                )
             case CANDIDATE_STATUS.PRESELECIONADO:
                 return(
                     <td className='status-main'>
-                    <span className='status bg-blue'>
-                        {props.status}
-                    </span>
+                        <span className='status bg-blue'>
+                            {props.status}
+                        </span>
                     </td>
-)
+                )
             case CANDIDATE_STATUS.CONTRATADO:
                 return(
                     <td className='status-main'>
-                    <span className='status bg-powergreen'>
-                        {props.status}
-                    </span>
+                        <span className='status bg-powergreen'>
+                            {props.status}
+                        </span>
                     </td>
-)
+                )
             default:
-                break;
+                return(
+                    <td className='status-main'>
+                        <span className='status bg-grey'>
+                            No definido
+                        </span>
+                    </td>
+                )
         }
     }
     return (
@@ -35,7 +41,8 @@ const TableComponent = (props) => {
         <td className='names'>{props.name}</td>
         <td>{props.city}, {props.country}</td>
         <td>{props.phonenumber}</td>
-        <td><span className='table-tag'>{props.tags[0]}</span><span className='table-tag'>{props.tags[1]}</span>
+        <td><span className='table-tag'>{props.tags[0]}
+        </span><span className='table-tag'>{props.tags[1]}</span>
         
             {(props.tags.length>2) 
             ?  
@@ -47,7 +54,7 @@ const TableComponent = (props) => {
         {candidateLevelBadge()}
         <td></td>
         </tr>
-            );
+    );
       
 }
 

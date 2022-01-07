@@ -1,5 +1,5 @@
 export const LEVELS = {
-    FACETOFACE:'faceToFace',
-    REMOTE :'remote',
-    BOTH: 'both'
+    FACETOFACE:'Presencial',
+    REMOTE :'En remoto',
+    BOTH: 'Presencial y Remoto'
 }

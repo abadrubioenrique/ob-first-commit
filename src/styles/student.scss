@@ -2,30 +2,31 @@
 
 .studentsPage {
     font-family: $font;
-	position: absolute;
-	background-position: center center;
-	background-attachment: fixed;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-color: $grey-1;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	margin: 0;
-	padding: 0;
-	right: 0;
+    position: fixed;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: $white;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    right: 0;
+    margin-left: 198px;
 }
 
 .students-data {
 	position: absolute;
 	border: 1px solid;
-	border-radius: 20px;
 	border-color: $grey-3;
+	border-bottom: none;
+	border-right: none;
 	background-color: $white;
-	margin-bottom: 20px;
-	min-height: calc(784px - 10px);
-	width: calc(500px - 48px);
+	min-height: calc(784px);
+	width: calc(100% - 248px);
 	padding: 24px;
 }
 
@@ -47,7 +48,7 @@
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: 1fr 1f 1fr 1fr 1fr 1fr;
 	gap: 20px 30px;
-	grid-template-areas: "a2 a2" "b2 c2" "d2 e2" "f2 g2" "h2 h2" "i2 i2";
+	grid-template-areas: "a2 a2" "b2 c2" "d2 e2" "f2 g2" "h2 i2";
 	justify-items: start;
 	width: 100%;
 	height: 76px;
@@ -67,6 +68,7 @@
 .b2 {
 	grid-area: b2;
 	width: 100%;
+	position: relative;
 	.input-text {
 		margin: 0;
 		margin-top: 12px;
@@ -74,18 +76,31 @@
 		height: 40px;
 		width: 100%;
 	}
+	.dropdown-icon{
+		position: absolute;
+		top: 42px;
+		right: 20px;
+		color: $grey-6;
+	}
 	
 }
 
 .c2 {
 	grid-area: c2;
 	width: 100%;
+	position: relative;
 	.input-text {
 		margin: 0;
 		margin-top: 12px;
 		padding-bottom: 10px;
 		height: 40px;
 		width: 100%;
+	}
+	.dropdown-icon{
+		position: absolute;
+		top: 42px;
+		right: 20px;
+		color: $grey-6;
 	}
 }
 
@@ -118,18 +133,26 @@
 .f2 {
 	grid-area: f2;
 	width: 100%;
+	position: relative;
 	.input-text {
 		margin: 0;
 		margin-top: 12px;
 		padding-bottom: 10px;
 		height: 40px;
 		width: 100%;
+	}
+	.dropdown-icon{
+		position: absolute;
+		top: 42px;
+		right: 20px;
+		color: $grey-6;
 	}
 }
 
 .g2 {
 	grid-area: g2;
 	width: 100%;
+	position: relative;
 	.input-text {
 		margin: 0;
 		margin-top: 12px;
@@ -137,30 +160,46 @@
 		height: 40px;
 		width: 100%;
 	}
+	.dropdown-icon{
+		position: absolute;
+		top: 42px;
+		right: 20px;
+		color: $grey-6;
+	}
 }
 
 .h2 {
 	grid-area: h2;
 	width: 100%;
+	.input-text {
+		margin: 0;
+		margin-top: 12px;
+		padding-right: 0;
+		padding-bottom: 10px;
+		width: calc(100% - 12px);
+		height: calc(40px - 24px);
+	}
 }
 
 .i2 {
 	grid-area: i2;
-	width: 100%;
 	position: relative;
-
-    .input-text {
+	width: 100%;	
+	.input-text {
 		margin: 0;
 		margin-top: 12px;
-		height: 20px;
-		width: calc(100% - 30px);
+		padding-bottom: 10px;
+		height: 40px;
+		width: 100%;
 	}
-	i{
+	.dropdown-icon{
 		position: absolute;
-		right: 15px;
-		top: 45px;
+		top: 42px;
+		right: 20px;
+		color: $grey-6;
 	}
 }
+
 
 .student-info {
 	position: relative;
@@ -195,6 +234,9 @@
 	border-radius: 20px;
 }
 
+.student-subinfo{
+	display: flex;
+}
 .student-ubication {
 	display: flex;
 	margin-left: 24px;
@@ -204,17 +246,40 @@
 	line-height: 16px;
 	height: 16px;
 	color: $grey-4;
+	i{
+		margin-right: 11px;
+	}
 	p {
 		margin: 0;
-		margin-left: 11px;
-		margin-right: 8px;
 	}
 	span {
 		font-size: 12px;
 		margin-top: -1px;
+		margin-right: 4px;
 	}
 }
 
+.student-remote{
+	display: flex;
+	margin-left: 24px;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 16px;
+	height: 16px;
+	color: $grey-4;
+	i{
+		margin-right: 11px;
+	}
+	p {
+		margin: 0;
+	}
+	span {
+		font-size: 12px;
+		margin-top: -1px;
+		margin-right: 4px;
+	}
+}
 .upload{
 	display: flex;
 	margin: 0;
@@ -283,5 +348,53 @@
 		margin-right: 102px;
 		margin-bottom: 40px;
 		margin-left: 40px;
+	}
+}
+
+.rute{
+	display: flex;
+	position: fixed;
+	top: 72px;
+	z-index: 5;
+	width: 100%;
+	height: 40px;
+	border: none;
+	align-items: center;
+	a{
+		text-decoration: none;
+	}
+	h1{
+		cursor: pointer;
+		font-weight: 600;
+		font-size: 15px;
+		line-height: 18px;
+		color: rgba(7, 15, 48, 0.4);
+		margin-left: 30px;
+	}
+	i{
+		margin-left: 12px;
+		margin-top: 2px;
+		color: rgba(7, 15, 48, 0.4);
+	}
+	.active-route{
+		margin-left: 12px;
+		color: $grey-black;
+	}
+}
+
+.candidate-status{
+	position: absolute;
+	top: 15px;
+	right: 0;
+	margin-right: 30px;
+	align-items: center;
+	text-align: end;
+	h1{
+		font-style: normal;
+		font-weight: bold;
+		font-size: 11px;
+		color: $grey-4;
+		text-transform: uppercase;
+		margin: 0;
 	}
 }
