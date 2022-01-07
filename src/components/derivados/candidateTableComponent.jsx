@@ -6,13 +6,13 @@ const TableComponent = (props) => {
         switch (props.status) {
             case CANDIDATE_STATUS.PDTE:
                 return(
-                    <td >
+                    <td className='status-main'>
                         <span className='status bg-powerblue'>{props.status}</span>
                     </td>
        )
             case CANDIDATE_STATUS.PRESELECIONADO:
                 return(
-                    <td>
+                    <td className='status-main'>
                     <span className='status bg-blue'>
                         {props.status}
                     </span>
@@ -20,7 +20,7 @@ const TableComponent = (props) => {
 )
             case CANDIDATE_STATUS.CONTRATADO:
                 return(
-                    <td>
+                    <td className='status-main'>
                     <span className='status bg-powergreen'>
                         {props.status}
                     </span>
@@ -45,6 +45,7 @@ const TableComponent = (props) => {
         
         </td>
         {candidateLevelBadge()}
+        <td></td>
         </tr>
             );
       

@@ -86,6 +86,7 @@ const Candidatespage = () => {
                                 <i className="bi bi-arrow-down-up"></i>
                             </th>
                             <th className='end-table-status'>Estado</th>
+                            <th className='end-table'></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -100,6 +101,7 @@ const Candidatespage = () => {
                             status = {student.status}>
                         </TableComponent>  
                     )}
+
                     </tbody>
                 </table>
                 
