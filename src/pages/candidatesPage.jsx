@@ -82,10 +82,10 @@ const Candidatespage = () => {
                                 if (newSortedList[0] === students[0]) newSortedList = sort_lists('mail', true)
                                 setStudents(newSortedList)
                             }}>
-                                Etiquetas 
+                                Tecnologías 
                                 <i className="bi bi-arrow-down-up"></i>
                             </th>
-                            <th className='tags'>Estado</th>
+                            <th className='end-table-status'>Estado</th>
                         </tr>
                     </thead>
                     <tbody>

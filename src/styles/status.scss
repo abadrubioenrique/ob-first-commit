@@ -1,0 +1,27 @@
+@import './styles.scss';
+
+.status{
+    font-family: $font;
+    width: 200px;
+    height: 22px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    color: $white;
+}
+
+.bg-powergreen{
+    background: $powergreen;
+}
+
+.bg-powerblue{
+    background: $powerblue;
+}
+
+.bg-blue{
+    background: $blue;
+}

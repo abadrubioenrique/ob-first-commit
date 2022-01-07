@@ -1,6 +1,35 @@
 import React from 'react';
-
+import { CANDIDATE_STATUS } from '../../models/candidate-enum';
+import '../../styles/status.scss';
 const TableComponent = (props) => {
+    function candidateLevelBadge(){
+        switch (props.status) {
+            case CANDIDATE_STATUS.PDTE:
+                return(
+                    <td >
+                        <span className='status bg-powerblue'>{props.status}</span>
+                    </td>
+       )
+            case CANDIDATE_STATUS.PRESELECIONADO:
+                return(
+                    <td>
+                    <span className='status bg-blue'>
+                        {props.status}
+                    </span>
+                    </td>
+)
+            case CANDIDATE_STATUS.CONTRATADO:
+                return(
+                    <td>
+                    <span className='status bg-powergreen'>
+                        {props.status}
+                    </span>
+                    </td>
+)
+            default:
+                break;
+        }
+    }
     return (
         <tr>
         <td className='names'>{props.name}</td>
@@ -15,7 +44,7 @@ const TableComponent = (props) => {
             null }
         
         </td>
-        <td>{props.status}</td>
+        {candidateLevelBadge()}
         </tr>
             );
       

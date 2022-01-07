@@ -89,7 +89,7 @@ const Customerspage  = ()=> {
                                 if (newSortedList[0] === students[0]) newSortedList = sort_lists('tags', true)
                                 setStudents(newSortedList)
                             }}>
-                                Etiquetas 
+                                Tecnologías 
                                 <i className="bi bi-arrow-down-up"></i>
                             </th>
                         </tr>

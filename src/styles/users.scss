@@ -227,6 +227,11 @@
     .tags{
         width: 100%;
     }
+  
+    .end-table-status{
+        cursor: default;
+        width: 100%;
+    }
     .table-tag{
         position: static;
         padding: 4px 8px;
@@ -242,6 +247,7 @@
         text-transform: uppercase;
         color: white;
         margin-right: 6px;
+        
     }
 }
 
