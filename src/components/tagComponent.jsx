@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 const Tagcomponent = () => {
     const [tags, setTags] = useState([]);
     const [focus, setFocus] = useState(false);
-
+    const [search, setSearch] = useState('');
+    const [tagsOptions, setTagsOptions] = useState(['HTML&CSS','REACT', 'ANGULAR', 'VUEJS']);
     //Añadir etiquetas
     const onChangeHandler = (event) => {
         const selectedOptions = event.currentTarget.selectedOptions;
@@ -20,18 +21,26 @@ const Tagcomponent = () => {
         setTags(prevState => prevState.filter((tag, i) => i !== index))
     }
 
+    //Buscar etiquetas
+    const tagsFilter = tagsOptions.filter((tag)=>{
+        if(tag.toLocaleLowerCase().includes(search.toLowerCase())){
+            return tag;
+        }
+    });
+
     return (
         <div className='tags-main'>
             <i className="bi bi-chevron-down tags"></i>
             <label className='credentials '>Etiquetas</label>
-            <input onClick={() => setFocus((f) => !f)} className='input-text' type='text' placeholder='Escribe para buscar...'/>
+            <input onClick={() => setFocus((f) => !f)} className='input-text' value={search}  onChange={(e)=> setSearch(e.target.value)}   type='text' placeholder='Escribe para buscar...'/>
             {focus ? 
             (<div className="tag-container">
                 <select multiple size={3} onChange={onChangeHandler} className="select">
-                    <option value="HTML&CSS">HTML&CSS</option>
-                    <option value="REACT">REACT</option>
-                    <option value="ANGULAR">ANGULAR</option>
-                    <option value="VUEJS">VUEJS</option>
+
+                {tagsFilter.map(opt =>
+                <option key={opt} value={opt}>{opt}</option>
+                )};
+
                 </select>
             </div>) 
                 : null

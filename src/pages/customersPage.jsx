@@ -32,7 +32,6 @@ const Customerspage  = ()=> {
     }
     });
         
-    console.log(isOpen);
 
     return (
         <div className='usersPage'>
