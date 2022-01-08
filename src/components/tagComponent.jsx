@@ -13,23 +13,11 @@ const Tagcomponent = () => {
             newTags.push(selectedOptions[i].value);
         }
         setTags(newTags);
-        console.log(newTags)
     };
 
-    //Resetear Valores
-    function clearTags(){
-        setTags([]);
-        setFocus(false);
-    }
-
-    const removeTag = (arr, tag) =>{
-        var i = arr.indexOf(tag);
-        if(onRemove === true && i !== -1 ){
-            arr.splice(i, 1);
-            onRemove=false;
-        }
-        setTags(arr);
-        console.log(arr);
+    //Eliminar etiquetas
+    const removeTag = (index) =>{
+        setTags(prevState => prevState.filter((tag, i) => i !== index))
     }
 
     return (
@@ -50,9 +38,9 @@ const Tagcomponent = () => {
                 }
                 <div>
             {tags &&
-                tags.map((tag) => 
+                tags.map((tag, index) => 
                 <p key= {tag} id={tag}  className="selected_tags">{tag}
-                    <svg onClick={() => removeTag(tags, tag)} id={tag + "_closed"}  className="delete_tag bi bi-x-lg" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                    <svg onClick={() => removeTag(index)} id={tag + "_closed"}  className="delete_tag bi bi-x-lg" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
                     <path fillRule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
                     <path fillRule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
                     </svg>
