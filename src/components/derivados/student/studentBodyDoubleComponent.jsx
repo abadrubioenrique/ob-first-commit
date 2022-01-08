@@ -1,6 +1,7 @@
 import React from 'react';
-import { CANDIDATE_STATUS } from '../../models/candidate-enum';
-import { LEVELS } from '../../models/faceToFace-enum';
+import { CANDIDATE_STATUS } from '../../../models/candidate-enum';
+import { LEVELS } from '../../../models/faceToFace-enum';
+
 
 const StudentBodyComponent = (props) => {
     return (
@@ -68,6 +69,19 @@ const StudentBodyComponent = (props) => {
                             <option value={CANDIDATE_STATUS.PRESELECIONADO}>Preselecionado</option>
                             <option value={CANDIDATE_STATUS.PDTE}>Pendiente de ofertas</option>
                         </select>
+                    </div>
+                    <div className="j2">
+                        <label className='credentials'>Documento CV</label>
+                        <div className="upload">
+                            <button className="btn-upload">
+                                Subir de nuevo
+                                <i className="bi bi-cloud-arrow-up"></i>
+                            </button>
+                            <button className="btn-delete">
+                            Borrar
+                            <i className="bi bi-trash"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
         </div>

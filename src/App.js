@@ -6,6 +6,7 @@ import Studentpage from "./pages/studentPage";
 import ModalComponent from "./components/modalComponent";
 import MenuComponent from "./components/menuComponent";
 import Candidatespage from "./pages/candidatesPage";
+import StudentpageDouble from "./pages/studentPageDobleVista";
 
 function App() {
   
@@ -17,6 +18,7 @@ function App() {
     <Route path="/customers" element={<Customerspage/>}/>
     <Route path="/candidates" element={<Candidatespage/>}/>
     <Route path="/student" element={<Studentpage/>}/>
+    <Route path="/studentDouble" element={<StudentpageDouble/>}/>
     <Route path="/modal" element={<ModalComponent/>}/>
     <Route path="/menu" element={<MenuComponent/>}/>
     <Route path="/" element={<Navigate replace to="/login" />} />

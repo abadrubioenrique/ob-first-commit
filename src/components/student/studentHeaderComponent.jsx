@@ -7,13 +7,13 @@ const StudentHeaderComponent = (props) => {
         switch (props.status) {
             case CANDIDATE_STATUS.PDTE:
                 return(
-                    <div className='status-main'>
+                    <div className='status-main-right'>
                         <span className='status bg-powerblue'>{props.status}</span>
                     </div>
                 )
             case CANDIDATE_STATUS.PRESELECIONADO:
                 return(
-                    <div className='status-main'>
+                    <div className='status-main-right'>
                     <span className='status bg-blue'>
                         {props.status}
                     </span>
@@ -21,7 +21,7 @@ const StudentHeaderComponent = (props) => {
                 )
             case CANDIDATE_STATUS.CONTRATADO:
                 return(
-                    <div className='status-main'>
+                    <div className='status-main-right'>
                     <span className='status bg-powergreen'>
                         {props.status}
                     </span>
@@ -29,7 +29,7 @@ const StudentHeaderComponent = (props) => {
                 )
             default:
                 return(
-                    <div className='status-main'>
+                    <div className='status-main-right'>
                     <span className='status bg-grey'>
                         No definido
                     </span>

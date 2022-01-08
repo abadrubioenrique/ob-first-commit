@@ -10,15 +10,16 @@ const FilterComponent = () => {
       <div className='search-filter'>
         <h1>Filtros de búsqueda <i  className="bi bi-trash"></i></h1>
           <div className='campos'>
-              <Tagcomponent>
-
-              </Tagcomponent>
+          <Tagcomponent
+            options={['HTML&CSS','REACT', 'ANGULAR', 'VUEJS']}
+            tagname = 'Tecnologías'
+          ></Tagcomponent>
 
               <div className='tags-main'>
                 <i className="bi bi-chevron-down tags"></i>
                 <label className='credentials '>Pais</label>
                 <select defaultValue="" className='input-text custom-select'>
-                  <option value="" disabled>Elija una opcion</option>  
+                  <option value="" disabled>Elija una opción</option>  
                   <option value="valencia">Valencia</option>
                   <option value="oviedo">Oviedo</option>
                   <option value="sevilla">Sevilla</option>
@@ -28,7 +29,7 @@ const FilterComponent = () => {
                   <i className="bi bi-chevron-down tags"></i>
                   <label className='credentials '>Ciudad</label>
                 <select defaultValue=""  className='input-text custom-select'>
-                  <option value="" disabled>Elija una opcion</option>  
+                  <option value="" disabled>Elija una opción</option>  
                   <option value="ESP">España</option>
                 </select>
               </div>

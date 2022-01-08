@@ -11,9 +11,10 @@ const FilterComponent = () => {
       <div className='search-filter'>
         <h1>Filtros de búsqueda <i  className="bi bi-trash"></i></h1>
           <div className='campos'>
-              <Tagcomponent>
-
-              </Tagcomponent>
+          <Tagcomponent
+            options={['HTML&CSS','REACT', 'ANGULAR', 'VUEJS']}
+            tagname = 'Tecnologías'
+        ></Tagcomponent>
 
               <div className='tags-main'>
                 <i className="bi bi-chevron-down tags"></i>

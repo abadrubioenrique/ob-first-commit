@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 
-const Tagcomponent = () => {
+const Tagcomponent = (props) => {
     const [tags, setTags] = useState([]);
     const [focus, setFocus] = useState(false);
     const [search, setSearch] = useState('');
-    const [tagsOptions, setTagsOptions] = useState(['HTML&CSS','REACT', 'ANGULAR', 'VUEJS']);
+    const [tagsOptions, setTagsOptions] = useState(props.options);
     //Añadir etiquetas
     const onChangeHandler = (event) => {
         const selectedOptions = event.currentTarget.selectedOptions;
@@ -31,7 +31,7 @@ const Tagcomponent = () => {
     return (
         <div className='tags-main'>
             <i className="bi bi-chevron-down tags"></i>
-            <label className='credentials '>Etiquetas</label>
+            <label className='credentials '>{props.tagname}</label>
             <input onClick={() => setFocus((f) => !f)} className='input-text' value={search}  onChange={(e)=> setSearch(e.target.value)}   type='text' placeholder='Escribe para buscar...'/>
             {focus ? 
             (<div className="tag-container">

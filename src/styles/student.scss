@@ -434,3 +434,38 @@
 		margin: 0;
 	}
 }
+
+.students-data-double{
+	position: relative;
+	display: grid; 
+	grid-auto-flow: row dense; 
+	grid-auto-columns: 1fr; 
+	grid-auto-rows: 1fr; 
+	grid-template-columns: 57.84% 42.16%; 
+	grid-template-areas: "big little";
+	justify-items: start; 
+	min-height: calc(784px);
+	width: calc(100%);
+	border-top: 1px solid;
+	border-color: $grey-3;
+}
+
+.big{
+	grid-area: big;
+	width: calc(100% - 60px);
+	padding: 24px;
+	height: 100%;
+}
+
+.little{
+	position: absolute;
+	right: 0;
+	grid-area: little;
+	width: 100%;
+	height: 100vh;
+	background: $grey-1;
+}
+
+.status-main-right{
+	text-align: right;
+}
