@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import FilterComponent from '../components/derivados/filterComponentCandidates';
+import FilterComponent from '../components/derivados/candidate/filterComponentCandidates';
 import HeaderComponent from '../components/headerComponent';
 import MenuComponent from '../components/menuComponent';
 import ModalComponent from '../components/modalComponent';
-import TableComponent from '../components/derivados/candidateTableComponent';
+import TableComponent from '../components/derivados/candidate/candidateTableComponent';
 import { LEVELS } from '../models/faceToFace-enum';
 import { Student } from '../models/student.class';
 import '../styles/users.scss';

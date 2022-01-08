@@ -1,5 +1,6 @@
 import React from 'react';
-import {CANDIDATE_STATUS} from '../models/candidate-enum';
+import { CANDIDATE_STATUS } from '../../models/candidate-enum';
+
 
 const StudentHeaderComponent = (props) => {
     function candidateLevelBadge(){

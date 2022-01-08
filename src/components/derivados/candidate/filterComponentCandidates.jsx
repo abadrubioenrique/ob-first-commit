@@ -1,7 +1,8 @@
 import React,{useState} from 'react';
-import '../../styles/users.scss';
-import '../../styles/select.scss';
-import Tagcomponent from '../tagComponent';
+import '../../../styles/users.scss';
+import '../../../styles/select.scss';
+import Tagcomponent from '../../tagComponent';
+
 
 const FilterComponent = () => {
 

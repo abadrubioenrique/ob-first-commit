@@ -1,6 +1,7 @@
 import React from 'react';
-import { CANDIDATE_STATUS } from '../../models/candidate-enum';
-import '../../styles/status.scss';
+import { CANDIDATE_STATUS } from '../../../models/candidate-enum';
+
+import '../../../styles/status.scss';
 const TableComponent = (props) => {
     function candidateLevelBadge(){
         switch (props.status) {

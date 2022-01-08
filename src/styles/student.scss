@@ -48,7 +48,7 @@
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: 1fr 1f 1fr 1fr 1fr 1fr;
 	gap: 20px 30px;
-	grid-template-areas: "a2 a2" "b2 c2" "d2 e2" "f2 g2" "h2 i2";
+	grid-template-areas: "a2 a2" "b2 c2" "d2 e2" "f2 g2" "h2 i2" "j2 k2";
 	justify-items: start;
 	width: 100%;
 	height: 76px;
@@ -200,7 +200,14 @@
 	}
 }
 
-
+.j2{
+	grid-area: j2;
+	width: 100%;
+}
+.k2{
+	grid-area: k2;
+	width: 100%;
+}
 .student-info {
 	position: relative;
 	display: flex;
