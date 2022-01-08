@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 const Tagcomponent = () => {
     const [tags, setTags] = useState([]);
     const [focus, setFocus] = useState(false);
-    
+
     //Añadir etiquetas
     const onChangeHandler = (event) => {
         const selectedOptions = event.currentTarget.selectedOptions;
@@ -16,6 +16,7 @@ const Tagcomponent = () => {
 
     //Eliminar etiquetas
     const removeTag = (index) =>{
+        setFocus(false);
         setTags(prevState => prevState.filter((tag, i) => i !== index))
     }
 
