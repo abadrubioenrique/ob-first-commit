@@ -25,11 +25,6 @@ const Studentpage = () => {
     <div className='studentsPage'>
             <MenuComponent/>
             <HeaderComponent/>
-{/*         <div className="student-cv">
-            <div className="pdf">
-                <embed src="https://www.mheducation.es/bcv/guide/capitulo/8448148681.pdf" type="application/pdf"/>
-            </div>
-        </div> */}
         <div className="usersPanel">
         <div className='rute'><Link to='/candidates'><h1>Candidatos</h1></Link><i className="bi bi-chevron-left"></i><h1 className='active-route'>{name}</h1></div>
         <div className="students-data">

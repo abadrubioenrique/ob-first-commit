@@ -371,21 +371,7 @@
 	position: relative;
 	width: 100%;
 }
-.pdf {
-	position: absolute;
-	top: 110px;
-	right: 0;
-	embed {
-		border-radius: 20px;
-		background: #333639;
-		box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.6);
-		width: 1120px;
-		height: 780px;
-		margin-right: 102px;
-		margin-bottom: 40px;
-		margin-left: 40px;
-	}
-}
+
 
 .rute{
 	display: flex;
@@ -422,7 +408,6 @@
 	position: absolute;
 	top: 15px;
 	right: 0;
-	margin-right: 30px;
 	align-items: center;
 	text-align: end;
 	h1{

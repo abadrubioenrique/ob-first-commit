@@ -3,8 +3,9 @@ import React from 'react';
 const SecondTab = () => {
     return (
 <div className="SecondTab">
-      <p>Second Tab!! Hurray!!</p>
-      {/* First tab content will go here */}
+    <div className="pdf">
+        <embed src="https://www.mheducation.es/bcv/guide/capitulo/8448148681.pdf" type="application/pdf"/>
+    </div>
     </div>
     );
 }

@@ -51,11 +51,6 @@ const StudentpageDouble = () => {
         </div>
 
         <div className='little'>
-            {/* <div className="student-cv">
-                <div className="pdf">
-                    <embed src="https://www.mheducation.es/bcv/guide/capitulo/8448148681.pdf" type="application/pdf"/>
-                </div>
-            </div> */}
             <TabsFather></TabsFather>
         </div>
         </div>
