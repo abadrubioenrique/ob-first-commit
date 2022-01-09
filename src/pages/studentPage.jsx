@@ -42,7 +42,7 @@ const Studentpage = () => {
                 <h1>Información</h1>
                 <div className='marcador'></div>
                 </div>
-                <div className='student-menu-element'><h1>Habilidades</h1></div>
+                <div className='student-menu-element'><Link to="/studentdouble"><h1>Habilidades</h1></Link></div>
                 <div className='student-menu-element'><h1>Currículum Vitae</h1></div>
                 <div className='student-menu-element'><h1>Procesos</h1></div>
             </div>
