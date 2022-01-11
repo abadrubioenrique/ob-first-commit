@@ -104,17 +104,6 @@ const Customerspage  = ()=> {
                             tags={student.tags}>
                         </TableComponent>  
                     )}
-
-                    { students
-        .filter(student => student.city === 'Oviedo').filter(student => student.country === 'España')
-        .map(student =>  <TableComponent key={student.name}
-                            name={student.name}
-                            city={student.city} 
-                            country={student.country}
-                            phonenumber={student.phonenumber}
-                            mail={student.mail}
-                            tags={student.tags}>
-                        </TableComponent>  ) }
                         
                     </tbody>
                 </table>
