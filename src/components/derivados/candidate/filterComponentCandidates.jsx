@@ -16,7 +16,7 @@ const FilterComponent = () => {
             tagname = 'Tecnologías'
         ></Tagcomponent>
 
-              <div className='tags-main'>
+            <div className='tags-main'>
                   <i className="bi bi-chevron-down tags"></i>
                   <label className='credentials '>País</label>
                 <select defaultValue=""  className='input-text custom-select'>

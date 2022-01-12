@@ -277,12 +277,18 @@
         font-size: 18px;
         line-height: 21px;
         font-feature-settings: 'pnum' on, 'lnum' on;
-        i{
+       
+    }
+    .clearfilter{
+
+            border: none;
+            background: none;
             position: absolute;
             right: 26px;
             color: $powergreen;
             cursor: pointer;
-        }
+            font-size: 18px;
+
     }
     .campos{
         margin:24px;

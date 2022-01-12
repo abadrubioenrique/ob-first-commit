@@ -19,6 +19,11 @@ const Customerspage  = ()=> {
     //Modal
     const [isOpen, setIsOpen] = useState(false);
 
+    //Filtros
+    const [onFilter, setOnFilter] = useState(false);
+    const [country, setCountry] = useState();
+    const [city, setCity] = useState("");
+
     //Ordenar lista A-Z y Z-A
     const sort_lists = (key, inverse) =>
     inverse
@@ -26,11 +31,17 @@ const Customerspage  = ()=> {
     : [...students].sort((a, b) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
 
     //Busqueda
-    const studentFilter = students.filter((student)=>{
+    const studentSearchFilter = students.filter((student)=>{
     if(student.name.toLocaleLowerCase().includes(search.toLowerCase()) || student.mail.toLocaleLowerCase().includes(search.toLowerCase()) || student.city.toLocaleLowerCase().includes(search.toLowerCase())){
         return student;
     }
     });
+
+    const studentFilters = students.filter((student)=>{
+        if(student.country.includes(country) && student.city.includes(city)){
+            return student;
+        }
+        });
 
     return (
         <div className='usersPage'>
@@ -93,8 +104,18 @@ const Customerspage  = ()=> {
                         </tr>
                     </thead>
                     <tbody>
-                    
-                    {studentFilter.map((student) =>
+                    {onFilter ? 
+                    ( studentFilters .map(student =>
+                        <TableComponent key={student.name}
+                            name={student.name}
+                            city={student.city} 
+                            country={student.country}
+                            phonenumber={student.phonenumber}
+                            mail={student.mail}
+                            tags={student.tags}>
+                        </TableComponent>  ) ) 
+                        : 
+                        (studentSearchFilter.map((student) =>
                         <TableComponent key={student.name}
                             name={student.name}
                             city={student.city} 
@@ -103,7 +124,11 @@ const Customerspage  = ()=> {
                             mail={student.mail}
                             tags={student.tags}>
                         </TableComponent>  
-                    )}
+                    ))
+                    }
+
+
+                    
                         
                     </tbody>
                 </table>
@@ -111,7 +136,13 @@ const Customerspage  = ()=> {
                 </div>
                 
                 </div>
-                <FilterComponent/>     
+                <FilterComponent
+                    country={country}
+                    setCountry={setCountry}
+                    city={city}
+                    setCity={setCity}
+                    setOnFilter={setOnFilter}
+                ></FilterComponent>     
                 <div>
                 {isOpen ? <ModalComponent setIsOpen={setIsOpen} /> : null}
                 </div>
