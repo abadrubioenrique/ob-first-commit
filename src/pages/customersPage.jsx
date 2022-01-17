@@ -49,7 +49,7 @@ const Customerspage  = ()=> {
         else if(student.faceToFace === faceToFace)
             return student;
         else if(student.transfer === transfer)
-            return student;
+        return student;
         else if(student.tags.includes(tags[0]) || student.tags.includes(tags[1]) || student.tags.includes(tags[2]))
             return student;
     });

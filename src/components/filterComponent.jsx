@@ -106,7 +106,7 @@ const FilterComponent = (props) => {
               <div className='tags-main'>
                   <i className="bi bi-chevron-down tags"></i>
                   <label className='credentials '>País</label>
-                <select defaultValue="" onClick={activateFilters} onChange={e => props.setCountry(e.target.value)} className='input-text custom-select'>
+                <select defaultValue="" onChange={e => props.setCountry(e.target.value)} className='input-text custom-select'>
                 <option disabled value="">Elija una opción</option>
                 {countries.map((option) => (
               <option key={option.label} value={option.value}>{option.label}</option>
