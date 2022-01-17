@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 
 const Tagcomponent = (props) => {
-    const [tags, setTags] = useState([]);
     const [focus, setFocus] = useState(false);
     const [search, setSearch] = useState('');
     const [tagsOptions, setTagsOptions] = useState(props.options);
@@ -12,13 +11,13 @@ const Tagcomponent = (props) => {
         for (let i = 0; i < selectedOptions.length; i++) {
             newTags.push(selectedOptions[i].value);
         }
-        setTags(newTags);
+        props.setTags(newTags);
     };
 
     //Eliminar etiquetas
     const removeTag = (index) =>{
         setFocus(false);
-        setTags(prevState => prevState.filter((tag, i) => i !== index))
+        props.setTags(prevState => prevState.filter((tag, i) => i !== index))
     }
 
     //Buscar etiquetas
@@ -46,8 +45,8 @@ const Tagcomponent = (props) => {
                 : null
                 }
                 <div>
-            {tags &&
-                tags.map((tag, index) => 
+            {props.tags &&
+                props.tags.map((tag, index) => 
                 <p key= {tag} id={tag}  className="selected_tags">{tag}
                     <svg onClick={() => removeTag(index)} id={tag + "_closed"}  className="delete_tag bi bi-x-lg" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
                     <path fillRule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>

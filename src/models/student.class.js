@@ -8,8 +8,8 @@ export class Student{
     phonenumber='';
     mail='';
     tags=[''];
-    faceToFace=LEVELS.REMOTE;
-    transfer=true;
+    faceToFace=false;
+    transfer=false;
     status= CANDIDATE_STATUS.PDTE;
 
     constructor(name,city,country,phonenumber,mail,tags,faceToFace,transfer, status){

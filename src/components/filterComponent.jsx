@@ -4,16 +4,42 @@ import '../styles/select.scss';
 import Tagcomponent from './tagComponent';
 
 const FilterComponent = (props) => {
+  //Checkbox
+  const [checkedOne, setCheckedOne] = useState(false);
+  const [checkedTwo, setCheckedTwo] = useState(false);
 
-  function clearFilters(){
-    props.setCountry("");
-    props.setCity("");
-    props.setOnFilter(false);
-  }
+  const [checkedThree, setCheckedThree] = useState(false);
+  const [checkedFour, setCheckedFour] = useState(false);
+  
 
-  function activateFilters(){
-    props.setOnFilter(true);
-  }
+  const handleChangeOne = () => {
+    activateFilters();
+    setCheckedOne(!checkedOne);
+    setCheckedTwo(false);
+    props.setFaceToFace(true);
+  };
+
+  const handleChangeTwo = () => {
+    activateFilters();
+    setCheckedTwo(!checkedTwo);
+    setCheckedOne(false);
+    props.setFaceToFace(false);
+  };
+
+  const handleChangeThree = () => {
+    activateFilters();
+    setCheckedThree(!checkedThree);
+    setCheckedFour(false);
+    props.setTransfer(true);
+
+  };
+
+  const handleChangeFour = () => {
+    activateFilters();
+    setCheckedFour(!checkedFour);
+    setCheckedThree(false);
+    props.setTransfer(false);
+  };
 
   const countries = [
     {
@@ -37,15 +63,39 @@ const FilterComponent = (props) => {
     },
   ];
 
+  function clearFilters(){
+    props.setOnFilter(false);
+    setCheckedOne(false);
+    setCheckedTwo(false);
+    setCheckedThree(false);
+    setCheckedFour(false);
+    props.setFaceToFace();
+    props.setTransfer();
+  }
+
+  function activateFilters(){
+    props.setOnFilter(true);
+  }
+
+  const Checkbox = ({ label, value, onChange }) => {
+    return (
+      <label className="remember-label">{label}
+      <input type="checkbox" checked={value} onChange={onChange}/>
+      <span className="checkmark"></span>
+  </label>
+    );
+  };
     return (
       <form>
       <div className='search-filter'>
-        <h1>Filtros de búsqueda<button className='clearfilter' type='reset'><i type="reset" onClick={clearFilters} className="bi bi-trash"></i></button></h1>
+        <h1>Filtros de búsqueda<button onClick={clearFilters} className='clearfilter' type='reset'><i type="reset" className="bi bi-trash"></i></button></h1>
         
           <div className='campos'>
           <Tagcomponent
             options={['HTML&CSS','REACT', 'ANGULAR', 'VUEJS']}
             tagname = 'Tecnologías'
+            tags = {props.tags}
+            setTags = {props.setTags}
           ></Tagcomponent>
 
               <div className='tags-main'>
@@ -71,25 +121,29 @@ const FilterComponent = (props) => {
 
               <div className='tags-main'>
               <label className='credentials '>Presencial/ a distancia</label>
-              <label className="remember-label">Presencial
-                  <input type="checkbox"/>
-                  <span className="checkmark"></span>
-              </label>
-              <label className="remember-label">En Remoto
-                  <input type="checkbox"/>
-                  <span className="checkmark"></span>
-              </label>
+              <Checkbox
+                label="Presencial"
+                value={checkedOne}
+                onChange={handleChangeOne}
+              />
+              <Checkbox
+                label="En Remoto"
+                value={checkedTwo}
+                onChange={handleChangeTwo}
+              />
               </div>
               <div className='tags-main'>
               <label className='credentials '>Posibilidad traslado</label>
-              <label className="remember-label">Si
-                  <input value="Si" type="checkbox"/>
-                  <span className="checkmark"></span>
-              </label>
-              <label className="remember-label">No
-                  <input value="No" type="checkbox"/>
-                  <span className="checkmark"></span>
-              </label>
+              <Checkbox
+                label="Si"
+                value={checkedThree}
+                onChange={handleChangeThree}
+              />
+              <Checkbox
+                label="No"
+                value={checkedFour}
+                onChange={handleChangeFour}
+              />
               </div>
       </div>
     </div>

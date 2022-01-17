@@ -11,9 +11,9 @@ import '../styles/users.scss';
 const Customerspage  = ()=> {
     
     //Students de prueba
-    const student1 = new Student('Álvaro Sánchez Monteagudo','Valencia','España','+34 657 85 25 46','asangudo@gmail.com',['Html&CSS','Angular', 'React'], LEVELS.REMOTE,false);
-    const student2 = new Student('Carlos Yuste Guerrero','Oviedo','España','+34 697 82 95 65','yguerrero@gmail.com',['Angular','React'], LEVELS.REMOTE,true);
-    const student3 = new Student('Eustaquia Herrera Climent','Sevilla','España','+34 689 25 48 65','ecliment@gmail.com',['Html&CSS','React'], LEVELS.REMOTE,false);
+    const student1 = new Student('Álvaro Sánchez Monteagudo','Valencia','España','+34 657 85 25 46','asangudo@gmail.com',['HTML&CSS','ANGULAR', 'REACT'], true ,false);
+    const student2 = new Student('Carlos Yuste Guerrero','Oviedo','España','+34 697 82 95 65','yguerrero@gmail.com',['ANGULAR','REACT'], true,true);
+    const student3 = new Student('Eustaquia Herrera Climent','Sevilla','España','+34 689 25 48 65','ecliment@gmail.com',['HTML&CSS','REACT'], false ,false);
     const [students, setStudents] = useState([student1 , student2, student3]);
     const [search, setSearch] = useState('');
     //Modal
@@ -22,7 +22,12 @@ const Customerspage  = ()=> {
     //Filtros
     const [onFilter, setOnFilter] = useState(false);
     const [country, setCountry] = useState();
-    const [city, setCity] = useState("");
+    const [city, setCity] = useState();
+    const [tags, setTags] = useState([]);
+    //Presencial/ a distancia
+    const [faceToFace, setFaceToFace] = useState();
+    //Posibilidad traslado
+    const [transfer, setTransfer] = useState();
 
     //Ordenar lista A-Z y Z-A
     const sort_lists = (key, inverse) =>
@@ -30,18 +35,33 @@ const Customerspage  = ()=> {
     ? [...students].sort((b, a) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
     : [...students].sort((a, b) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
 
-    //Busqueda
+    //Barra de Busqueda
     const studentSearchFilter = students.filter((student)=>{
     if(student.name.toLocaleLowerCase().includes(search.toLowerCase()) || student.mail.toLocaleLowerCase().includes(search.toLowerCase()) || student.city.toLocaleLowerCase().includes(search.toLowerCase())){
         return student;
     }
     });
 
+    //Filtro de Busqueda
     const studentFilters = students.filter((student)=>{
-        if(student.country.includes(country) && student.city.includes(city)){
+/*         if(student.country.includes(country) && student.city.includes(city) && student.tags[0].includes(tags) ){
             return student;
         }
-        });
+        else if((student.transfer === transfer) && (student.faceToFace === faceToFace)){
+            return student;
+        } */
+
+        if(student.city.includes(city))
+            return student;
+        else if(student.faceToFace === faceToFace)
+        return student;
+        else if(student.transfer === transfer)
+        return student;
+
+    });
+  
+    //TODO mapear students.tags, revisar txt 
+
 
     return (
         <div className='usersPage'>
@@ -49,7 +69,6 @@ const Customerspage  = ()=> {
             <HeaderComponent/>
             <div className='usersPanel'>
             
-           
                 <div className='students'>
                     <h2>Clientes</h2>
                     <div className='search-bar'>
@@ -105,7 +124,7 @@ const Customerspage  = ()=> {
                     </thead>
                     <tbody>
                     {onFilter ? 
-                    ( studentFilters .map(student =>
+                    (studentFilters.map(student =>
                         <TableComponent key={student.name}
                             name={student.name}
                             city={student.city} 
@@ -126,15 +145,13 @@ const Customerspage  = ()=> {
                         </TableComponent>  
                     ))
                     }
-
-
-                    
-                        
+                   
+   
                     </tbody>
                 </table>
                 
                 </div>
-                
+               
                 </div>
                 <FilterComponent
                     country={country}
@@ -142,7 +159,12 @@ const Customerspage  = ()=> {
                     city={city}
                     setCity={setCity}
                     setOnFilter={setOnFilter}
-                ></FilterComponent>     
+                    tags = {tags}
+                    setTags = {setTags}
+                    setFaceToFace={setFaceToFace}
+                    setTransfer={setTransfer}
+                ></FilterComponent>    
+                 
                 <div>
                 {isOpen ? <ModalComponent setIsOpen={setIsOpen} /> : null}
                 </div>

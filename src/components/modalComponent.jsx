@@ -5,12 +5,6 @@ import '../styles/modal.scss';
 import Tagcomponent from './tagComponent';
 const ModalComponent = ({ setIsOpen }) => {
 
-    const [show, setShow] = useState(true);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    useEffect(() => {
-        console.log(show);
-    }, [show])
     return (
 
     <div className="modal">
@@ -52,7 +46,10 @@ const ModalComponent = ({ setIsOpen }) => {
         </div>
         <div className="d1">
 
-        <Tagcomponent></Tagcomponent>
+        <Tagcomponent
+            options={['HTML&CSS','REACT', 'ANGULAR', 'VUEJS']}
+            tagname = 'Tecnologías'
+          ></Tagcomponent>
 
         </div>
         <div className="f1">
