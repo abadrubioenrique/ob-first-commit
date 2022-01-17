@@ -44,27 +44,17 @@ const Customerspage  = ()=> {
 
     //Filtro de Busqueda
     const studentFilters = students.filter((student)=>{
-/*         if(student.country.includes(country) && student.city.includes(city) && student.tags[0].includes(tags) ){
-            return student;
-        }
-        else if((student.transfer === transfer) && (student.faceToFace === faceToFace)){
-            return student;
-        } */
-
         if(student.city.includes(city))
             return student;
         else if(student.faceToFace === faceToFace)
-        return student;
+            return student;
         else if(student.transfer === transfer)
-        return student;
+            return student;
         else if(student.tags.includes(tags[0]) || student.tags.includes(tags[1]) || student.tags.includes(tags[2]))
             return student;
-        
-
-
     });
   
-    //TODO mapear students.tags, revisar txt 
+    
 
 
 
