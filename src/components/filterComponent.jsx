@@ -4,6 +4,7 @@ import '../styles/select.scss';
 import Tagcomponent from './tagComponent';
 
 const FilterComponent = (props) => {
+  
   //Checkbox
   const [checkedOne, setCheckedOne] = useState(false);
   const [checkedTwo, setCheckedTwo] = useState(false);
@@ -71,6 +72,7 @@ const FilterComponent = (props) => {
     setCheckedFour(false);
     props.setFaceToFace();
     props.setTransfer();
+    props.setTags("");
   }
 
   function activateFilters(){
@@ -91,11 +93,14 @@ const FilterComponent = (props) => {
         <h1>Filtros de búsqueda<button onClick={clearFilters} className='clearfilter' type='reset'><i type="reset" className="bi bi-trash"></i></button></h1>
         
           <div className='campos'>
+          
           <Tagcomponent
             options={['HTML&CSS','REACT', 'ANGULAR', 'VUEJS']}
             tagname = 'Tecnologías'
             tags = {props.tags}
             setTags = {props.setTags}
+            setOnFilter={props.setOnFilter}
+            
           ></Tagcomponent>
 
               <div className='tags-main'>
