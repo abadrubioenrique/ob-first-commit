@@ -40,7 +40,7 @@ const TableComponent = (props) => {
     }
     return (
         <tr>
-        <td className='names'><Link to="/student">{props.name}</Link></td>
+        <td className='names'><Link to="/student/info">{props.name}</Link></td>
         <td>{props.city}, {props.country}</td>
         <td>{props.phonenumber}</td>
         <td><span className='table-tag'>{props.tags[0]}

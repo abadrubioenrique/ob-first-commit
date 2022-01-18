@@ -31,7 +31,7 @@ const Tagcomponent = (props) => {
 
     // Focus y activarFiltros
 
-    function inputFoucus(){
+    const inputFoucus=()=>{
         setFocus((f)=>!f);
         props.setOnFilter(true);
     }
@@ -39,7 +39,7 @@ const Tagcomponent = (props) => {
         <div className='tags-main'>
             <i className="bi bi-chevron-down tags"></i>
             <label className='credentials '>{props.tagname}</label>
-            <input onClick={() => inputFoucus()} className='input-text' value={search}  onChange={(e)=> setSearch(e.target.value)}   type='text' placeholder='Escribe para buscar...'/>
+            <input onClick={inputFoucus} className='input-text' value={search}  onChange={(e)=> setSearch(e.target.value)}   type='text' placeholder='Escribe para buscar...'/>
             {focus ? 
             (<div className="tag-container">
                 <select multiple size={3} onChange={onChangeHandler} className="select">

@@ -20,21 +20,43 @@ const Candidatespage = () => {
     //Modal
     const [isOpen, setIsOpen] = useState(false);
 
+     //Filtros
+     const [onFilter, setOnFilter] = useState(false);
+     const [country, setCountry] = useState();
+     const [city, setCity] = useState();
+     const [tags, setTags] = useState([]);
+     //Presencial/ a distancia
+     const [faceToFace, setFaceToFace] = useState();
+     //Posibilidad traslado
+     const [transfer, setTransfer] = useState();
+    //Posibilidad traslado
+    const [filterStatus, setFilterStatus] = useState();
     //Ordenar lista A-Z y Z-A
     const sort_lists = (key, inverse) =>
     inverse
     ? [...students].sort((b, a) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
     : [...students].sort((a, b) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
 
-    //Busqueda
-    const studentFilter = students.filter((student)=>{
-    if(student.name.toLocaleLowerCase().includes(search.toLowerCase()) || student.mail.toLocaleLowerCase().includes(search.toLowerCase()) || student.city.toLocaleLowerCase().includes(search.toLowerCase())){
-        return student;
-    }
-    });
-        
-    console.log(isOpen);
+    //Barra de Busqueda
+    const studentSearchFilter = students.filter((student)=>{
+        if(student.name.toLocaleLowerCase().includes(search.toLowerCase()) || student.mail.toLocaleLowerCase().includes(search.toLowerCase()) || student.city.toLocaleLowerCase().includes(search.toLowerCase())){
+            return student;
+        }
+        });
 
+    //Filtro de Busqueda
+    const studentFilters = students.filter((student)=>{
+        if(student.city.includes(city))
+            return student;
+        else if(student.faceToFace === faceToFace)
+            return student;
+        else if(student.transfer === transfer)
+        return student;
+        else if(student.status === filterStatus)
+        return student;
+        else if(student.tags.includes(tags[0]) || student.tags.includes(tags[1]) || student.tags.includes(tags[2]))
+            return student;
+    });
     return (
         <div className='usersPage'>
             <MenuComponent/>
@@ -90,8 +112,20 @@ const Candidatespage = () => {
                         </tr>
                     </thead>
                     <tbody>
-                    
-                    {studentFilter.map((student) =>
+                
+                    {onFilter ? 
+                    (studentFilters.map(student =>
+                        <TableComponent key={student.name}
+                            name={student.name}
+                            city={student.city} 
+                            country={student.country}
+                            phonenumber={student.phonenumber}
+                            tags={student.tags}
+                            status = {student.status}>
+                            
+                        </TableComponent>  ) ) 
+                        : 
+                        (studentSearchFilter.map((student) =>
                         <TableComponent key={student.name}
                             name={student.name}
                             city={student.city} 
@@ -100,15 +134,26 @@ const Candidatespage = () => {
                             tags={student.tags}
                             status = {student.status}>
                         </TableComponent>  
-                    )}
-
+                    ))
+                    }
                     </tbody>
                 </table>
                 
                 </div>
                 
                 </div>
-                <FilterComponent/>     
+                <FilterComponent
+                    country={country}
+                    setCountry={setCountry}
+                    city={city}
+                    setCity={setCity}
+                    setOnFilter={setOnFilter}
+                    tags = {tags}
+                    setTags = {setTags}
+                    setFaceToFace={setFaceToFace}
+                    setTransfer={setTransfer}
+                    setFilterStatus={setFilterStatus}
+                ></FilterComponent>      
                 <div>
                 {isOpen ? <ModalComponent setIsOpen={setIsOpen} /> : null}
                 </div>

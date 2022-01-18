@@ -54,10 +54,6 @@ const Customerspage  = ()=> {
             return student;
     });
   
-    
-
-
-
 /* 
 const matches =  students.map(student => student.tags).filter( array => {
     let posibles = (tags.length * -1); 

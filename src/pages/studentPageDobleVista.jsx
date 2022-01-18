@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { LEVELS } from '../models/faceToFace-enum';
 import {CANDIDATE_STATUS} from '../models/candidate-enum';
 import '../styles/users.scss';
@@ -28,7 +28,7 @@ const StudentpageDouble = () => {
             <HeaderComponent/>
 
         <div className="usersPanel">
-        <div className='rute'><Link to='/candidates'><h1>Candidatos</h1></Link><i className="bi bi-chevron-left"></i><h1 className='active-route'>{name}</h1></div>
+        <div className='rute'><Link to='/candidates'><h1>Candidatos</h1></Link><i className="bi bi-chevron-left"></i><Link to="/student/info"><h1 className='active-route'>{name}</h1></Link></div>
         <div className="students-data-double">
         <div className='big'>
             <StudentHeaderComponent
@@ -51,7 +51,8 @@ const StudentpageDouble = () => {
         </div>
 
         <div className='little'>
-            <TabsFather></TabsFather>
+
+            <Outlet/>
         </div>
         </div>
         </div>

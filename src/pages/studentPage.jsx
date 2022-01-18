@@ -19,14 +19,14 @@ const Studentpage = () => {
     const [transfer, setTransfer] = useState('Traslado');
     const [status, setStatus] = useState('No definido');
 
-    
+
 
     return (
     <div className='studentsPage'>
             <MenuComponent/>
             <HeaderComponent/>
         <div className="usersPanel">
-        <div className='rute'><Link to='/candidates'><h1>Candidatos</h1></Link><i className="bi bi-chevron-left"></i><h1 className='active-route'>{name}</h1></div>
+        <div className='rute'><Link to='/candidates'><h1>Candidatos</h1></Link><i className="bi bi-chevron-left"></i><Link to="/student/info"><h1 className='active-route'>{name}</h1></Link></div>
         <div className="students-data">
             <StudentHeaderComponent
                 name={name}
@@ -42,9 +42,9 @@ const Studentpage = () => {
                 <h1>Información</h1>
                 <div className='marcador'></div>
                 </div>
-                <div className='student-menu-element'><Link to="/studentdouble"><h1>Habilidades</h1></Link></div>
-                <div className='student-menu-element'><h1>Currículum Vitae</h1></div>
-                <div className='student-menu-element'><h1>Procesos</h1></div>
+                <div className='student-menu-element'><Link to="/student/abilities"><h1>Habilidades</h1></Link></div>
+                <div className='student-menu-element'><Link to="/student/curriculum"><h1>Currículum Vitae</h1></Link></div>
+                <div className='student-menu-element'><Link to="/student/proccess"><h1>Procesos</h1></Link></div>
             </div>
             <StudentBodyComponent
                 setName={setName}
