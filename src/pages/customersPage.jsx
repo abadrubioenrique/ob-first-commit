@@ -54,23 +54,6 @@ const Customerspage  = ()=> {
             return student;
     });
   
-/* 
-const matches =  students.map(student => student.tags).filter( array => {
-    let posibles = (tags.length * -1); 
-    // Si el tamaño es 2, tendremos -2. Al final acabará en 0.
-
-    for(let i = 0; i < array.length; i++){
-        for(let j = 0; j < tags.length; j++){
-            if(tags[j] === array[i]){
-                posibles++;
-            }
-        }
-    }
-    return posibles ? false : true;
-});
-
-console.log(matches); // [ Array(3), Array(4)] */
-
     return (
         <div className='usersPage'>
             <MenuComponent/>

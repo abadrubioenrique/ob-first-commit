@@ -5,7 +5,7 @@ import Tagcomponent from '../../tagComponent';
 import { CANDIDATE_STATUS } from '../../../models/candidate-enum';
 
 
-const FilterComponent = (props) => {
+const FilterComponentCandidates = (props) => {
  
   //Checkbox
   const [checkedFaceToFace, setCheckedFaceToFace] = useState(false);
@@ -20,21 +20,21 @@ const FilterComponent = (props) => {
 
   const handleChangeOne = () => {
     activateFilters();
-    setCheckedFaceToFace(!checkedFaceToFace);
+    setCheckedFaceToFace(true);
     setCheckedRemote(false);
     props.setFaceToFace(true);
   };
 
   const handleChangeTwo = () => {
     activateFilters();
-    setCheckedRemote(!checkedRemote);
+    setCheckedRemote(true);
     setCheckedFaceToFace(false);
     props.setFaceToFace(false);
   };
 
   const handleChangeThree = () => {
     activateFilters();
-    setCheckedWithTransfer(!checkedWithTransfer);
+    setCheckedWithTransfer(true);
     setCheckedWithoutTranfer(false);
     props.setTransfer(true);
 
@@ -42,7 +42,7 @@ const FilterComponent = (props) => {
 
   const handleChangeFour = () => {
     activateFilters();
-    setCheckedWithoutTranfer(!checkedWithoutTranfer);
+    setCheckedWithoutTranfer(true);
     setCheckedWithTransfer(false);
     props.setTransfer(false);
   };
@@ -103,6 +103,7 @@ const FilterComponent = (props) => {
     setCheckedShortlisted(false);
     props.setFaceToFace();
     props.setTransfer();
+    props.setFilterStatus();
     props.setTags("");
   }
 
@@ -118,7 +119,6 @@ const FilterComponent = (props) => {
   </label>
     );
   };
-
     return (
       <form>
       <div className='search-filter'>
@@ -209,6 +209,6 @@ const FilterComponent = (props) => {
     }
 
 
-export default FilterComponent;
+export default FilterComponentCandidates;
 
 

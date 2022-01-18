@@ -4,7 +4,8 @@ import '../styles/select.scss'
 import '../styles/modal.scss';
 import Tagcomponent from './tagComponent';
 const ModalComponent = ({ setIsOpen }) => {
-
+    const [tags, setTags] = useState([]);
+    const [onFilter, setOnFilter] = useState(false);
     return (
 
     <div className="modal">
@@ -49,6 +50,9 @@ const ModalComponent = ({ setIsOpen }) => {
         <Tagcomponent
             options={['HTML&CSS','REACT', 'ANGULAR', 'VUEJS']}
             tagname = 'Tecnologías'
+            tags = {tags}
+            setTags = {setTags}
+            setOnFilter={setOnFilter}
           ></Tagcomponent>
 
         </div>

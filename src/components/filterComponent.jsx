@@ -6,39 +6,39 @@ import Tagcomponent from './tagComponent';
 const FilterComponent = (props) => {
   
   //Checkbox
-  const [checkedOne, setCheckedOne] = useState(false);
-  const [checkedTwo, setCheckedTwo] = useState(false);
+  const [checkedFaceToFace, setCheckedFaceToFace] = useState(false);
+  const [checkedRemote, setCheckedRemote] = useState(false);
 
-  const [checkedThree, setCheckedThree] = useState(false);
-  const [checkedFour, setCheckedFour] = useState(false);
+  const [checkedWithTransfer, setCheckedWithTransfer] = useState(false);
+  const [checkedWithoutTranfer, setCheckedWithoutTranfer] = useState(false);
   
 
   const handleChangeOne = () => {
     activateFilters();
-    setCheckedOne(!checkedOne);
-    setCheckedTwo(false);
+    setCheckedFaceToFace(!checkedFaceToFace);
+    setCheckedRemote(false);
     props.setFaceToFace(true);
   };
 
   const handleChangeTwo = () => {
     activateFilters();
-    setCheckedTwo(!checkedTwo);
-    setCheckedOne(false);
+    setCheckedRemote(!checkedRemote);
+    setCheckedFaceToFace(false);
     props.setFaceToFace(false);
   };
 
   const handleChangeThree = () => {
     activateFilters();
-    setCheckedThree(!checkedThree);
-    setCheckedFour(false);
+    setCheckedWithTransfer(!checkedWithTransfer);
+    setCheckedWithoutTranfer(false);
     props.setTransfer(true);
 
   };
 
   const handleChangeFour = () => {
     activateFilters();
-    setCheckedFour(!checkedFour);
-    setCheckedThree(false);
+    setCheckedWithoutTranfer(!checkedWithoutTranfer);
+    setCheckedWithTransfer(false);
     props.setTransfer(false);
   };
 
@@ -66,10 +66,10 @@ const FilterComponent = (props) => {
 
   function clearFilters(){
     props.setOnFilter(false);
-    setCheckedOne(false);
-    setCheckedTwo(false);
-    setCheckedThree(false);
-    setCheckedFour(false);
+    setCheckedFaceToFace(false);
+    setCheckedRemote(false);
+    setCheckedWithTransfer(false);
+    setCheckedWithoutTranfer(false);
     props.setFaceToFace();
     props.setTransfer();
     props.setTags("");
@@ -128,12 +128,12 @@ const FilterComponent = (props) => {
               <label className='credentials '>Presencial/ a distancia</label>
               <Checkbox
                 label="Presencial"
-                value={checkedOne}
+                value={checkedFaceToFace}
                 onChange={handleChangeOne}
               />
               <Checkbox
                 label="En Remoto"
-                value={checkedTwo}
+                value={checkedRemote}
                 onChange={handleChangeTwo}
               />
               </div>
@@ -141,12 +141,12 @@ const FilterComponent = (props) => {
               <label className='credentials '>Posibilidad traslado</label>
               <Checkbox
                 label="Si"
-                value={checkedThree}
+                value={checkedWithTransfer}
                 onChange={handleChangeThree}
               />
               <Checkbox
                 label="No"
-                value={checkedFour}
+                value={checkedWithoutTranfer}
                 onChange={handleChangeFour}
               />
               </div>

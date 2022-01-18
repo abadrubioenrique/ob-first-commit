@@ -15,8 +15,6 @@ function App() {
   const activeTab1 = "tab1";
   const activeTab2 = "tab2";
   const activeTab3 = "tab3";
-
-  console.log(activeTab1 + " " + activeTab2 +" " + activeTab3)
   return (
 <HashRouter>
   <Routes>
@@ -37,7 +35,7 @@ function App() {
         activeTab={activeTab2}
         setActiveTab={setActiveTab}
     />}/>
-        <Route path="proccess" 
+        <Route path="processes" 
     element={<TabsFather
         activeTab={activeTab3}
         setActiveTab={setActiveTab}

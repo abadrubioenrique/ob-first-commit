@@ -44,7 +44,7 @@ const Studentpage = () => {
                 </div>
                 <div className='student-menu-element'><Link to="/student/abilities"><h1>Habilidades</h1></Link></div>
                 <div className='student-menu-element'><Link to="/student/curriculum"><h1>Currículum Vitae</h1></Link></div>
-                <div className='student-menu-element'><Link to="/student/proccess"><h1>Procesos</h1></Link></div>
+                <div className='student-menu-element'><Link to="/student/processes"><h1>Procesos</h1></Link></div>
             </div>
             <StudentBodyComponent
                 setName={setName}

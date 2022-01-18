@@ -36,7 +36,7 @@ const TabsFather = (props) => {
              
             <h2>Currículum Vitae</h2>
         </li></Link>
-        <Link to="/student/proccess"><li
+        <Link to="/student/processes"><li
             className={props.activeTab === "tab3" ? "tab-active" : ""}
             onClick={handleTab3}
         >

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import FilterComponent from '../components/derivados/candidate/filterComponentCandidates';
+import FilterComponentCandidates from '../components/derivados/candidate/filterComponentCandidates';
 import HeaderComponent from '../components/headerComponent';
 import MenuComponent from '../components/menuComponent';
 import ModalComponent from '../components/modalComponent';
@@ -11,10 +11,11 @@ import '../styles/users.scss';
 import { CANDIDATE_STATUS } from '../models/candidate-enum';
 
 const Candidatespage = () => {
+
     //Students de prueba
-    const student1 = new Student('Álvaro Sánchez Monteagudo','Valencia','España','+34 657 85 25 46','asangudo@gmail.com',['Html&CSS','Angular', 'React'], LEVELS.REMOTE,false, CANDIDATE_STATUS.PDTE);
-    const student2 = new Student('Carlos Yuste Guerrero','Oviedo','España','+34 697 82 95 65','yguerrero@gmail.com',['Angular','React'], LEVELS.REMOTE,true, CANDIDATE_STATUS.CONTRATADO);
-    const student3 = new Student('Eustaquia Herrera Climent','Sevilla','España','+34 689 25 48 65','ecliment@gmail.com',['Html&CSS','React'], LEVELS.REMOTE,false, CANDIDATE_STATUS.PRESELECIONADO);
+    const student1 = new Student('Álvaro Sánchez Monteagudo','Valencia','España','+34 657 85 25 46','asangudo@gmail.com',['HTML&CSS','ANGULAR', 'REACT'], true ,false, CANDIDATE_STATUS.PRESELECIONADO);
+    const student2 = new Student('Carlos Yuste Guerrero','Oviedo','España','+34 697 82 95 65','yguerrero@gmail.com',['ANGULAR','REACT'], true,true,CANDIDATE_STATUS.PDTE);
+    const student3 = new Student('Eustaquia Herrera Climent','Sevilla','España','+34 689 25 48 65','ecliment@gmail.com',['HTML&CSS','REACT'], false ,false,CANDIDATE_STATUS.CONTRATADO);
     const [students, setStudents] = useState([student1 , student2, student3]);
     const [search, setSearch] = useState('');
     //Modal
@@ -29,8 +30,9 @@ const Candidatespage = () => {
      const [faceToFace, setFaceToFace] = useState();
      //Posibilidad traslado
      const [transfer, setTransfer] = useState();
-    //Posibilidad traslado
+    //Estado
     const [filterStatus, setFilterStatus] = useState();
+
     //Ordenar lista A-Z y Z-A
     const sort_lists = (key, inverse) =>
     inverse
@@ -47,23 +49,21 @@ const Candidatespage = () => {
     //Filtro de Busqueda
     const studentFilters = students.filter((student)=>{
         if(student.city.includes(city))
-            return student;
+        return student;
         else if(student.faceToFace === faceToFace)
             return student;
         else if(student.transfer === transfer)
         return student;
-        else if(student.status === filterStatus)
-        return student;
         else if(student.tags.includes(tags[0]) || student.tags.includes(tags[1]) || student.tags.includes(tags[2]))
             return student;
+        else if(student.status === filterStatus)
+        return student;
     });
     return (
         <div className='usersPage'>
             <MenuComponent/>
             <HeaderComponent/>
             <div className='usersPanel'>
-            
-           
                 <div className='students'>
                     <h2>Candidatos</h2>
                     <div className='search-bar'>
@@ -100,8 +100,8 @@ const Candidatespage = () => {
 
                             <th className='phone'>Teléfono</th>
                             <th onClick={() => {
-                                let newSortedList = sort_lists('mail')
-                                if (newSortedList[0] === students[0]) newSortedList = sort_lists('mail', true)
+                                let newSortedList = sort_lists('tags')
+                                if (newSortedList[0] === students[0]) newSortedList = sort_lists('tags', true)
                                 setStudents(newSortedList)
                             }}>
                                 Tecnologías 
@@ -142,7 +142,7 @@ const Candidatespage = () => {
                 </div>
                 
                 </div>
-                <FilterComponent
+                <FilterComponentCandidates
                     country={country}
                     setCountry={setCountry}
                     city={city}
@@ -153,7 +153,8 @@ const Candidatespage = () => {
                     setFaceToFace={setFaceToFace}
                     setTransfer={setTransfer}
                     setFilterStatus={setFilterStatus}
-                ></FilterComponent>      
+
+                ></FilterComponentCandidates>     
                 <div>
                 {isOpen ? <ModalComponent setIsOpen={setIsOpen} /> : null}
                 </div>
