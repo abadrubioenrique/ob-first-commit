@@ -11,8 +11,8 @@ const ThirdTab = () => {
     const process2 = new Process("Título Oferta 2","Empresa SA", 5, new Date('8 nov 2022'),PROCESS_STATUS.PDTE_ENTREVISTA)
     const process3 = new Process("Título Oferta 3","Empresa SA", 3, new Date('10 nov 2022'),PROCESS_STATUS.ENTREVISTADO)
     const process4 = new Process("Título Oferta 4","Empresa SA", 1, new Date('15 nov 2022'),PROCESS_STATUS.ESPERANDO_CV)
-
-    const [processes, setProcesses] = useState([process1 , process2, process3, process4]);
+    const process5 = new Process("Título Oferta 5","Empresa SA", 2, new Date('18 nov 2022'),PROCESS_STATUS.RECHAZADO)
+    const [processes, setProcesses] = useState([process1 , process2, process3, process4, process5]);
     function processLevelBadge(status){
         switch (status) {
             case PROCESS_STATUS.PDTE_ENTREVISTA:
