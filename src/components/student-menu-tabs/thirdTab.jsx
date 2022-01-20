@@ -1,11 +1,19 @@
 import React, {useState} from 'react';
 import { PROCESS_STATUS } from '../../models/process-enum';
+import { Process } from '../../models/process.class';
 
 import '../../styles/status.scss';
 
 const ThirdTab = () => {
     const [status, setStatus] = useState(PROCESS_STATUS.RECHAZADO);
-    function processLevelBadge(){
+    const dateOptions = {day: '2-digit' , month: 'short', year: 'numeric' };
+    const process1 = new Process("Título Oferta 1","Empresa SA", 7, new Date('11-5-2022'),PROCESS_STATUS.CONTRATADO)
+    const process2 = new Process("Título Oferta 2","Empresa SA", 5, new Date('8 nov 2022'),PROCESS_STATUS.PDTE_ENTREVISTA)
+    const process3 = new Process("Título Oferta 3","Empresa SA", 3, new Date('10 nov 2022'),PROCESS_STATUS.ENTREVISTADO)
+    const process4 = new Process("Título Oferta 4","Empresa SA", 1, new Date('15 nov 2022'),PROCESS_STATUS.ESPERANDO_CV)
+
+    const [processes, setProcesses] = useState([process1 , process2, process3, process4]);
+    function processLevelBadge(status){
         switch (status) {
             case PROCESS_STATUS.PDTE_ENTREVISTA:
                 return(
@@ -55,27 +63,30 @@ const ThirdTab = () => {
                 )
         }
     }
+    const Processes = ({ title, business, numCand,deadline,status }) => {
+        return (
+        <div className='ofertas'>
+            <div className='ofertas-title ofertas-item'><h2>{title}</h2><span className='ofertas-subtitle'>{business}</span></div>
+            <div className='ofertas-item'><h2>{numCand} candidatos</h2></div>
+            <div className='ofertas-item'><span className='ofertas-subtitle'>Fecha plazo</span><h2>{deadline}</h2></div>
+            <div className='ofertas-item'>{status}</div>
+        </div>
+        );
+      };
     return (
     <div className="ThirdTab">
         <button className='btn-add'><i className="bi bi-plus-lg"></i> Añadir proceso</button>
-        <div className='ofertas'>
-            <div className='ofertas-title ofertas-item'><h2>Título Oferta</h2><span className='ofertas-subtitle'>Nombre Empresa SA</span></div>
-            <div className='ofertas-item'><h2>7 candidatos</h2></div>
-            <div className='ofertas-item'><span className='ofertas-subtitle'>Fecha plazo</span><h2>05 nov 2021</h2></div>
-            <div className='ofertas-item'>{processLevelBadge()}</div>
-        </div>
-        <div className='ofertas'>
-            <div className='ofertas-title ofertas-item'><h2>Título Oferta</h2><span className='ofertas-subtitle'>Nombre Empresa SA</span></div>
-            <div className='ofertas-item'><h2>7 candidatos</h2></div>
-            <div className='ofertas-item'><span className='ofertas-subtitle'>Fecha plazo</span><h2>05 nov 2021</h2></div>
-            <div className='ofertas-item'>{processLevelBadge()}</div>
-        </div>
-        <div className='ofertas'>
-            <div className='ofertas-title ofertas-item'><h2>Título Oferta</h2><span className='ofertas-subtitle'>Nombre Empresa SA</span></div>
-            <div className='ofertas-item'><h2>7 candidatos</h2></div>
-            <div className='ofertas-item'><span className='ofertas-subtitle'>Fecha plazo</span><h2>05 nov 2021</h2></div>
-            <div className='ofertas-item'>{processLevelBadge()}</div>
-        </div>
+        {processes.map(process =>
+            <Processes 
+               key={process.title}
+               title={process.title}
+               business={process.business}
+               numCand={process.numCand}
+               deadline={process.deadline.toLocaleDateString("es", dateOptions)}
+               status={processLevelBadge(process.status)}
+           />          
+        )}
+
     </div>
     );
 }

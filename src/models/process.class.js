@@ -1,15 +1,16 @@
 import { PROCESS_STATUS } from "./process-enum";
+
 export class Process{
     title='';
-    num='';
-    deadline='';
+    business='';
+    numCand='';
+    deadline=Date();
     status= PROCESS_STATUS.PDTE;
     
-
-
-constructor(title, num, deadline, status){
+constructor(title,business, numCand, deadline, status){
     this.title = title;
-    this.num = num;
+    this.business = business;
+    this.numCand = numCand;
     this.deadline = deadline ;
     this.status = status;
 }
