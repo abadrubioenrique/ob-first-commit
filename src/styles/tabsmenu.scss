@@ -3,6 +3,7 @@
 .tab-active{
     background: $white;
     color: $grey-black;
+    border-bottom: 4px solid $powergreen;
 }
 
 .tabs{
@@ -41,6 +42,16 @@
     }
 }
 
+.num-processes{
+    font-family: $font;
+    margin-left: 8px;
+    padding: 3px 5px 3px 5px;
+    color: $powergreen;
+    font-weight: bold;
+    font-size: 14px;
+    background: rgba(50, 212, 164, 0.15);
+    border-radius: 4px;
+}
 
 
 .FirstTab{

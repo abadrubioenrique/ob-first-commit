@@ -1,24 +1,25 @@
 import React, {useState} from 'react';
-import Tagcomponent from '../tagComponent';
+import TagComponentAvanced from '../derivados/tags/tagComponent';
+
 
 const FirstTab = (props) => {
     const [onFilter, setOnFilter] = useState();
     return (
     <div className="FirstTab">
-        <Tagcomponent
+        <TagComponentAvanced
             options={['HTML&CSS','REACT', 'ANGULAR', 'VUEJS']}
+            suboptions={['INIC.','INTER.','AVAN.']}
             tagname = 'Tecnologías'
             tags = {props.tags}
             setTags = {props.setTags}
-            setOnFilter={setOnFilter}
-        ></Tagcomponent>
-        <Tagcomponent
+        ></TagComponentAvanced>
+        <TagComponentAvanced
             options={['INGLÉS','ESPAÑOL', 'FRANCÉS', 'ALEMÁN']}
+            suboptions={['BASICO','INTER.','NATIVO']}
             tagname = 'Idiomas'
             tags = {props.languages}
             setTags = {props.setLanguages}
-            setOnFilter={setOnFilter}
-        ></Tagcomponent>
+        ></TagComponentAvanced>
     </div>
     );
 }

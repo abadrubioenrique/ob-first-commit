@@ -20,7 +20,7 @@ const StudentpageDouble = () => {
     const [transfer, setTransfer] = useState('Traslado');
     const [status, setStatus] = useState('No definido');
 
-    
+
 
     return (
     <div className='studentsPage'>
