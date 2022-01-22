@@ -1,5 +1,5 @@
 import react, {useState} from "react";
-import Loginpage from "./pages/loginPage";
+import Loginpage from "./pages/loginPageRedux";
 import {  Route, Routes, Navigate, HashRouter  } from 'react-router-dom';
 import Customerspage from "./pages/customersPage";
 import Notfoundpage from "./pages/404";
