@@ -38,7 +38,7 @@ const CandidatespageDB = () => {
             .get('api/candidatos', { headers })
             .then((response) => {
                 if (response.data) {
-                    localStorage.setItem('CANDIDATES', JSON.stringify(response.data));
+                    localStorage.setItem('CANDIDATES', JSON.stringify(response.data.data.data));
                     setCandidates(response.data.data.data)
                 }
     
@@ -178,7 +178,19 @@ const CandidatespageDB = () => {
                 </div>
                 
                 </div>
-                
+                <FilterComponentCandidates
+                    country={country}
+                    setCountry={setCountry}
+                    city={city}
+                    setCity={setCity}
+                    setOnFilter={setOnFilter}
+                    tags = {tags}
+                    setTags = {setTags}
+                    setFaceToFace={setFaceToFace}
+                    setTransfer={setTransfer}
+                    setFilterStatus={setFilterStatus}
+
+                ></FilterComponentCandidates>   
                 <div>
                 {isOpen ? <ModalComponent setIsOpen={setIsOpen} /> : null}
                 </div>

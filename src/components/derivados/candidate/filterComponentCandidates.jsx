@@ -1,8 +1,8 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import '../../../styles/users.scss';
 import '../../../styles/select.scss';
 import Tagcomponent from '../../tagComponent';
-import { CANDIDATE_STATUS } from '../../../models/candidate-enum';
+import axiosConfig from '../../../utils/config/axios.config';
 
 
 const FilterComponentCandidates = (props) => {
@@ -52,44 +52,189 @@ const FilterComponentCandidates = (props) => {
     setCheckedStatusHired(true);
     setCheckedPendingOffers(false);
     setCheckedShortlisted(false);
-    props.setFilterStatus(CANDIDATE_STATUS.CONTRATADO)
+    props.setFilte("contratado")
   }
   const handleChangePendingOffers =()=>{
     activateFilters();
     setCheckedStatusHired(false);
     setCheckedPendingOffers(true);
     setCheckedShortlisted(false);
-    props.setFilterStatus(CANDIDATE_STATUS.PDTE)
+    props.setFilterStatus("libre")
   }
   const handleChangeShortlisted =()=>{
     activateFilters();
     setCheckedStatusHired(false);
     setCheckedPendingOffers(false);
     setCheckedShortlisted(true);
-    props.setFilterStatus(CANDIDATE_STATUS.PRESELECIONADO);
+    props.setFilterStatus("en_proceso");
   }
 
 
   const countries = [
     {
-      label: "España",
-      value: "España",
+      value: "España"
     }
   ];
 
   const cities = [
     {
-      label: "Valencia",
-      value: "Valencia",
+      value: "Madrid"
     },
     {
-      label: "Oviedo",
-      value: "Oviedo",
+      value:"Barcelona"
     },
     {
-      label: "Sevilla",
-      value: "Sevilla",
+      value:"Valencia"
     },
+    {
+      value: "Sevilla"
+    },
+    {
+      value:"Zaragoza"
+    },
+    {
+      value: "Málaga"
+    },
+    {
+      value: "Murcia"
+    },
+    {
+      value:"Palma de Mallorca"
+    },
+    {
+      value:"Las Palmas de Gran Canaria"
+    },
+    {
+      value:"Bilbao"
+    },
+    {
+    value:"Alicante"
+    },
+    {
+      value:"Córdoba"
+    },
+    {
+      value:"Valladolid"
+    },
+    {
+      value:"Vitoria"
+    },
+    {
+      value:"La Coruña"
+    },
+    {
+      value:"Granada"
+    },
+    {
+      value:"Oviedo"
+    },
+    {
+      value:"Santa Cruz de Tenerife"
+    },
+    {
+      value:"Pamplona"
+    },
+    {
+      value:"Almería"
+    },
+    {
+      value:"San Sebastián"
+    },
+    {
+      value:"Burgos"
+    },
+    {
+      value:"Albacete"
+    },
+    {
+      value:"Santander"
+    },
+    {
+      value:"Castellón de la Plana"
+    },
+    {
+      value:"Logroño"
+    },
+    {
+      value:"Badajoz"
+    },
+    {
+      value:"Salamanca"
+    },
+    {
+      value:"Huelva"
+    },
+    {
+      value:"Lérida"
+    },
+    {
+      value:"Tarragona"
+    },
+    {
+      value:"León"
+    },
+    {
+      value:"Cádiz"
+    },
+    {
+      value:"Jaén"
+    },
+    {
+      value:"Orense"
+    },
+    {
+      value:"Gerona"
+    },
+    {
+      value:"Lugo"
+    },
+    {
+      value:"Cáceres"
+    },
+    {
+      value:"Melilla"
+    },
+    {
+      value:"Guadalajara"
+    },
+    {
+      value:"Toledo"
+    },
+    {
+      value:"Ceuta"
+    },
+    {
+      value:"Pontevedra"
+    },
+    {
+      value:"Palencia"
+    },
+    {
+      value:"Ciudad Real"
+    },
+    {
+      value:"Zamora"
+    },
+    {
+      value:"Ávila"
+    },
+    {
+      value:"Cuenca"
+    },
+    {
+      value:"Huesca"
+    },
+    {
+      value:"Segovia"
+    },
+    {
+      value:"Soria"
+    },
+    {
+      value:"Teruel"
+    } 
+      
+
   ];
 
   function clearFilters(){
@@ -141,7 +286,7 @@ const FilterComponentCandidates = (props) => {
                 <select defaultValue="" onChange={e => props.setCountry(e.target.value)} className='input-text custom-select'>
                 <option disabled value="">Elija una opción</option>
                 {countries.map((option) => (
-              <option key={option.label} value={option.value}>{option.label}</option>
+              <option key={option.value} value={option.value}>{option.value}</option>
             ))}
                 </select>
               </div>
@@ -151,7 +296,7 @@ const FilterComponentCandidates = (props) => {
                 <select defaultValue=""  onClick={activateFilters} onChange={e => props.setCity(e.target.value)} className='input-text custom-select'>
                 <option disabled value="">Elija una opción</option>
                 {cities.map((option) => (
-              <option key={option.label} value={option.value}>{option.label}</option>
+              <option key={option.value} value={option.value}>{option.value}</option>
             ))}
                 </select>
               </div>
