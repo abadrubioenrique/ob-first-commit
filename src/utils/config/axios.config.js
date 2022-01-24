@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 // Default config for AXIOS
 export default axios.create(
     {

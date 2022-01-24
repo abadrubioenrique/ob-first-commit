@@ -28,7 +28,7 @@ const StudentpageDouble = () => {
             <HeaderComponent/>
 
         <div className="usersPanel">
-        <div className='rute'><Link to='/candidates'><h1>Candidatos</h1></Link><i className="bi bi-chevron-left"></i><Link to="/student/info"><h1 className='active-route'>{name}</h1></Link></div>
+        <div className='rute'><Link to='/open-recruiter/candidates'><h1>Candidatos</h1></Link><i className="bi bi-chevron-left"></i><Link to="/student/info"><h1 className='active-route'>{name}</h1></Link></div>
         <div className="students-data-double">
         <div className='big'>
             <StudentHeaderComponent

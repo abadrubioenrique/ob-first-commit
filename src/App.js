@@ -1,4 +1,4 @@
-import react, {useState} from "react";
+import react, {useState, useEffect} from "react";
 import Loginpage from "./pages/loginPageRedux";
 import {  Route, Routes, Navigate, HashRouter  } from 'react-router-dom';
 import Customerspage from "./pages/customersPage";
@@ -10,39 +10,62 @@ import Candidatespage from "./pages/candidatesPage";
 import StudentpageDouble from "./pages/studentPageDobleVista";
 import TabsFather from "./components/student-menu-tabs/tabsFather";
 
+//Redux 
+import { useDispatch, useSelector } from 'react-redux';
+//Slices
+import { clearMessage } from './store/slices/message';
+
+import { PrivateOutlet } from './routers/PrivateOutlet';
+import CandidatespageDB from "./pages/candidatesPageDB";
+
 function App() {
   const [activeTab, setActiveTab] = useState("tab1");
   const activeTab1 = "tab1";
   const activeTab2 = "tab2";
   const activeTab3 = "tab3";
+
+  const { isLoggedIn, authToken : token } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(isLoggedIn){
+    dispatch(clearMessage());
+  }
+     
+  }, [dispatch, isLoggedIn, token]);
+
   return (
 <HashRouter>
   <Routes>
   <Route path="*" element={<Notfoundpage/>} />
     <Route path="/login" element={<Loginpage/>} />
-    <Route path="/customers" element={<Customerspage/>}/>
-    <Route path="/candidates" element={<Candidatespage/>}/>
-    <Route path="/student/info" element={<Studentpage/>}/>
-    <Route path="/student/*" element={<StudentpageDouble/>}>
-
-    <Route path="abilities" 
-    element={<TabsFather
-        activeTab={activeTab1}
-        setActiveTab={setActiveTab}
-    />}/>
-        <Route path="curriculum" 
-    element={<TabsFather
-        activeTab={activeTab2}
-        setActiveTab={setActiveTab}
-    />}/>
-        <Route path="processes" 
-    element={<TabsFather
-        activeTab={activeTab3}
-        setActiveTab={setActiveTab}
-    />}/>
+    <Route path="/open-recruiter" element={<PrivateOutlet isLogged={isLoggedIn} />}>
+      <Route path="customers" element={<Customerspage/>}/>
+      <Route path="candidates" element={<CandidatespageDB/>}/>
+    <Route path="student/info" element={<Studentpage/>}/>
+    <Route path="student/*" element={<StudentpageDouble/>}>
+      <Route path="abilities" 
+        element={<TabsFather
+            activeTab={activeTab1}
+            setActiveTab={setActiveTab}
+        />}/>
+      <Route path="curriculum" 
+        element={<TabsFather
+            activeTab={activeTab2}
+            setActiveTab={setActiveTab}
+        />}/>
+      <Route path="processes" 
+        element={<TabsFather
+            activeTab={activeTab3}
+            setActiveTab={setActiveTab}
+        />}/>
     </Route>
-    <Route path="/modal" element={<ModalComponent/>}/>
-    <Route path="/menu" element={<MenuComponent/>}/>
+    </Route>
+    
+   
+
+
+
     <Route path="/" element={<Navigate replace to="/login" />} />
   </Routes>
 </HashRouter>

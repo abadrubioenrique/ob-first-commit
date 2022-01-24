@@ -32,21 +32,21 @@ const TabsFather = (props) => {
     return (
     <div className="tabs">
         <ul className="nav">
-        <Link to="/student/abilities"><li 
+        <Link to="/open-recruiter/student/abilities"><li 
             className={props.activeTab === "tab1" ? "tab-active" : ""}
             onClick={handleTab1}
         >
             <h2>Habilidades</h2>
         </li></Link>
 
-        <Link to="/student/curriculum"><li
+        <Link to="/open-recruiter/student/curriculum"><li
             className={props.activeTab === "tab2" ? "tab-active" : ""}
             onClick={handleTab2}
         >
              
             <h2>Currículum Vitae</h2>
         </li></Link>
-        <Link to="/student/processes"><li
+        <Link to="/open-recruiter/student/processes"><li
             className={props.activeTab === "tab3" ? "tab-active" : ""}
             onClick={handleTab3}
         >

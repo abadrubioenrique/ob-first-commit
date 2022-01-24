@@ -12,12 +12,12 @@ const MenuComponent = () => {
             <h2>Ofertas</h2>
             
             </div>
-            <NavLink to="/candidates" className={({ isActive }) => 'menu_element ' + (isActive ? 'active' : '')}>
+            <NavLink to="/open-recruiter/candidates" className={({ isActive }) => 'menu_element ' + (isActive ? 'active' : '')}>
                 <i className="bi bi-people"></i>
                 <h2>Candidatos</h2>
             
             </NavLink>
-            <NavLink to="/customers" className={({ isActive }) => 'menu_element ' + (isActive ? 'active' : '')}>
+            <NavLink to="/open-recruiter/customers" className={({ isActive }) => 'menu_element ' + (isActive ? 'active' : '')}>
                 <i className="bi bi-building"></i>
                 <h2>Clientes</h2>
             

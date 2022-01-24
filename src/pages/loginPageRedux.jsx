@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { login } from '../store/slices/auth';
 import '../styles/login.scss';
 
@@ -88,10 +88,8 @@ const UserLogin = () => {
         </div>
 
         : 
-        <div style={{ margin: '3rem', display: 'flex', justifyContent: 'center' }} >
-                        <p className="success" style={{ display: 'inline-block' }}>Login Correcto. <Link to="/customers">Clientes</Link></p>
-        </div>
-            }
+            <Navigate to="/open-recruiter/customers" />
+        }
 
 
         </>

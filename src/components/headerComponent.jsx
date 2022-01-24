@@ -13,7 +13,7 @@ const HeaderComponent = () => {
                 <div className='user-icon'>
                     <h1>NA</h1>
                 </div>
-                <div className='name'><Link to="/student/info">Nombre</Link>
+                <div className='name'><Link to="/open-recruiter/student/info">Nombre</Link>
                 </div>
                 <i className="bi bi-chevron-down dropDown"></i>
             </div>

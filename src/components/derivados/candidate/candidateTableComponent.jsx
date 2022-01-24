@@ -6,25 +6,33 @@ import '../../../styles/status.scss';
 const TableComponent = (props) => {
     function candidateLevelBadge(){
         switch (props.status) {
-            case CANDIDATE_STATUS.PDTE:
+            case "libre":
                 return(
                     <td className='status-main'>
-                        <span className='status bg-powerblue'>{props.status}</span>
+                        <span className='status bg-powerblue'>PDTE. OFERTAS</span>
                     </td>
                 )
-            case CANDIDATE_STATUS.PRESELECIONADO:
+            case "en_proceso":
                 return(
                     <td className='status-main'>
                         <span className='status bg-blue'>
-                            {props.status}
+                        PRESELECIONADO
                         </span>
                     </td>
                 )
-            case CANDIDATE_STATUS.CONTRATADO:
+            case "contratado":
                 return(
                     <td className='status-main'>
                         <span className='status bg-powergreen'>
                             {props.status}
+                        </span>
+                    </td>
+                )
+            case "descartado":
+                return(
+                    <td className='status-main'>
+                        <span className='status bg-wrong'>
+                            RECHAZADO
                         </span>
                     </td>
                 )
@@ -43,8 +51,13 @@ const TableComponent = (props) => {
         <td className='names'><Link to="/student/info">{props.name}</Link></td>
         <td>{props.city}, {props.country}</td>
         <td>{props.phonenumber}</td>
-        <td><span className='table-tag'>{props.tags[0]}
-        </span><span className='table-tag'>{props.tags[1]}</span>
+        <td><span className='table-tag'>{props.tags[0]}</span>
+        {(props.tags.length>1) 
+            ?  
+            (<span className='table-tag'>{props.tags[1]}</span>) 
+            : 
+            null }
+        
         
             {(props.tags.length>2) 
             ?  
@@ -53,7 +66,7 @@ const TableComponent = (props) => {
             null }
         
         </td>
-        {candidateLevelBadge()}
+        {candidateLevelBadge()} 
         <td></td>
         </tr>
     );

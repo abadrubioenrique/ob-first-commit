@@ -1,4 +1,3 @@
-import { LEVELS } from "./faceToFace-enum";
 import { CANDIDATE_STATUS } from "./candidate-enum";
 
 export class Student{
