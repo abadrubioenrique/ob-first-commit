@@ -171,6 +171,9 @@
 		color: $green-black;
 	}
 }
+.login-and-error{
+	position: relative;
+}
 .btn-login {
 	display: flex;
 	flex-direction: row;
@@ -198,6 +201,14 @@
 		background: $green-black;
 	}
 }
+.error-login{
+	position: absolute;
+	top:40px;
+	color: $rejected;
+	font-family: $font;
+	font-size: 12px;
+	font-weight: bold;
+}
 .copyright {
 	position: static;
 	bottom: 0;
@@ -217,6 +228,7 @@
 	text-decoration: underline;
 	cursor: pointer;
 }
+
 
 /* Media Querys */
 @media (max-width: 1920px) {

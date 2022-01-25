@@ -91,9 +91,13 @@ const UserLogin = () => {
                 ></Checkbox>
 
                 <a className='recovery' href='https://www.google.es'>He olvidado la contraseña</a>
+
+            </div>
+            <div className='login-and-error'>
+            <button type='submit' className='btn-login'>Iniciar Sesión</button>
+            <p className='error-login'>{requestError}</p>
             </div>
 
-            <button type='submit' className='btn-login'>Iniciar Sesión</button>
             </form>
             </div>
             <div className='copyright'>
