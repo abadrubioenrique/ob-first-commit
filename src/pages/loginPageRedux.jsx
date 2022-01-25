@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
-import { login } from '../store/slices/auth';
+import { Checkbox } from '../components/checkbox';
+import { login,loginRemember } from '../store/slices/auth';
 import '../styles/login.scss';
 
 const UserLogin = () => {
     const [requestError, setRequestError] = useState('');
     const dispatch = useDispatch();
     const isLogging = useSelector((state) => state.auth.isLoggedIn)
+    const [checkedRemember, setCheckedRemember]= useState(false);
     const [datos, setDatos] = useState(
         {
             data: [],
@@ -17,6 +19,10 @@ const UserLogin = () => {
             }
         }
     );
+
+    const handleRemember =()=>{
+        setCheckedRemember(!checkedRemember);
+    }
 
     const handleChange = async e => {
         e.persist();
@@ -36,7 +42,8 @@ const UserLogin = () => {
         let email = datos.form.email;
         let password = datos.form.password;
 
-        dispatch(login({ email, password }))
+        if(checkedRemember===false){
+            dispatch(login({ email, password }))
             .unwrap()
             .then(() => {
                 window.location.reload();
@@ -44,9 +51,20 @@ const UserLogin = () => {
             .catch((error) => {
                 setRequestError("Hubo un error, compruebe su email y contraseña.");
             });
+        }else{
+            dispatch(loginRemember({ email, password }))
+            .unwrap()
+            .then(() => {
+                window.location.reload();
+            })
+            .catch((error) => {
+                setRequestError("Hubo un error, compruebe su email y contraseña.");
+            });
+        }
+        
     }
     const { form } = datos;
-    console.log(form)
+
 
     return (
         <>
@@ -66,10 +84,11 @@ const UserLogin = () => {
                 <input className='input-text' type="password" placeholder='Introduce tu contraseña' name="password" id="password" required onChange={handleChange} value={form ? form.password : ''} />
             </div>
             <div className='remember'>
-                <label className="remember-label">Recuérdame
-                    <input type="checkbox"/>
-                    <span className="checkmark"></span>
-                </label>
+                <Checkbox
+                    label="Recuérdame"
+                    value={checkedRemember}
+                    onChange={handleRemember}
+                ></Checkbox>
 
                 <a className='recovery' href='https://www.google.es'>He olvidado la contraseña</a>
             </div>

@@ -8,6 +8,21 @@ const login = (email, password) => {
         })
         .then((response) => {
             if (response.data.token) {
+                sessionStorage.setItem('TOKEN_KEY', JSON.stringify(response.data.token));
+            }
+
+            return response.data;
+        });
+};
+
+const loginRemember = (email, password) => {
+    return axiosConfig
+        .post('authAPI/login', {
+            email,
+            password,
+        })
+        .then((response) => {
+            if (response.data.token) {
                 localStorage.setItem('TOKEN_KEY', JSON.stringify(response.data.token));
             }
 
@@ -21,6 +36,7 @@ const logout = () => {
 
 const userService = {
     login,
+    loginRemember,
     logout,
 };
 

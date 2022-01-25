@@ -1,11 +1,22 @@
+import React,{ useState } from 'react';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { setMessage } from './message';
 
 import userService from '../../services/user.service';
 
-const authToken = JSON.parse(localStorage.getItem('TOKEN_KEY'));
+const authTokenRemember = JSON.parse(localStorage.getItem('TOKEN_KEY'));
+const authTokenSession = JSON.parse(sessionStorage.getItem('TOKEN_KEY'));
+
+//Obtención del token
+let authToken="";
+  if(authTokenRemember===null){
+    authToken=authTokenSession;
+  }else{
+    authToken=authTokenRemember;
+  }
 
 export const login = createAsyncThunk(
+  
   'auth/login',
   async ({ email, password }, thunkAPI) => {
     try {
@@ -22,6 +33,25 @@ export const login = createAsyncThunk(
     }
   },
 );
+
+export const loginRemember = createAsyncThunk(
+  'auth/login',
+  async ({ email, password }, thunkAPI) => {
+    try {
+      const data = await userService.loginRemember(email, password);
+      return { authToken: data };
+    } catch (error) {
+      const message = (error.response
+          && error.response.data
+          && error.response.data.message)
+        || error.message
+        || error.toString();
+      thunkAPI.dispatch(setMessage(message));
+      return thunkAPI.rejectWithValue();
+    }
+  },
+);
+
 
 export const logout = createAsyncThunk('auth/logout', async () => {
   await userService.logout();

@@ -15,11 +15,6 @@ import axiosConfig from '../utils/config/axios.config';
 import '../styles/spinner.scss';
 
 const CandidatespageDB = () => {
-    //Students de prueba
-    const student1 = new Student('Álvaro Sánchez Monteagudo','Valencia','España','+34 657 85 25 46','asangudo@gmail.com',['HTML&CSS','ANGULAR', 'REACT'], true ,false, CANDIDATE_STATUS.PRESELECIONADO);
-    const student2 = new Student('Carlos Yuste Guerrero','Oviedo','España','+34 697 82 95 65','yguerrero@gmail.com',['ANGULAR','REACT'], true,true,CANDIDATE_STATUS.PDTE);
-    const student3 = new Student('Eustaquia Herrera Climent','Sevilla','España','+34 689 25 48 65','ecliment@gmail.com',['HTML&CSS','REACT'], false ,false,CANDIDATE_STATUS.CONTRATADO);
-    const [students, setStudents] = useState([student1 , student2, student3]);
     const [candidates, setCandidates] = useState();
     const [loading, setLoading] = useState(true);
     useEffect(() => {
@@ -28,7 +23,17 @@ const CandidatespageDB = () => {
         },1000);
         getUserInfo();
     },[])
-    const token = localStorage.getItem('TOKEN_KEY');
+    const authTokenRemember = localStorage.getItem('TOKEN_KEY');
+    const authTokenSession = sessionStorage.getItem('TOKEN_KEY');
+
+    //Obtención del token
+    let token;
+    if(authTokenRemember===null){
+        token=authTokenSession;
+      }else{
+        token=authTokenRemember;
+    }
+    
     const getUserInfo = () => {
         const headers = {
             "content-type": "application/json",
@@ -38,23 +43,14 @@ const CandidatespageDB = () => {
             .get('api/candidatos', { headers })
             .then((response) => {
                 if (response.data) {
-                    localStorage.setItem('CANDIDATES', JSON.stringify(response.data.data.data));
+                    //localStorage.setItem('CANDIDATES', JSON.stringify(response.data.data.data));
                     setCandidates(response.data.data.data)
                 }
     
                 return response.data;
             });
     };
-
-    if(loading===false){
-        candidates.map(candidate=>{
-            console.log(candidate.tecnologias.map(tecnologia=>{
-                console.log(tecnologia.nombre)
-            }))
-        })
-    }
-    
-
+   
     const [search, setSearch] = useState('');
     //Modal
     const [isOpen, setIsOpen] = useState(false);
@@ -74,13 +70,13 @@ const CandidatespageDB = () => {
     //Ordenar lista A-Z y Z-A
     const sort_lists = (key, inverse) =>
     inverse
-    ? [...students].sort((b, a) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
-    : [...students].sort((a, b) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
+    ? [...candidates].sort((b, a) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
+    : [...candidates].sort((a, b) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
 
-    /* //Barra de Busqueda
-    const studentSearchFilter = students.filter((student)=>{
-        if(student.name.toLocaleLowerCase().includes(search.toLowerCase()) || student.mail.toLocaleLowerCase().includes(search.toLowerCase()) || student.city.toLocaleLowerCase().includes(search.toLowerCase())){
-            return student;
+    //Barra de Busqueda
+    /* const candidatesSearchFilter = candidates.filter((candidate)=>{
+        if(candidate.nombreCompleto.toLocaleLowerCase().includes(search.toLowerCase()) || candidate.email.toLocaleLowerCase().includes(search.toLowerCase()) || candidate.ciudad.toLocaleLowerCase().includes(search.toLowerCase())){
+            return candidate;
         }
         }); */
 
@@ -120,17 +116,17 @@ const CandidatespageDB = () => {
                     <thead>
                         <tr>
                             <th className='th-name' onClick={() => {
-                                let newSortedList = sort_lists('name')
-                                if (newSortedList[0] === students[0]) newSortedList = sort_lists('name', true)
-                                setStudents(newSortedList)
+                                let newSortedList = sort_lists('nombreCompleto')
+                                if (newSortedList[0] === candidates[0]) newSortedList = sort_lists('nombreCompleto', true)
+                                setCandidates(newSortedList)
                             }}>
                                 Nombre 
                                 <i className="bi bi-arrow-down-up"></i>
                             </th>
                             <th className='th-place' onClick={() => {
-                                let newSortedList = sort_lists('city')
-                                if (newSortedList[0] === students[0]) newSortedList = sort_lists('city', true)
-                                setStudents(newSortedList)
+                                let newSortedList = sort_lists('ciudad')
+                                if (newSortedList[0] === candidates[0]) newSortedList = sort_lists('ciudad', true)
+                                setCandidates(newSortedList)
                             }}>
                                 Ubicación 
                                 <i className="bi bi-arrow-down-up"></i>
@@ -138,9 +134,9 @@ const CandidatespageDB = () => {
 
                             <th className='phone'>Teléfono</th>
                             <th onClick={() => {
-                                let newSortedList = sort_lists('tags')
-                                if (newSortedList[0] === students[0]) newSortedList = sort_lists('tags', true)
-                                setStudents(newSortedList)
+                                let newSortedList = sort_lists('tecnologias')
+                                if (newSortedList[0] === candidates[0]) newSortedList = sort_lists('tecnologias', true)
+                                setCandidates(newSortedList)
                             }}>
                                 Tecnologías 
                                 <i className="bi bi-arrow-down-up"></i>
