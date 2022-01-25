@@ -53,7 +53,7 @@ const FilterComponentCandidates = (props) => {
     setCheckedStatusHired(true);
     setCheckedPendingOffers(false);
     setCheckedShortlisted(false);
-    props.setFilte("contratado")
+    props.setFilterStatus("contratado")
   }
   const handleChangePendingOffers =()=>{
     activateFilters();

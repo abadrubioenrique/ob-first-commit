@@ -15,7 +15,9 @@ import axiosConfig from '../utils/config/axios.config';
 import '../styles/spinner.scss';
 
 const CandidatespageDB = () => {
-    const [candidates, setCandidates] = useState();
+    const [candidates, setCandidates] = useState("");
+    const [candidatesFilter, setCandidatesFilter] = useState();
+
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         setTimeout(()=>{
@@ -33,7 +35,7 @@ const CandidatespageDB = () => {
       }else{
         token=authTokenRemember;
     }
-    
+
     const getUserInfo = () => {
         const headers = {
             "content-type": "application/json",
@@ -44,13 +46,14 @@ const CandidatespageDB = () => {
             .then((response) => {
                 if (response.data) {
                     //localStorage.setItem('CANDIDATES', JSON.stringify(response.data.data.data));
-                    setCandidates(response.data.data.data)
+                    setCandidates(response.data.data.data);
+                    setCandidatesFilter(candidates);
                 }
     
                 return response.data;
             });
     };
-   
+      
     const [search, setSearch] = useState('');
     //Modal
     const [isOpen, setIsOpen] = useState(false);
@@ -73,26 +76,30 @@ const CandidatespageDB = () => {
     ? [...candidates].sort((b, a) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
     : [...candidates].sort((a, b) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))
 
+
+    var candidatesConverted = Object.keys(candidates).map(function(candidate) {
+        return candidates[candidate];
+      });
+
+
     //Barra de Busqueda
-    /* const candidatesSearchFilter = candidates.filter((candidate)=>{
+    const candidatesSearchFilter = candidatesConverted.filter((candidate)=>{
         if(candidate.nombreCompleto.toLocaleLowerCase().includes(search.toLowerCase()) || candidate.email.toLocaleLowerCase().includes(search.toLowerCase()) || candidate.ciudad.toLocaleLowerCase().includes(search.toLowerCase())){
             return candidate;
         }
-        }); */
+        });
 
-/*     //Filtro de Busqueda
-    const studentFilters = students.filter((student)=>{
-        if(student.city.includes(city))
-        return student;
-        else if(student.faceToFace === faceToFace)
-            return student;
-        else if(student.transfer === transfer)
-        return student;
-        else if(student.tags.includes(tags[0]) || student.tags.includes(tags[1]) || student.tags.includes(tags[2]))
-            return student;
-        else if(student.status === filterStatus)
-        return student;
-    }); */
+    //Filtro de Busqueda
+    const studentFilters = candidatesConverted.filter((candidate)=>{
+        if(candidate.ciudad.includes(city))
+        return candidate;
+        else if(candidate.remoto === faceToFace)
+            return candidate;
+        else if(candidate.disponibilidadTraslado === transfer)
+        return candidate;
+        else if(candidate.estado === filterStatus)
+        return candidate;
+    });
     return (
         <div className='usersPage'>
             <MenuComponent/>
@@ -148,10 +155,10 @@ const CandidatespageDB = () => {
                     <tbody>
                 
                     {loading===false ?
-                        
-                        (candidates.map(candidate=>
+                        (onFilter ?
+                            (studentFilters.map(candidate=>
 
-                        <TableComponent key={candidate.id}
+                            <TableComponent key={candidate.id}
                             name={candidate.nombreCompleto}
                             city={candidate.ciudad}
                             country={candidate.pais}
@@ -159,12 +166,29 @@ const CandidatespageDB = () => {
                             tags={candidate.tecnologias.map(tecnologia=>
                             (tecnologia.nombre))}
                             status={candidate.estado}
->                           
-                            
-                        </TableComponent>  ) ) 
+                            >                           
+
+                            </TableComponent>  ) ) 
+                        :
+                            (candidatesSearchFilter.map(candidate=>
+
+                            <TableComponent key={candidate.id}
+                            name={candidate.nombreCompleto}
+                            city={candidate.ciudad}
+                            country={candidate.pais}
+                            phonenumber={candidate.telefono}
+                            tags={candidate.tecnologias.map(tecnologia=>
+                            (tecnologia.nombre))}
+                            status={candidate.estado}
+                            >                           
+
+                            </TableComponent>  ) ) 
+                        )
+
                         :
                         <tr className="spinner"></tr>
                     }
+                    
                     
                     
                     
