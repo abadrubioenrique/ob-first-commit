@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import '../styles/users.scss';
 import '../styles/select.scss';
 import Tagcomponent from './tagComponent';
+import { Checkbox } from './checkbox';
 
 const FilterComponent = (props) => {
   
@@ -78,15 +79,6 @@ const FilterComponent = (props) => {
   function activateFilters(){
     props.setOnFilter(true);
   }
-
-  const Checkbox = ({ label, value, onChange }) => {
-    return (
-      <label className="remember-label">{label}
-      <input type="checkbox" checked={value} onChange={onChange}/>
-      <span className="checkmark"></span>
-  </label>
-    );
-  };
     return (
       <form>
       <div className='search-filter'>

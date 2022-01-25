@@ -4,6 +4,7 @@ import '../../../styles/select.scss';
 import Tagcomponent from '../../tagComponent';
 import axiosConfig from '../../../utils/config/axios.config';
 import { cities } from '../../../db/cities';
+import { Checkbox } from '../../checkbox';
 
 
 const FilterComponentCandidates = (props) => {
@@ -97,14 +98,6 @@ const FilterComponentCandidates = (props) => {
     props.setOnFilter(true);
   }
 
-  const Checkbox = ({ label, value, onChange }) => {
-    return (
-      <label className="remember-label">{label}
-      <input type="checkbox" checked={value} onChange={onChange}/>
-      <span className="checkmark"></span>
-  </label>
-    );
-  };
     return (
       <form>
       <div className='search-filter'>
