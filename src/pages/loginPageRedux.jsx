@@ -111,7 +111,7 @@ const UserLogin = () => {
         </div>
 
         : 
-            <Navigate to="/open-recruiter/customers" />
+            <Navigate to="/open-recruiter/candidates" />
         }
 
 

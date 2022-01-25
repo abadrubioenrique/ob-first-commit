@@ -38,6 +38,7 @@ function App() {
 <HashRouter>
   <Routes>
   <Route path="*" element={<Notfoundpage/>} />
+
     <Route path="/login" element={<Loginpage/>} />
     <Route path="/open-recruiter" element={<PrivateOutlet isLogged={isLoggedIn} />}>
       <Route path="customers" element={<Customerspage/>}/>

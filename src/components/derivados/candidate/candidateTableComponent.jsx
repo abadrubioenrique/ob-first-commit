@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CANDIDATE_STATUS } from '../../../models/candidate-enum';
 
 import '../../../styles/status.scss';
 const TableComponent = (props) => {
@@ -48,7 +47,8 @@ const TableComponent = (props) => {
     }
     return (
         <tr>
-        <td className='names'><Link to="/student/info">{props.name}</Link></td>
+        
+        <td className='names' id={props.id} ><Link to={`/open-recruiter/student/${props.id}/info`}>{props.name}</Link></td>
         <td>{props.city}, {props.country}</td>
         <td>{props.phonenumber}</td>
         <td><span className='table-tag'>{props.tags[0]}</span>

@@ -1,0 +1,38 @@
+@import 'styles.scss';
+
+.not-found{
+
+    header{
+        margin-left: 10%;
+        text-align: center;
+        
+    }
+    .error-title{
+        margin-top: 15%;
+        font: $font;
+        font-size: 4rem;
+
+    }
+    .btn-back {
+        justify-content: center;
+        align-items: center;
+        width: 510px;
+        height: 40px;
+        top: 250px;
+        background: $powergreen;
+        border-radius: 8px;
+        border: none;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 15px;
+        color: $white;
+        text-decoration: none;
+        order: 2;
+        align-self: stretch;
+        margin: 30px 0px;
+        &:hover {
+            cursor: pointer;
+            background: $green-black;
+        }
+    }
+}

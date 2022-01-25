@@ -13,21 +13,30 @@ import axiosConfig from '../utils/config/axios.config';
 
 //spinner
 import '../styles/spinner.scss';
+import FilterComponentCandidatesEmpty from '../components/derivados/candidate/filterComponentCandidatesEmpty';
+
+//Services
+import {getTecnologias,getCandidatesInfo,getCandidateById} from '../services/axios.CRUD.service'
+
 
 const CandidatespageDB = () => {
     const [candidates, setCandidates] = useState("");
     const [candidatesFilter, setCandidatesFilter] = useState();
-
+    const [tecnologiasOptions, setTecnologiasOptions] = useState(['HTML&CSS','ANGULAR']);
+    let tecs="";
+    
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         setTimeout(()=>{
             setLoading(false);
         },1000);
-        getUserInfo();
+        getCandidatesInfo(token, setCandidates, candidates, setCandidatesFilter);
+        getTecnologias(token, setTecnologiasOptions)
+        getCandidateById(token,44)
+
     },[])
     const authTokenRemember = localStorage.getItem('TOKEN_KEY');
     const authTokenSession = sessionStorage.getItem('TOKEN_KEY');
-
     //Obtención del token
     let token;
     if(authTokenRemember===null){
@@ -35,25 +44,7 @@ const CandidatespageDB = () => {
       }else{
         token=authTokenRemember;
     }
-
-    const getUserInfo = () => {
-        const headers = {
-            "content-type": "application/json",
-            Authorization: `Bearer ${JSON.parse(token).token}`,
-        };
-        return axiosConfig
-            .get('api/candidatos', { headers })
-            .then((response) => {
-                if (response.data) {
-                    //localStorage.setItem('CANDIDATES', JSON.stringify(response.data.data.data));
-                    setCandidates(response.data.data.data);
-                    setCandidatesFilter(candidates);
-                }
     
-                return response.data;
-            });
-    };
-      
     const [search, setSearch] = useState('');
     //Modal
     const [isOpen, setIsOpen] = useState(false);
@@ -82,6 +73,7 @@ const CandidatespageDB = () => {
       });
 
 
+
     //Barra de Busqueda
     const candidatesSearchFilter = candidatesConverted.filter((candidate)=>{
         if(candidate.nombreCompleto.toLocaleLowerCase().includes(search.toLowerCase()) || candidate.email.toLocaleLowerCase().includes(search.toLowerCase()) || candidate.ciudad.toLocaleLowerCase().includes(search.toLowerCase())){
@@ -96,6 +88,14 @@ const CandidatespageDB = () => {
         else if(candidate.remoto === faceToFace)
             return candidate;
         else if(candidate.disponibilidadTraslado === transfer)
+        return candidate;
+        else if(
+            (candidate.tecnologias.map(tecnologia=>(tecnologia.nombre)).includes(tags[0]))
+            ||
+            (candidate.tecnologias.map(tecnologia=>(tecnologia.nombre)).includes(tags[1]))
+            ||
+            (candidate.tecnologias.map(tecnologia=>(tecnologia.nombre)).includes(tags[2]))
+            )
         return candidate;
         else if(candidate.estado === filterStatus)
         return candidate;
@@ -158,21 +158,24 @@ const CandidatespageDB = () => {
                         (onFilter ?
                             (studentFilters.map(candidate=>
 
-                            <TableComponent key={candidate.id}
-                            name={candidate.nombreCompleto}
-                            city={candidate.ciudad}
-                            country={candidate.pais}
-                            phonenumber={candidate.telefono}
-                            tags={candidate.tecnologias.map(tecnologia=>
-                            (tecnologia.nombre))}
-                            status={candidate.estado}
+                            <TableComponent key={candidate.telefono}
+                                id={candidate.id}
+                                name={candidate.nombreCompleto}
+                                city={candidate.ciudad}
+                                country={candidate.pais}
+                                phonenumber={candidate.telefono}
+                                tags={candidate.tecnologias.map(tecnologia=>
+                                (tecnologia.nombre))}
+                                status={candidate.estado}
                             >                           
 
                             </TableComponent>  ) ) 
+
                         :
                             (candidatesSearchFilter.map(candidate=>
 
                             <TableComponent key={candidate.id}
+                            id={candidate.id}
                             name={candidate.nombreCompleto}
                             city={candidate.ciudad}
                             country={candidate.pais}
@@ -188,17 +191,16 @@ const CandidatespageDB = () => {
                         :
                         <tr className="spinner"></tr>
                     }
-                    
-                    
-                    
-                    
+
                     </tbody>
                 </table>
 
                 </div>
                 
                 </div>
-                <FilterComponentCandidates
+                {loading===false ?
+                (<FilterComponentCandidates
+                    options={tecnologiasOptions}
                     country={country}
                     setCountry={setCountry}
                     city={city}
@@ -209,8 +211,15 @@ const CandidatespageDB = () => {
                     setFaceToFace={setFaceToFace}
                     setTransfer={setTransfer}
                     setFilterStatus={setFilterStatus}
-
-                ></FilterComponentCandidates>   
+                ></FilterComponentCandidates>)
+                :  
+                (<FilterComponentCandidatesEmpty
+                    country={country}
+                    city={city}
+                    tags = {tags}
+                    setTags = {setTags}
+                ></FilterComponentCandidatesEmpty>)
+                }
                 <div>
                 {isOpen ? <ModalComponent setIsOpen={setIsOpen} /> : null}
                 </div>

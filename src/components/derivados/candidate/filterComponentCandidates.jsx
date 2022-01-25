@@ -4,6 +4,7 @@ import '../../../styles/select.scss';
 import Tagcomponent from '../../tagComponent';
 import axiosConfig from '../../../utils/config/axios.config';
 import { cities } from '../../../db/cities';
+import { countries } from '../../../db/countries';
 import { Checkbox } from '../../checkbox';
 
 
@@ -71,14 +72,6 @@ const FilterComponentCandidates = (props) => {
     props.setFilterStatus("en_proceso");
   }
 
-
-  const countries = [
-    {
-      value: "España"
-    }
-  ];
-
-
   function clearFilters(){
     props.setOnFilter(false);
     setCheckedFaceToFace(false);
@@ -88,6 +81,8 @@ const FilterComponentCandidates = (props) => {
     setCheckedStatusHired(false);
     setCheckedPendingOffers(false);
     setCheckedShortlisted(false);
+    props.setCountry();
+    props.setCity();
     props.setFaceToFace();
     props.setTransfer();
     props.setFilterStatus();
@@ -96,6 +91,7 @@ const FilterComponentCandidates = (props) => {
 
   function activateFilters(){
     props.setOnFilter(true);
+
   }
 
     return (
@@ -106,7 +102,7 @@ const FilterComponentCandidates = (props) => {
           <div className='campos'>
           
           <Tagcomponent
-            options={['HTML&CSS','REACT', 'ANGULAR', 'VUEJS']}
+            options={props.options}
             tagname = 'Tecnologías'
             tags = {props.tags}
             setTags = {props.setTags}
