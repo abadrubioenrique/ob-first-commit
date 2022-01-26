@@ -1,42 +1,63 @@
 import React from 'react';
-import { CANDIDATE_STATUS } from '../../models/candidate-enum';
-
 
 const StudentHeaderComponent = (props) => {
-    function candidateLevelBadge(){
+        function candidateLevelBadge(){
         switch (props.status) {
-            case CANDIDATE_STATUS.PDTE:
+            case "libre":
                 return(
-                    <div className='status-main-right'>
-                        <span className='status bg-powerblue'>{props.status}</span>
+                    <div className='status-main'>
+                        <span className='status bg-powerblue'>PDTE. OFERTAS</span>
                     </div>
                 )
-            case CANDIDATE_STATUS.PRESELECIONADO:
+            case "en_proceso":
                 return(
-                    <div className='status-main-right'>
-                    <span className='status bg-blue'>
-                        {props.status}
-                    </span>
+                    <div className='status-main'>
+                        <span className='status bg-blue'>
+                        PRESELECIONADO
+                        </span>
                     </div>
                 )
-            case CANDIDATE_STATUS.CONTRATADO:
+            case "contratado":
                 return(
-                    <div className='status-main-right'>
-                    <span className='status bg-powergreen'>
-                        {props.status}
-                    </span>
+                    <div className='status-main'>
+                        <span className='status bg-powergreen'>
+                            {props.status}
+                        </span>
+                    </div>
+                )
+            case "descartado":
+                return(
+                    <div className='status-main'>
+                        <span className='status bg-wrong'>
+                            RECHAZADO
+                        </span>
                     </div>
                 )
             default:
                 return(
-                    <div className='status-main-right'>
-                    <span className='status bg-grey'>
-                        No definido
-                    </span>
+                    <div className='status-main'>
+                        <span className='status bg-grey'>
+                            No definido
+                        </span>
                     </div>
                 )
         }
     }
+
+    let remoto;
+    if(props.remote===true){
+        remoto="En Remoto"
+    }else{
+        remoto ="Presencial"
+    }
+
+    let traslado;
+    if(props.transfer===true){
+        traslado="Con Traslado"
+    }else{
+        traslado ="Sin Traslado"
+    }
+
     return (
         <div className="student-info">
                         <img className="student-img" src="https://st.depositphotos.com/2251265/2417/i/600/depositphotos_24172293-stock-photo-faceless-person-portrait.jpg" alt='profile_img'/>
@@ -51,9 +72,9 @@ const StudentHeaderComponent = (props) => {
                                 </div>
                                 <div className="student-remote">
                                 <i className="bi bi-bullseye"></i>
-                                    <p>{props.remote}</p>
+                                    <p>{remoto}</p>
                                     <span>,</span>
-                                    <p>{props.transfer}</p>
+                                    <p>{traslado}</p>
                                 </div>
                             </div>
                             <div className='candidate-status'>

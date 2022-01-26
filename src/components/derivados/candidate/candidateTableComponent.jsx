@@ -48,7 +48,7 @@ const TableComponent = (props) => {
     return (
         <tr>
         
-        <td className='names' id={props.id} ><Link to={`/open-recruiter/student/${props.id}/info`}>{props.name}</Link></td>
+        <td className='names' id={props.id} ><Link to={`/open-recruiter/candidates/${props.id}/info`}>{props.name}</Link></td>
         <td>{props.city}, {props.country}</td>
         <td>{props.phonenumber}</td>
         <td><span className='table-tag'>{props.tags[0]}</span>

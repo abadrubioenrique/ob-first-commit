@@ -43,29 +43,25 @@ function App() {
     <Route path="/open-recruiter" element={<PrivateOutlet isLogged={isLoggedIn} />}>
       <Route path="customers" element={<Customerspage/>}/>
       <Route path="candidates" element={<CandidatespageDB/>}/>
-    <Route path="student/info" element={<Studentpage/>}/>
-    <Route path="student/*" element={<StudentpageDouble/>}>
-      <Route path="abilities" 
+      <Route path="candidates/:id/info" element={<Studentpage/>}/>
+    <Route path="candidates" element={<StudentpageDouble/>}>
+      <Route path=":id/abilities" 
         element={<TabsFather
             activeTab={activeTab1}
             setActiveTab={setActiveTab}
         />}/>
-      <Route path="curriculum" 
+      <Route path=":id/curriculum" 
         element={<TabsFather
             activeTab={activeTab2}
             setActiveTab={setActiveTab}
         />}/>
-      <Route path="processes" 
+      <Route path=":id/processes" 
         element={<TabsFather
             activeTab={activeTab3}
             setActiveTab={setActiveTab}
         />}/>
     </Route>
     </Route>
-    
-   
-
-
 
     <Route path="/" element={<Navigate replace to="/login" />} />
   </Routes>

@@ -16,24 +16,22 @@ import '../styles/spinner.scss';
 import FilterComponentCandidatesEmpty from '../components/derivados/candidate/filterComponentCandidatesEmpty';
 
 //Services
-import {getTecnologias,getCandidatesInfo,getCandidateById} from '../services/axios.CRUD.service'
+import {getTecnologias,getCandidatesInfo} from '../services/axios.CRUD.service'
 
 
 const CandidatespageDB = () => {
     const [candidates, setCandidates] = useState("");
     const [candidatesFilter, setCandidatesFilter] = useState();
-    const [tecnologiasOptions, setTecnologiasOptions] = useState(['HTML&CSS','ANGULAR']);
-    let tecs="";
+    const [tecnologiasOptions, setTecnologiasOptions] = useState(['']);
+    
     
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         setTimeout(()=>{
             setLoading(false);
-        },1000);
+        },200);
         getCandidatesInfo(token, setCandidates, candidates, setCandidatesFilter);
         getTecnologias(token, setTecnologiasOptions)
-        getCandidateById(token,44)
-
     },[])
     const authTokenRemember = localStorage.getItem('TOKEN_KEY');
     const authTokenSession = sessionStorage.getItem('TOKEN_KEY');
@@ -221,7 +219,11 @@ const CandidatespageDB = () => {
                 ></FilterComponentCandidatesEmpty>)
                 }
                 <div>
-                {isOpen ? <ModalComponent setIsOpen={setIsOpen} /> : null}
+                {isOpen ? <ModalComponent 
+                    modal="candidato"
+                    setIsOpen={setIsOpen}
+
+                 /> : null}
                 </div>
                 
                </div>

@@ -250,7 +250,11 @@
 		top: 13px;
 	}
 }
-
+.submit{
+	&:hover{
+		background: $powergreen;
+	}
+}
 .cancel{
 	&:hover{
 		background: $rejected;

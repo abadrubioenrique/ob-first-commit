@@ -1,11 +1,12 @@
 import axiosConfig from '../utils/config/axios.config';
 
-export const getTecnologias = (token, setTecnologiasOptions) => {
+// Obtener tecnologías
+export const getTecnologias = async (token, setTecnologiasOptions) => {
     const headers = {
         "content-type": "application/json",
         Authorization: `Bearer ${JSON.parse(token).token}`,
     };
-    return axiosConfig
+    return await axiosConfig
         .get('api/tecnologias', { headers })
         .then((response) => {
             if (response.data) {
@@ -17,13 +18,13 @@ export const getTecnologias = (token, setTecnologiasOptions) => {
 };
 
 
-
-export const getCandidatesInfo = (token, setCandidates, candidates, setCandidatesFilter) => {
+// Obtener candidatos
+export const getCandidatesInfo = async(token, setCandidates, candidates, setCandidatesFilter) => {
     const headers = {
         "content-type": "application/json",
         Authorization: `Bearer ${JSON.parse(token).token}`,
     };
-    return axiosConfig
+    return await axiosConfig
         .get('api/candidatos', { headers })
         .then((response) => {
             if (response.data) {
@@ -36,19 +37,43 @@ export const getCandidatesInfo = (token, setCandidates, candidates, setCandidate
         });
 };
 
-
-export const getCandidateById = (token,id) => {
+// Obtener candidato por ID
+export const getCandidateById = async (token,id,setCandidate) => {
     const headers = {
         "content-type": "application/json",
         Authorization: `Bearer ${JSON.parse(token).token}`,
     };
-    return axiosConfig
+    return await axiosConfig
         .get(`api/candidatos/${id}`, { headers })
         .then((response) => {
             if (response.data) {
-               console.log(response.data)
+               setCandidate(response.data.data)
             }
 
             return response.data;
         });
+};
+
+
+
+//Crear candidato
+export const postCandidate= (token,name,country,city,phonenumber,mail,remote,transfer,linkedin) => {
+    const headers = {
+        "content-type": "application/json",
+        Authorization: `Bearer ${JSON.parse(token).token}`,
+    };
+
+    return axiosConfig.post('api/candidatos', 
+    { 
+        nombreCompleto: name,
+        pais:country,
+        ciudad:city,
+        telefono: phonenumber, 
+        email:mail,
+        remoto:remote,
+        disponibilidadTraslado:transfer,
+        enlaceLinkedin:linkedin
+    } 
+    ,{ headers }) ; 
+
 };

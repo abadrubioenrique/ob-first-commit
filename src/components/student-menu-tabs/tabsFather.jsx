@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, useParams  } from "react-router-dom";
 import FirstTab from "./firstTab";
 import SecondTab from "./secondTab";
 import '../../styles/tabsmenu.scss'
@@ -14,6 +14,8 @@ const TabsFather = (props) => {
   const process4 = new Process("Título Oferta 4","Empresa SA", 1, new Date('15 nov 2022'),PROCESS_STATUS.ESPERANDO_CV)
   const process5 = new Process("Título Oferta 5","Empresa SA", 2, new Date('18 nov 2022'),PROCESS_STATUS.RECHAZADO)
   const [processes, setProcesses] = useState([process1 , process2, process3, process4, process5]);
+
+  const {id} = useParams();
 
   let processesNum = processes.length;
 
@@ -32,21 +34,21 @@ const TabsFather = (props) => {
     return (
     <div className="tabs">
         <ul className="nav">
-        <Link to="/open-recruiter/student/abilities"><li 
+        <Link to={`/open-recruiter/candidates/${id}/abilities`}><li 
             className={props.activeTab === "tab1" ? "tab-active" : ""}
             onClick={handleTab1}
         >
             <h2>Habilidades</h2>
         </li></Link>
 
-        <Link to="/open-recruiter/student/curriculum"><li
+        <Link to={`/open-recruiter/candidates/${id}/curriculum`}><li
             className={props.activeTab === "tab2" ? "tab-active" : ""}
             onClick={handleTab2}
         >
              
             <h2>Currículum Vitae</h2>
         </li></Link>
-        <Link to="/open-recruiter/student/processes"><li
+        <Link to={`/open-recruiter/candidates/${id}/processes`}><li
             className={props.activeTab === "tab3" ? "tab-active" : ""}
             onClick={handleTab3}
         >
