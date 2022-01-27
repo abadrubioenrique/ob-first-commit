@@ -11,17 +11,44 @@ import HeaderComponent from '../components/headerComponent';
 import StudentHeaderComponent from '../components/student/studentHeaderComponent';
 import StudentBodyComponent from '../components/derivados/student/studentBodyDoubleComponent';
 import TabsFather from '../components/student-menu-tabs/tabsFather';
+import { getCandidateById } from '../services/axios.CRUD.service';
 
 const StudentpageDouble = () => {
-    const [name, setName] = useState('Nombre Alumno');
-    const [city, setCity] = useState('Ciudad');
-    const [country, setCountry] = useState('País');
-    const [remote, setRemote] = useState('Presencialidad');
-    const [transfer, setTransfer] = useState('Traslado');
-    const [status, setStatus] = useState('No definido');
-
+    const [loading, setLoading] = useState(true);
+    const [candidate, setCandidate] = useState("");
     const {id} = useParams();
+    const authTokenRemember = localStorage.getItem('TOKEN_KEY');
+    const authTokenSession = sessionStorage.getItem('TOKEN_KEY');
 
+    let name=candidate.nombreCompleto; 
+    let city = candidate.ciudad;
+    let country = candidate.pais;
+    let remote = candidate.remoto;
+    let transfer = candidate.disponibilidadTraslado;
+    let status = candidate.estado;
+    let phonenumber = candidate.telefono;
+    let mail = candidate.email;
+    let linkedin = candidate.enlaceLinkedin;
+
+    //Obtención del token
+    let token;
+    if(authTokenRemember===null){
+        token=authTokenSession;
+      }else{
+        token=authTokenRemember;
+    }
+   
+    useEffect(() => {
+
+        setTimeout(()=>{
+            setLoading(false);
+
+        },100);
+
+        getCandidateById(token,id,setCandidate);
+
+
+    },[token,id])
     return (
     <div className='studentsPage'>
             <MenuComponent/>
@@ -40,12 +67,18 @@ const StudentpageDouble = () => {
             >
             </StudentHeaderComponent>
             <StudentBodyComponent
-                setName={setName}
-                setCountry={setCountry}
-                setCity={setCity}
-                setRemote={setRemote}
-                setTransfer={setTransfer}
-                setStatus={setStatus}
+                loading={loading}
+                token={token}
+                id={id}
+                name={name}
+                city={city}
+                country={country}
+                remote={remote}
+                transfer={transfer}
+                status={status}
+                phonenumber={phonenumber}
+                mail={mail}
+                linkedin={linkedin}
             ></StudentBodyComponent>
         </div>
 

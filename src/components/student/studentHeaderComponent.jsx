@@ -47,15 +47,19 @@ const StudentHeaderComponent = (props) => {
     let remoto;
     if(props.remote===true){
         remoto="En Remoto"
-    }else{
+    }else if(props.remote===false){
         remoto ="Presencial"
+    }else{
+        remoto="Presencialidad sin definir"
     }
 
     let traslado;
     if(props.transfer===true){
         traslado="Con Traslado"
-    }else{
+    }else if(props.transfer===false){
         traslado ="Sin Traslado"
+    }else{
+        traslado = "Traslado sin definir"
     }
 
     return (

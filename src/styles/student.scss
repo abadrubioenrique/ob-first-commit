@@ -360,7 +360,7 @@
 	color: white;
 	border-radius: 8px;
 	height: 40px;
-	padding: 12px;
+	padding-right: 12px;
 	padding-left: 32px;
 	font-weight: bold;
 	font-size: 15px;
@@ -368,7 +368,7 @@
     i{
         position: absolute;
         left: 10px;
-        top: 13px;
+        top: 12px;
     }
 }
 
@@ -458,4 +458,43 @@
 
 .status-main-right{
 	text-align: right;
+}
+
+.cambios{
+	position: absolute;
+	bottom: 80px;
+	right: 25px;
+	margin: 0 auto;
+	display: flex;
+	p{
+		margin-top: 12px;
+		margin-right: 20px;
+		color: $green-black;
+	}
+	button{
+		background-color: $powergreen;
+		&:hover{
+			background-color:$green-black;
+		}
+	}
+}
+
+.cambios-double{
+	position: absolute;
+	bottom: 0;
+	right: 44%;
+	margin: 0 auto;
+	display: flex;
+	z-index: 4;
+	p{
+		margin-top: 12px;
+		margin-right: 20px;
+		color: $green-black;
+	}
+	button{
+		background-color: $powergreen;
+		&:hover{
+			background-color:$green-black;
+		}
+	}
 }

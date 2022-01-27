@@ -51,7 +51,13 @@ const TableComponent = (props) => {
         <td className='names' id={props.id} ><Link to={`/open-recruiter/candidates/${props.id}/info`}>{props.name}</Link></td>
         <td>{props.city}, {props.country}</td>
         <td>{props.phonenumber}</td>
-        <td><span className='table-tag'>{props.tags[0]}</span>
+        
+        <td>
+        {(props.tags.length===0) 
+            ?  
+            null
+            : 
+            (<span className='table-tag'>{props.tags[0]}</span>)  }
         {(props.tags.length>1) 
             ?  
             (<span className='table-tag'>{props.tags[1]}</span>) 

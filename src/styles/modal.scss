@@ -231,25 +231,7 @@
 	margin: 0;
 	margin-left: 12px;
 }
-.btn-upload {
-	position: relative;
-	cursor: pointer;
-	background: $grey-4;
-	border: none;
-	color: white;
-	border-radius: 8px;
-	height: 40px;
-	padding: 12px;
-	padding-left: 32px;
-	font-weight: bold;
-	font-size: 15px;
-	line-height: 18px;
-	i {
-		position: absolute;
-		left: 10px;
-		top: 13px;
-	}
-}
+
 .submit{
 	&:hover{
 		background: $powergreen;

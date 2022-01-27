@@ -15,26 +15,6 @@ import { getCandidateById } from '../services/axios.CRUD.service';
 const Studentpage = (props) => {
     const [loading, setLoading] = useState(true);
     const [candidate, setCandidate] = useState("");
-
-  
-    /* const [name, setName] = useState("Nombre Completo");
-    const [city, setCity] = useState('Ciudad');
-    const [country, setCountry] = useState('País');
-    const [remote, setRemote] = useState('Presencialidad');
-    const [transfer, setTransfer] = useState('Traslado');
-    const [status, setStatus] = useState('No definido'); */
-
-    useEffect(() => {
-
-        setTimeout(()=>{
-            setLoading(false);
-
-        },200);
-
-        getCandidateById(token,id,setCandidate);
-
-
-    },[])
     const {id} = useParams();
 
     const authTokenRemember = localStorage.getItem('TOKEN_KEY');
@@ -50,14 +30,6 @@ const Studentpage = (props) => {
     let mail = candidate.email;
     let linkedin = candidate.enlaceLinkedin;
 
-    let nameChange;
-    let cityChange; 
-    let countryChange;
-    let remoteChange;
-    let transferChange;
-    let statusChange;
-
-
     //Obtención del token
     let token;
     if(authTokenRemember===null){
@@ -66,7 +38,17 @@ const Studentpage = (props) => {
         token=authTokenRemember;
     }
    
+    useEffect(() => {
 
+        setTimeout(()=>{
+            setLoading(false);
+
+        },100);
+
+        getCandidateById(token,id,setCandidate);
+
+
+    },[token,id])
     return (
     <div className='studentsPage'>
             <MenuComponent/>
@@ -97,6 +79,9 @@ const Studentpage = (props) => {
                 <div className='student-menu-element'><Link to={`/open-recruiter/candidates/${id}/processes`}><h1>Procesos</h1></Link></div>
             </div>
             <StudentBodyComponent
+                loading={loading}
+                token={token}
+                id={id}
                 name={name}
                 city={city}
                 country={country}
@@ -106,12 +91,7 @@ const Studentpage = (props) => {
                 phonenumber={phonenumber}
                 mail={mail}
                 linkedin={linkedin}
-                setName={nameChange}
-                setCountry={countryChange}
-                setCity={cityChange}
-                setRemote={remoteChange}
-                setTransfer={transferChange}
-                setStatus={statusChange}
+
             ></StudentBodyComponent>
             </div>
         </div>

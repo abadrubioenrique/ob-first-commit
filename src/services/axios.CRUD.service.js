@@ -77,3 +77,26 @@ export const postCandidate= (token,name,country,city,phonenumber,mail,remote,tra
     ,{ headers }) ; 
 
 };
+
+//Actualizar candidato candidato
+export const putCandidate= (token,id,name,country,city,phonenumber,mail,remote,transfer,linkedin,status) => {
+    const headers = {
+        "content-type": "application/json",
+        Authorization: `Bearer ${JSON.parse(token).token}`,
+    };
+
+    return axiosConfig.put(`api/candidatos/${id}`, 
+    { 
+        nombreCompleto: name,
+        pais:country,
+        ciudad:city,
+        telefono: phonenumber, 
+        email:mail,
+        remoto:remote,
+        disponibilidadTraslado:transfer,
+        enlaceLinkedin:linkedin,
+        estado:status
+    } 
+    ,{ headers }) ; 
+
+};

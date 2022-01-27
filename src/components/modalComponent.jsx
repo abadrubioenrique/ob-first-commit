@@ -4,17 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import '../styles/select.scss'
 import '../styles/modal.scss';
 import Tagcomponent from './tagComponent';
-import { postCandidate } from '../services/axios.CRUD.service';
+import { postCandidate, putCandidate } from '../services/axios.CRUD.service';
 import { countries } from '../db/countries';
 import { cities } from '../db/cities';
 const ModalComponent = (props) => {
     const [tags, setTags] = useState([]);
-    const [requestError, setRequestError] = useState('');
     const dispatch = useDispatch();
     const [onFilter, setOnFilter] = useState(false);
     const [datos, setDatos] = useState(
         {
-            data: [],
             form: {
                 name : '',
                 country:'',
@@ -51,8 +49,6 @@ const ModalComponent = (props) => {
     const handleSubmit = async e => {
 
         e.preventDefault();
-        setRequestError('');
-
         let name = datos.form.name;
         let country = datos.form.country;
         let city = datos.form.city;
@@ -64,7 +60,11 @@ const ModalComponent = (props) => {
 
         postCandidate(token,name,country,city,phonenumber,mail,remote,transfer,linkedin).then(() => {
             window.location.reload();
-        })   
+        })  
+        
+/*        putCandidate(token,id,name,country,city,phonenumber,mail,remote,transfer,linkedin).then(() => {
+            window.location.reload();
+        }) */
         
     }
         
@@ -129,7 +129,7 @@ const ModalComponent = (props) => {
         <div className="Datos container">
             <div className="a">
                 <label className='credentials'>País</label>
-                <select defaultValue="" className='input-text custom-select' name="country" id="country" required onChange={handleChange} value={form ? form.country : ''}>
+                <select className='input-text custom-select' name="country" id="country" required onChange={handleChange} value={form ? form.country : ''}>
                     <option value="" disabled>Elige una opcion</option>  
                     {countries.map((option) => (
               <option key={option.value} value={option.value}>{option.value}</option>
@@ -139,7 +139,7 @@ const ModalComponent = (props) => {
             </div>
             <div className="b">
                 <label className='credentials' >Ciudad</label>
-                <select defaultValue="" className='input-text custom-select' name="city" id="city" required onChange={handleChange} value={form ? form.city : ''}>
+                <select className='input-text custom-select' name="city" id="city" required onChange={handleChange} value={form ? form.city : ''}>
                     <option value="" disabled>Elige una opcion</option>  
                     {cities.map((option) => (
               <option key={option.value} value={option.value}>{option.value}</option>
@@ -156,7 +156,7 @@ const ModalComponent = (props) => {
             </div>
             <div className="e">
                 <label className='credentials'>Presencialidad</label>
-                <select defaultValue="" className='input-text custom-select' name="remote" id="remote" onChange={handleChange} value={form ? form.remote : ''}>
+                <select className='input-text custom-select' name="remote" id="remote" onChange={handleChange} value={form ? form.remote : ''}>
                     <option value="" disabled>Elige una opción</option>
                     <option value={false}>Presencial</option>
                     <option value={true}>En remoto</option>
@@ -164,7 +164,7 @@ const ModalComponent = (props) => {
             </div>
             <div className="f">
                 <label className='credentials'>Traslado</label>
-                <select defaultValue="" className='input-text custom-select' name="transfer" id="transfer" onChange={handleChange} value={form ? form.transfer : ''}>
+                <select className='input-text custom-select' name="transfer" id="transfer" onChange={handleChange} value={form ? form.transfer : ''}>
                     <option value="" disabled>Elige una opción</option>
                     <option value={true}>Si</option>
                     <option value={false}>No</option>
