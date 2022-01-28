@@ -5,7 +5,6 @@ import HeaderComponent from '../components/headerComponent';
 import MenuComponent from '../components/menuComponent';
 import ModalComponent from '../components/modalComponent';
 import TableComponent from '../components/tableComponent';
-import { LEVELS } from '../models/faceToFace-enum';
 import { Student } from '../models/student.class';
 import '../styles/users.scss';
 const Customerspage  = ()=> {

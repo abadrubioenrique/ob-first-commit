@@ -1,6 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import { LEVELS } from '../models/faceToFace-enum';
-import { useDispatch, useSelector } from 'react-redux';
+import React, {useState} from 'react';
 import '../styles/select.scss'
 import '../styles/modal.scss';
 import Tagcomponent from './tagComponent';
@@ -9,7 +7,6 @@ import { countries } from '../db/countries';
 import { cities } from '../db/cities';
 const ModalComponent = (props) => {
     const [tags, setTags] = useState([]);
-    const dispatch = useDispatch();
     const [onFilter, setOnFilter] = useState(false);
     const [datos, setDatos] = useState(
         {

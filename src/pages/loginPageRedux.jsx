@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { Checkbox } from '../components/checkbox';
 import { login,loginRemember } from '../store/slices/auth';
 import '../styles/login.scss';

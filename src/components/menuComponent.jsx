@@ -1,5 +1,5 @@
 import React from 'react';
-import {  NavLink, useNavigate } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
 import '../styles/menu.scss'
 const MenuComponent = () => {
     return (

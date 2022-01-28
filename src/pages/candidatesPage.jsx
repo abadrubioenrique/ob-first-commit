@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import FilterComponentCandidates from '../components/derivados/candidate/filterComponentCandidates';
 import HeaderComponent from '../components/headerComponent';
 import MenuComponent from '../components/menuComponent';
 import ModalComponent from '../components/modalComponent';
 import TableComponent from '../components/derivados/candidate/candidateTableComponent';
-import { LEVELS } from '../models/faceToFace-enum';
 import { Student } from '../models/student.class';
 import '../styles/users.scss';
 import { CANDIDATE_STATUS } from '../models/candidate-enum';
