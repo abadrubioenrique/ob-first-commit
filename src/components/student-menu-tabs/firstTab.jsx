@@ -3,22 +3,23 @@ import TagComponentAvanced from '../derivados/tags/tagComponent';
 
 
 const FirstTab = (props) => {
-    const [onFilter, setOnFilter] = useState();
     return (
     <div className="FirstTab">
         <TagComponentAvanced
-            options={['HTML&CSS','REACT', 'ANGULAR', 'VUEJS']}
+            options={props.tecOptions}
             suboptions={['INIC.','INTER.','AVAN.']}
             tagname = 'Tecnologías'
             tags = {props.tags}
             setTags = {props.setTags}
+            length = "4"
         ></TagComponentAvanced>
         <TagComponentAvanced
-            options={['INGLÉS','ESPAÑOL', 'FRANCÉS', 'ALEMÁN']}
-            suboptions={['BASICO','INTER.','NATIVO']}
+            options={props.lenguageOptions}
+            suboptions={['BÁSICO','INTER.','AVAN.','NATIVO']}
             tagname = 'Idiomas'
             tags = {props.languages}
             setTags = {props.setLanguages}
+            length="5"
         ></TagComponentAvanced>
     </div>
     );

@@ -37,6 +37,25 @@ const StudentBodyComponent = (props) => {
             }
         })
         if((props.transfer==null || props.remote==null || props.linkedin == null)){
+            let transfer;
+            let remote ;
+            let linkedin;
+            if(props.transfer==null){
+                transfer = "";
+            }else{
+                transfer=props.transfer;
+            }
+            if(props.remote==null){
+                remote = "";
+            }else{
+                remote=props.remote;
+            }
+            if(props.linkedin==null){
+                linkedin = "";
+            }else{
+                linkedin=props.linkedin;
+            }
+           
             setDatos( {
                 form: {
                     name :props.name,
@@ -44,9 +63,9 @@ const StudentBodyComponent = (props) => {
                     city:props.city,
                     phonenumber : props.phonenumber,
                     mail : props.mail,
-                    remote:"",
-                    transfer:"",
-                    linkedin:"",
+                    remote:remote,
+                    transfer:transfer,
+                    linkedin:linkedin,
                     status:props.status
                 }
             })

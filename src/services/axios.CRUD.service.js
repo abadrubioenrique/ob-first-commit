@@ -17,6 +17,23 @@ export const getTecnologias = async (token, setTecnologiasOptions) => {
         });
 };
 
+// Obtener tecnologías
+export const getIdiomas = async (token, setLenguageOptions) => {
+    const headers = {
+        "content-type": "application/json",
+        Authorization: `Bearer ${JSON.parse(token).token}`,
+    };
+    return await axiosConfig
+        .get('api/idiomas', { headers })
+        .then((response) => {
+            if (response.data) {
+                const res =response.data.data.data;
+                setLenguageOptions(res.map(opt=>opt.nombre))
+            }
+            return response.data;
+        });
+};
+
 
 // Obtener candidatos
 export const getCandidatesInfo = async(token, setCandidates, candidates, setCandidatesFilter) => {

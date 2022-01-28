@@ -1,8 +1,7 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import '../../../styles/users.scss';
 import '../../../styles/select.scss';
 import Tagcomponent from '../../tagComponent';
-import axiosConfig from '../../../utils/config/axios.config';
 import { cities } from '../../../db/cities';
 import { countries } from '../../../db/countries';
 import { Checkbox } from '../../checkbox';

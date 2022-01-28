@@ -35,6 +35,7 @@ const TagComponentAvanced = (props) => {
     const inputFoucus=()=>{
         setFocus((f)=>!f);
     }
+
     return (
         <div className='tags-main'>
             <i className="bi bi-chevron-down tags"></i>
@@ -42,14 +43,13 @@ const TagComponentAvanced = (props) => {
             <input onClick={inputFoucus} className='input-text' value={search}  onChange={(e)=> setSearch(e.target.value)}   type='text' placeholder='Escribe para buscar...'/>
             {focus ? 
             (<div className="tag-container">
-                <select multiple size={3} onChange={onChangeHandler} className="select">
+                <select multiple size={props.length} onChange={onChangeHandler} className="select">
 
                 {tagsFilter.map(opt =>
                 <optgroup label={opt} key={opt}>
                 {tagsSubOptions.map(subopt =>
                     <option key={opt+"-" + subopt} value={opt +" "+subopt}>{subopt}</option>
                 )};
-                
                 </optgroup>
                 )};
 
@@ -67,7 +67,7 @@ const TagComponentAvanced = (props) => {
                     </svg>
                     <span>{tag.split(' ')[1]}</span>
                 </p>
-                )}
+            )}
             </div>
             </div>
     );

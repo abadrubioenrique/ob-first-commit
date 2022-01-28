@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Link, useParams  } from "react-router-dom";
 import FirstTab from "./firstTab";
 import SecondTab from "./secondTab";
@@ -6,6 +6,7 @@ import '../../styles/tabsmenu.scss'
 import ThirdTab from "./thirdTab";
 import { PROCESS_STATUS } from "../../models/process-enum";
 import {Process} from '../../models/process.class';
+import { getIdiomas, getTecnologias } from "../../services/axios.CRUD.service";
 
 const TabsFather = (props) => {
   const process1 = new Process("Título Oferta 1","Empresa SA", 7, new Date('11-5-2022'),PROCESS_STATUS.CONTRATADO)
@@ -14,7 +15,8 @@ const TabsFather = (props) => {
   const process4 = new Process("Título Oferta 4","Empresa SA", 1, new Date('15 nov 2022'),PROCESS_STATUS.ESPERANDO_CV)
   const process5 = new Process("Título Oferta 5","Empresa SA", 2, new Date('18 nov 2022'),PROCESS_STATUS.RECHAZADO)
   const [processes, setProcesses] = useState([process1 , process2, process3, process4, process5]);
-
+  const [tecnologiasOptions, setTecnologiasOptions] = useState(['']);
+  const [lenguagesOptions, setLenguagesOptions] = useState(['']);
   const {id} = useParams();
 
   let processesNum = processes.length;
@@ -31,6 +33,24 @@ const TabsFather = (props) => {
       const handleTab3 = () => {
         props.setActiveTab("tab3");
       };
+
+      const [loading, setLoading] = useState(true);
+      useEffect(() => {
+          setTimeout(()=>{
+              setLoading(false);
+          },500);
+          getTecnologias(token, setTecnologiasOptions)
+          getIdiomas(token, setLenguagesOptions)
+      },[])
+      const authTokenRemember = localStorage.getItem('TOKEN_KEY');
+      const authTokenSession = sessionStorage.getItem('TOKEN_KEY');
+      //Obtención del token
+      let token;
+      if(authTokenRemember===null){
+          token=authTokenSession;
+        }else{
+          token=authTokenRemember;
+      }
     return (
     <div className="tabs">
         <ul className="nav">
@@ -57,12 +77,14 @@ const TabsFather = (props) => {
         </li></Link>
       </ul>
         <div className="outlet">
-        {props.activeTab === "tab1" ? 
+        {((props.activeTab === "tab1")&&(loading===false)) ? 
         <FirstTab
-        tags = {tags}
-        setTags = {setTags}
-        languages ={languages}
-        setLanguages={setLanguages}
+          tecOptions = {tecnologiasOptions}
+          lenguageOptions = {lenguagesOptions}
+          tags = {tags}
+          setTags = {setTags}
+          languages ={languages}
+          setLanguages={setLanguages}
 
         />
          : null}

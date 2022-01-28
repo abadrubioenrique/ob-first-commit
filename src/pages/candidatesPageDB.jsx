@@ -1,15 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import FilterComponentCandidates from '../components/derivados/candidate/filterComponentCandidates';
 import HeaderComponent from '../components/headerComponent';
 import MenuComponent from '../components/menuComponent';
 import ModalComponent from '../components/modalComponent';
 import TableComponent from '../components/derivados/candidate/candidateTableComponent';
-import { LEVELS } from '../models/faceToFace-enum';
-import { Student } from '../models/student.class';
 import '../styles/users.scss';
-import { CANDIDATE_STATUS } from '../models/candidate-enum';
-import axiosConfig from '../utils/config/axios.config';
 
 //spinner
 import '../styles/spinner.scss';
@@ -29,7 +24,7 @@ const CandidatespageDB = () => {
     useEffect(() => {
         setTimeout(()=>{
             setLoading(false);
-        },200);
+        },500);
         getCandidatesInfo(token, setCandidates, candidates, setCandidatesFilter);
         getTecnologias(token, setTecnologiasOptions)
     },[])
