@@ -6,7 +6,7 @@ import '../../styles/tabsmenu.scss'
 import ThirdTab from "./thirdTab";
 import { PROCESS_STATUS } from "../../models/process-enum";
 import {Process} from '../../models/process.class';
-import { getIdiomas, getTecnologias } from "../../services/axios.CRUD.service";
+import { getCandidateById, getIdiomas, getTecnologias } from "../../services/axios.CRUD.service";
 
 const TabsFather = (props) => {
   const process1 = new Process("Título Oferta 1","Empresa SA", 7, new Date('11-5-2022'),PROCESS_STATUS.CONTRATADO)
@@ -17,40 +17,43 @@ const TabsFather = (props) => {
   const [processes, setProcesses] = useState([process1 , process2, process3, process4, process5]);
   const [tecnologiasOptions, setTecnologiasOptions] = useState(['']);
   const [lenguagesOptions, setLenguagesOptions] = useState(['']);
+  const [candidate, setCandidate] = useState("");
+  const [loading, setLoading] = useState(true);
   const {id} = useParams();
 
   let processesNum = processes.length;
+  const [tags, setTags] = useState([]);
+  const [languages, setLanguages] = useState([]);
+  const authTokenRemember = localStorage.getItem('TOKEN_KEY');
+  const authTokenSession = sessionStorage.getItem('TOKEN_KEY');
+  //Obtención del token
+  let token;
+  if(authTokenRemember===null){
+      token=authTokenSession;
+    }else{
+      token=authTokenRemember;
+  }
+    useEffect(() => {
+        setTimeout(()=>{
+            setLoading(false);
+        },500);
+        getCandidateById(token,id,setCandidate);
+        getTecnologias(token, setTecnologiasOptions)
+        getIdiomas(token, setLenguagesOptions)
+    },[])
+     
+  const handleTab1 = () => {
+    props.setActiveTab("tab1");
+  };
 
-    const [tags, setTags] = useState([]);
-    const [languages, setLanguages] = useState([]);
-    const handleTab1 = () => {
-        props.setActiveTab("tab1");
-      };
+  const handleTab2 = () => {
+    props.setActiveTab("tab2");
+  };
+  const handleTab3 = () => {
+    props.setActiveTab("tab3");
+  };
+  console.log(candidate)
 
-      const handleTab2 = () => {
-        props.setActiveTab("tab2");
-      };
-      const handleTab3 = () => {
-        props.setActiveTab("tab3");
-      };
-
-      const [loading, setLoading] = useState(true);
-      useEffect(() => {
-          setTimeout(()=>{
-              setLoading(false);
-          },500);
-          getTecnologias(token, setTecnologiasOptions)
-          getIdiomas(token, setLenguagesOptions)
-      },[])
-      const authTokenRemember = localStorage.getItem('TOKEN_KEY');
-      const authTokenSession = sessionStorage.getItem('TOKEN_KEY');
-      //Obtención del token
-      let token;
-      if(authTokenRemember===null){
-          token=authTokenSession;
-        }else{
-          token=authTokenRemember;
-      }
     return (
     <div className="tabs">
         <ul className="nav">

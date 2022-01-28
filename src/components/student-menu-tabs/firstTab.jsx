@@ -3,6 +3,8 @@ import TagComponentAvanced from '../derivados/tags/tagComponent';
 
 
 const FirstTab = (props) => {
+
+    
     return (
     <div className="FirstTab">
         <TagComponentAvanced

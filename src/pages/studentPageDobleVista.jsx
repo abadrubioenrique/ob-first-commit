@@ -1,16 +1,12 @@
 import React,{useState, useEffect} from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
-import { LEVELS } from '../models/faceToFace-enum';
-import {CANDIDATE_STATUS} from '../models/candidate-enum';
 import '../styles/users.scss';
 import '../styles/student.scss';
 import '../styles/select.scss';
-import Tagcomponent from '../components/tagComponent';
 import MenuComponent from '../components/menuComponent';
 import HeaderComponent from '../components/headerComponent';
 import StudentHeaderComponent from '../components/student/studentHeaderComponent';
 import StudentBodyComponent from '../components/derivados/student/studentBodyDoubleComponent';
-import TabsFather from '../components/student-menu-tabs/tabsFather';
 import { getCandidateById } from '../services/axios.CRUD.service';
 
 const StudentpageDouble = () => {
@@ -39,16 +35,12 @@ const StudentpageDouble = () => {
     }
    
     useEffect(() => {
-
         setTimeout(()=>{
             setLoading(false);
-
-        },100);
-
+        },200);
         getCandidateById(token,id,setCandidate);
-
-
     },[token,id])
+    
     return (
     <div className='studentsPage'>
             <MenuComponent/>
@@ -83,7 +75,6 @@ const StudentpageDouble = () => {
         </div>
 
         <div className='little'>
-
             <Outlet/>
         </div>
         </div>
