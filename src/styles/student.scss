@@ -498,3 +498,22 @@
 		}
 	}
 }
+
+.cambios-tec{
+	position: absolute;
+	right: 220px;
+	margin: 0 auto;
+	display: flex;
+	z-index: 4;
+	p{
+		margin-top: 12px;
+		margin-right: 20px;
+		color: $green-black;
+	}
+	button{
+		background-color: $powergreen;
+		&:hover{
+			background-color:$green-black;
+		}
+	}
+}

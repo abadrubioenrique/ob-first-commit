@@ -21,15 +21,22 @@ const TabsFather = (props) => {
   const [loading, setLoading] = useState(true);
   const {id} = useParams();
   let processesNum = processes.length;
-  const [tags, setTags] = useState([]);
-  const [languages, setLanguages] = useState([]);
-  const authTokenRemember = localStorage.getItem('TOKEN_KEY');
-  const authTokenSession = sessionStorage.getItem('TOKEN_KEY');
+
+  const [tags, setTags] = useState("");
+  const [tecFromDB, setTecFromDB]= useState("")
+  const [languages, setLanguages] = useState("");
+  const [langFromDB, setLangFromDB]=useState("")
 
   //Suboptions
   const tecSubOptions=['INIC.','INTER.','AVAN.'];
   const lenguageSubOptions=['BÁSICO','INTER.','AVAN.','NATIVO'];
+  
+  //Cambios en las etiquetas
+  const [cambios,setCambios] = useState(false)
+  
   //Obtención del token
+  const authTokenRemember = localStorage.getItem('TOKEN_KEY');
+  const authTokenSession = sessionStorage.getItem('TOKEN_KEY');
   let token;
   if(authTokenRemember===null){
       token=authTokenSession;
@@ -47,13 +54,26 @@ const TabsFather = (props) => {
           //Tecnologías
             setTags(candidate.tecnologias.map(tecnologia=>
               (tecnologia.nombre +" "+ (tecSubOptions[tecnologia.meta.pivot_nivel-1]))));
+            setTecFromDB(candidate.tecnologias.map(tecnologia=>
+              (tecnologia.nombre +" "+ (tecSubOptions[tecnologia.meta.pivot_nivel-1]))));
           //Idiomas
             setLanguages(candidate.idiomas.map(idioma=>
+              (idioma.nombre +" "+ (tecSubOptions[idioma.meta.pivot_nivel-1]))));
+            setLangFromDB(candidate.idiomas.map(idioma=>
               (idioma.nombre +" "+ (tecSubOptions[idioma.meta.pivot_nivel-1]))));
         }
         
     },[loading])
      
+    useEffect(() => {
+      if((JSON.stringify(tags) !== JSON.stringify(tecFromDB))
+      ||(JSON.stringify(languages) !== JSON.stringify(langFromDB))){
+        setCambios(true)
+      }
+    }, [tags,languages]);
+    
+    
+   
   const handleTab1 = () => {
     props.setActiveTab("tab1");
   };
@@ -102,7 +122,9 @@ const TabsFather = (props) => {
           setTags = {setTags}
           languages ={languages}
           setLanguages={setLanguages}
-
+          cambios={cambios}
+          token={token}
+          id={id}
         />)
          : null}
         {props.activeTab === "tab2" ? <SecondTab /> : null}

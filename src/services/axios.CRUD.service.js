@@ -116,3 +116,17 @@ export const putCandidate= (token,id,name,country,city,phonenumber,mail,remote,t
     ,{ headers }) ; 
 
 };
+
+export const putCandidateTecAndLanguage= (token, id, body) => {
+    const headers = {
+        "content-type": "application/json",
+        Authorization: `Bearer ${JSON.parse(token).token}`,
+    };
+
+    return axiosConfig.put(`api/candidatos/${id}`, 
+    
+        body
+    
+    ,{ headers }) ; 
+
+};
