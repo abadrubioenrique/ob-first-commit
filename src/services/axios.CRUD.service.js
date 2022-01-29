@@ -10,14 +10,13 @@ export const getTecnologias = async (token, setTecnologiasOptions) => {
         .get('api/tecnologias', { headers })
         .then((response) => {
             if (response.data) {
-                const res =response.data.data.data;
-                setTecnologiasOptions(res.map(opt=>opt.nombre))
+                setTecnologiasOptions(response.data.data.data.map(opt=>opt.nombre))
             }
             return response.data;
         });
 };
 
-// Obtener tecnologías
+// Obtener idiomas
 export const getIdiomas = async (token, setLenguageOptions) => {
     const headers = {
         "content-type": "application/json",

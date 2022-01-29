@@ -9,7 +9,7 @@ const FirstTab = (props) => {
     <div className="FirstTab">
         <TagComponentAvanced
             options={props.tecOptions}
-            suboptions={['INIC.','INTER.','AVAN.']}
+            suboptions={props.tecSubOptions}
             tagname = 'Tecnologías'
             tags = {props.tags}
             setTags = {props.setTags}
@@ -17,7 +17,7 @@ const FirstTab = (props) => {
         ></TagComponentAvanced>
         <TagComponentAvanced
             options={props.lenguageOptions}
-            suboptions={['BÁSICO','INTER.','AVAN.','NATIVO']}
+            suboptions={props.lenguageSubOptions}
             tagname = 'Idiomas'
             tags = {props.languages}
             setTags = {props.setLanguages}

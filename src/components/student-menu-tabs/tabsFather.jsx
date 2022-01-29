@@ -20,12 +20,15 @@ const TabsFather = (props) => {
   const [candidate, setCandidate] = useState("");
   const [loading, setLoading] = useState(true);
   const {id} = useParams();
-
   let processesNum = processes.length;
   const [tags, setTags] = useState([]);
   const [languages, setLanguages] = useState([]);
   const authTokenRemember = localStorage.getItem('TOKEN_KEY');
   const authTokenSession = sessionStorage.getItem('TOKEN_KEY');
+
+  //Suboptions
+  const tecSubOptions=['INIC.','INTER.','AVAN.'];
+  const lenguageSubOptions=['BÁSICO','INTER.','AVAN.','NATIVO'];
   //Obtención del token
   let token;
   if(authTokenRemember===null){
@@ -36,11 +39,20 @@ const TabsFather = (props) => {
     useEffect(() => {
         setTimeout(()=>{
             setLoading(false);
-        },500);
+        },600);
         getCandidateById(token,id,setCandidate);
         getTecnologias(token, setTecnologiasOptions)
         getIdiomas(token, setLenguagesOptions)
-    },[])
+        if((candidate!=="") && (loading===false)){
+          //Tecnologías
+            setTags(candidate.tecnologias.map(tecnologia=>
+              (tecnologia.nombre +" "+ (tecSubOptions[tecnologia.meta.pivot_nivel-1]))));
+          //Idiomas
+            setLanguages(candidate.idiomas.map(idioma=>
+              (idioma.nombre +" "+ (tecSubOptions[idioma.meta.pivot_nivel-1]))));
+        }
+        
+    },[loading])
      
   const handleTab1 = () => {
     props.setActiveTab("tab1");
@@ -52,7 +64,7 @@ const TabsFather = (props) => {
   const handleTab3 = () => {
     props.setActiveTab("tab3");
   };
-  console.log(candidate)
+
 
     return (
     <div className="tabs">
@@ -81,15 +93,17 @@ const TabsFather = (props) => {
       </ul>
         <div className="outlet">
         {((props.activeTab === "tab1")&&(loading===false)) ? 
-        <FirstTab
+        (<FirstTab
           tecOptions = {tecnologiasOptions}
+          tecSubOptions={tecSubOptions}
           lenguageOptions = {lenguagesOptions}
+          lenguageSubOptions={lenguageSubOptions}
           tags = {tags}
           setTags = {setTags}
           languages ={languages}
           setLanguages={setLanguages}
 
-        />
+        />)
          : null}
         {props.activeTab === "tab2" ? <SecondTab /> : null}
         {props.activeTab === "tab3" ? <ThirdTab 
