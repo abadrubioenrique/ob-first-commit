@@ -53,10 +53,11 @@
     border-radius: 4px;
 }
 
-
-.FirstTab{
-    border-top: 1px solid;
+.nav-tabs{
+    border-bottom: 1px solid;
     border-color: $grey-3;
+}
+.FirstTab{
     background: $white;
     padding: 20px;
     height: 100vh;
@@ -80,8 +81,6 @@
 }
 
 .SecondTab{
-    border-left: 1px solid;
-    border-color: $grey-3;
     height: 100vh;
     .pdf {
         embed {
@@ -94,8 +93,6 @@
 }
 
 .ThirdTab{
-    border-left: 1px solid;
-    border-color: $grey-3;
     height: 100vh;
     width: 100vh;
     padding: 20px;

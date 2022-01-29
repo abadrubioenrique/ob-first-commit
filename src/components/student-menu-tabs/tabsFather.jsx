@@ -56,7 +56,7 @@ const TabsFather = (props) => {
 
     return (
     <div className="tabs">
-        <ul className="nav">
+        <ul className="nav-tabs">
         <Link to={`/open-recruiter/candidates/${id}/abilities`}><li 
             className={props.activeTab === "tab1" ? "tab-active" : ""}
             onClick={handleTab1}
