@@ -12,7 +12,7 @@ const FirstTab = (props) => {
             "1": {
                 nivel: 1
             },
-            "2": {
+            "": {
                 nivel: 1
             },
         }
@@ -29,6 +29,7 @@ const FirstTab = (props) => {
     <div className="FirstTab">
         <TagComponentAvanced
             options={props.tecOptions}
+            ids={props.tecnologiasID}
             suboptions={props.tecSubOptions}
             tagname = 'Tecnologías'
             tags = {props.tags}
@@ -37,6 +38,7 @@ const FirstTab = (props) => {
         ></TagComponentAvanced>
         <TagComponentAvanced
             options={props.lenguageOptions}
+            ids={props.languagesID}
             suboptions={props.lenguageSubOptions}
             tagname = 'Idiomas'
             tags = {props.languages}

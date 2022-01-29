@@ -1,7 +1,7 @@
 import axiosConfig from '../utils/config/axios.config';
 
 // Obtener tecnologías
-export const getTecnologias = async (token, setTecnologiasOptions) => {
+export const getTecnologias = async (token, setTecnologiasOptions,setTecnologiasID) => {
     const headers = {
         "content-type": "application/json",
         Authorization: `Bearer ${JSON.parse(token).token}`,
@@ -10,14 +10,16 @@ export const getTecnologias = async (token, setTecnologiasOptions) => {
         .get('api/tecnologias', { headers })
         .then((response) => {
             if (response.data) {
-                setTecnologiasOptions(response.data.data.data.map(opt=>opt.nombre))
+                const res =response.data.data.data;
+                setTecnologiasOptions(res.map(opt=>opt.nombre))
+                setTecnologiasID(res.map(opt=>opt.id))
             }
             return response.data;
         });
 };
 
 // Obtener idiomas
-export const getIdiomas = async (token, setLenguageOptions) => {
+export const getIdiomas = async (token, setLanguagesOptions,setLanguagesID) => {
     const headers = {
         "content-type": "application/json",
         Authorization: `Bearer ${JSON.parse(token).token}`,
@@ -27,7 +29,8 @@ export const getIdiomas = async (token, setLenguageOptions) => {
         .then((response) => {
             if (response.data) {
                 const res =response.data.data.data;
-                setLenguageOptions(res.map(opt=>opt.nombre))
+                setLanguagesOptions(res.map(opt=>opt.nombre))
+                setLanguagesID(res.map(opt=>opt.id))
             }
             return response.data;
         });

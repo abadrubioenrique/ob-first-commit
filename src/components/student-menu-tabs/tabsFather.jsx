@@ -15,8 +15,12 @@ const TabsFather = (props) => {
   const process4 = new Process("Título Oferta 4","Empresa SA", 1, new Date('15 nov 2022'),PROCESS_STATUS.ESPERANDO_CV)
   const process5 = new Process("Título Oferta 5","Empresa SA", 2, new Date('18 nov 2022'),PROCESS_STATUS.RECHAZADO)
   const [processes, setProcesses] = useState([process1 , process2, process3, process4, process5]);
+
+
   const [tecnologiasOptions, setTecnologiasOptions] = useState(['']);
-  const [lenguagesOptions, setLenguagesOptions] = useState(['']);
+  const [tecnologiasID,setTecnologiasID] = useState(['']);
+  const [languagesOptions, setLanguagesOptions] = useState(['']);
+  const [languagesID,setLanguagesID] = useState(['']);
   const [candidate, setCandidate] = useState("");
   const [loading, setLoading] = useState(true);
   const {id} = useParams();
@@ -29,7 +33,7 @@ const TabsFather = (props) => {
 
   //Suboptions
   const tecSubOptions=['INIC.','INTER.','AVAN.'];
-  const lenguageSubOptions=['BÁSICO','INTER.','AVAN.','NATIVO'];
+  const languageSubOptions=['BÁSICO','INTER.','AVAN.','NATIVO'];
   
   //Cambios en las etiquetas
   const [cambios,setCambios] = useState(false)
@@ -48,8 +52,8 @@ const TabsFather = (props) => {
             setLoading(false);
         },600);
         getCandidateById(token,id,setCandidate);
-        getTecnologias(token, setTecnologiasOptions)
-        getIdiomas(token, setLenguagesOptions)
+        getTecnologias(token, setTecnologiasOptions,setTecnologiasID)
+        getIdiomas(token, setLanguagesOptions, setLanguagesID)
         if((candidate!=="") && (loading===false)){
           //Tecnologías
             setTags(candidate.tecnologias.map(tecnologia=>
@@ -64,16 +68,13 @@ const TabsFather = (props) => {
         }
         
     },[loading])
-     
     useEffect(() => {
       if((JSON.stringify(tags) !== JSON.stringify(tecFromDB))
       ||(JSON.stringify(languages) !== JSON.stringify(langFromDB))){
         setCambios(true)
       }
     }, [tags,languages]);
-    
-    
-   
+  
   const handleTab1 = () => {
     props.setActiveTab("tab1");
   };
@@ -115,9 +116,11 @@ const TabsFather = (props) => {
         {((props.activeTab === "tab1")&&(loading===false)) ? 
         (<FirstTab
           tecOptions = {tecnologiasOptions}
+          tecnologiasID={tecnologiasID}
           tecSubOptions={tecSubOptions}
-          lenguageOptions = {lenguagesOptions}
-          lenguageSubOptions={lenguageSubOptions}
+          lenguageOptions = {languagesOptions}
+          languagesID = {languagesID}
+          lenguageSubOptions={languageSubOptions}
           tags = {tags}
           setTags = {setTags}
           languages ={languages}

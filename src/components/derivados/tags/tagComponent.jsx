@@ -3,8 +3,10 @@ import React, {useState} from 'react';
 const TagComponentAvanced = (props) => {
     const [focus, setFocus] = useState(false);
     const [search, setSearch] = useState('');
+    /* const [tagsOptions, setTagsOptions] = useState(props.options); */
     const [tagsOptions, setTagsOptions] = useState(props.options);
     const [tagsSubOptions, setTagsSubOptions] = useState(props.suboptions);
+    const [tagsIDs,setTagsIDs] = useState(props.ids)
     //Añadir etiquetas
     const onChangeHandler = (event) => {
         const selectedOptions = event.currentTarget.selectedOptions;
@@ -36,20 +38,24 @@ const TagComponentAvanced = (props) => {
         setFocus((f)=>!f);
     }
 
+
     return (
         <div className='tags-main'>
+        
             <i className="bi bi-chevron-down tags"></i>
             <label className='credentials '>{props.tagname}</label>
+
             <input onClick={inputFoucus} className='input-text' value={search}  onChange={(e)=> setSearch(e.target.value)} type='text' placeholder='Escribe para buscar...'/>
             {focus ? 
+            
             (<div className="tag-container">
                 <select multiple size={props.length} onChange={onChangeHandler} className="select">
-
                 {tagsFilter.map(opt =>
-                <optgroup label={opt} key={opt}>
-                {tagsSubOptions.map(subopt =>
-                    <option key={opt+"-" + subopt} value={opt +" "+subopt}>{subopt}</option>
+                <optgroup label={opt} key={opt}> 
+                {tagsSubOptions.map((subopt,index) =>
+                    <option key={opt+"-" + subopt} value={opt +" "+subopt +" " + index}>{subopt}</option>
                 )};
+               
                 </optgroup>
                 )};
 
@@ -69,6 +75,9 @@ const TagComponentAvanced = (props) => {
                 </p>
             )}
             </div>
+
+
+
             </div>
     );
 }
