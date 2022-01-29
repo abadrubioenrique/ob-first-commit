@@ -29,7 +29,7 @@ const FirstTab = (props) => {
     <div className="FirstTab">
         <TagComponentAvanced
             options={props.tecOptions}
-            ids={props.tecnologiasID}
+            id={props.tecnologiasID}
             suboptions={props.tecSubOptions}
             tagname = 'Tecnologías'
             tags = {props.tags}
@@ -38,7 +38,7 @@ const FirstTab = (props) => {
         ></TagComponentAvanced>
         <TagComponentAvanced
             options={props.lenguageOptions}
-            ids={props.languagesID}
+            id={props.languagesID}
             suboptions={props.lenguageSubOptions}
             tagname = 'Idiomas'
             tags = {props.languages}

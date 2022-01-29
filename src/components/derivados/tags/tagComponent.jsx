@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 const TagComponentAvanced = (props) => {
     const [focus, setFocus] = useState(false);
     const [search, setSearch] = useState('');
-    /* const [tagsOptions, setTagsOptions] = useState(props.options); */
     const [tagsOptions, setTagsOptions] = useState(props.options);
     const [tagsSubOptions, setTagsSubOptions] = useState(props.suboptions);
     const [tagsIDs,setTagsIDs] = useState(props.ids)
