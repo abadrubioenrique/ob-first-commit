@@ -7,8 +7,7 @@
 }
 
 .tabs{
-    border-left: 1px solid;
-    border-color: $grey-3;
+    border-left: 1px solid  $grey-3;
     height: 100vh;
     ul{
         cursor: pointer;
@@ -16,8 +15,7 @@
         list-style: none;
         margin: 0;
         padding: 0;
-        border-bottom: 1px solid;
-        border-color: $grey-3;
+        border-bottom: 1px solid $grey-3;
         a{
             text-decoration: none;
         }
