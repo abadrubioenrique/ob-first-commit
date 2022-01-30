@@ -1,13 +1,10 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState} from 'react';
 import '../styles/select.scss'
 import '../styles/modal.scss';
-import { getTecnologiasPure, postCandidate, putCandidate } from '../services/axios.CRUD.service';
+import Tagcomponent from './tagComponent';
+import { postCandidate, putCandidate } from '../services/axios.CRUD.service';
 import { countries } from '../db/countries';
 import { cities } from '../db/cities';
-import TagComponentAvanced from './derivados/tags/tagComponent';
-import { levels } from '../models/niveles';
-import { Tecnologia } from '../models/tecnologia.class';
-import { TagsDB } from '../models/tagdb.class';
 const ModalComponent = (props) => {
     const [tags, setTags] = useState([]);
     const [onFilter, setOnFilter] = useState(false);
@@ -35,18 +32,8 @@ const ModalComponent = (props) => {
       }else{
         token=authTokenRemember;
     }
-     //Body
-     const [body,setBody]=useState("");
-     const [tecnologias,setTecnologias]=useState("")
-     useEffect(() => {
-         if(tags!==''){
-             const tecs=(tags.map((tag) =>(new TagsDB(tag.split(' ')[2],tag.split(' ')[3]))));
-             const bodyTec=(tecs.map(tec =>`"${tec.id}": { "nivel": ${tec.nivel}}`))      
-             setTecnologias(`{${bodyTec}`) 
-           }  
 
-       }, [tags,tecnologias]);
-        const handleChange = async e => {
+    const handleChange = async e => {
         e.persist();
         await setDatos({
             form: {
@@ -63,21 +50,24 @@ const ModalComponent = (props) => {
         let country = datos.form.country;
         let city = datos.form.city;
         let phonenumber = datos.form.phonenumber;
-        let mail = datos.form.mail;     
-        let tec = tecnologias;
-        const body= (`{"nombreCompleto":"${name}","pais":"${country}","ciudad":"${city}","telefono":"${phonenumber}","email":"${mail}","tecnologias":${tec}}}`);
-        console.log(body)
-        postCandidate(token,body).then(() => {
+        let mail = datos.form.mail;       
+        let remote = datos.form.remote;
+        let transfer = datos.form.transfer;
+        let linkedin = datos.form.linkedin;
+
+        postCandidate(token,name,country,city,phonenumber,mail,remote,transfer,linkedin).then(() => {
             window.location.reload();
-        })
-
-
-    } 
+        })  
+        
+/*        putCandidate(token,id,name,country,city,phonenumber,mail,remote,transfer,linkedin).then(() => {
+            window.location.reload();
+        }) */
+        
+    }
+        
     
 
     const { form } = datos;
-   
-
     return (
 
     <div className="modal">
@@ -120,14 +110,13 @@ const ModalComponent = (props) => {
         </div>
         <div className="d1">
 
-        <TagComponentAvanced
-            options={props.tecnologiasData}
-            suboptions={props.tecSubOptions}
+        <Tagcomponent
+            options={['HTML&CSS','REACT', 'ANGULAR', 'VUEJS']}
             tagname = 'Tecnologías'
             tags = {tags}
             setTags = {setTags}
-            length = "4"
-        ></TagComponentAvanced>
+            setOnFilter={setOnFilter}
+          ></Tagcomponent>
 
         </div>
         <div className="f1">

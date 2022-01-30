@@ -2,11 +2,9 @@ import react, {useState, useEffect} from "react";
 import Loginpage from "./pages/loginPageRedux";
 import {  Route, Routes, Navigate, HashRouter  } from 'react-router-dom';
 import Customerspage from "./pages/customersPage";
+import CandidatespageDB from "./pages/candidatesPageDB";
 import Notfoundpage from "./pages/404";
 import Studentpage from "./pages/studentPage";
-import ModalComponent from "./components/modalComponent";
-import MenuComponent from "./components/menuComponent";
-import Candidatespage from "./pages/candidatesPage";
 import StudentpageDouble from "./pages/studentPageDobleVista";
 import TabsFather from "./components/student-menu-tabs/tabsFather";
 
@@ -16,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearMessage } from './store/slices/message';
 
 import { PrivateOutlet } from './routers/PrivateOutlet';
-import CandidatespageDB from "./pages/candidatesPageDB";
+
 
 function App() {
   const [activeTab, setActiveTab] = useState("tab1");

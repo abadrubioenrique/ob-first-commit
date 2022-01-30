@@ -11,7 +11,9 @@ import '../styles/spinner.scss';
 import FilterComponentCandidatesEmpty from '../components/derivados/candidate/filterComponentCandidatesEmpty';
 
 //Services
-import {getTecnologias,getCandidatesInfo} from '../services/axios.CRUD.service'
+import {getTecnologias,getCandidatesInfo, getTecnologiasPure} from '../services/axios.CRUD.service'
+import { levels } from '../models/niveles';
+import { Tecnologia } from '../models/tecnologia.class';
 
 
 const CandidatespageDB = () => {
@@ -93,10 +95,43 @@ const CandidatespageDB = () => {
         else if(candidate.estado === filterStatus)
         return candidate;
     });
+
+    //Tecnologias Modal
+    //Options
+    const [tecnologiasPure,setTecnologiasPure]= useState(['']);
+    const [tecnologiasData,setTecnologiasData] = useState(['']);
+    //Suboptions
+    const tec1=[new levels(1,'INIC.')]
+    const tec2=[new levels(2,'INTER.')]
+    const tec3=[new levels (3,'AVAN.')]
+    const tecSubOptions=[tec1,tec2,tec3];
+    useEffect(() => {
+        setTimeout(()=>{
+            setLoading(false);
+        },700);
+
+        getTecnologiasPure(token, setTecnologiasPure);
+        
+  
+      },[loading])
+
+    useEffect(() => {
+    if((tecnologiasPure!==[''])){
+        setTecnologiasData(tecnologiasPure.map(tecnologia=>
+        new Tecnologia(tecnologia.id,tecnologia.nombre)
+        ))
+        
+    }
+
+    }, [tecnologiasPure]);
+  
     return (
         <div className='usersPage'>
             <MenuComponent/>
-            <HeaderComponent/>
+            <HeaderComponent
+            search={search}
+            setSearch={setSearch}
+            />
             <div className='usersPanel'>
                 <div className='students'>
                     <h2>Candidatos</h2>
@@ -217,6 +252,8 @@ const CandidatespageDB = () => {
                 {isOpen ? <ModalComponent 
                     modal="candidato"
                     setIsOpen={setIsOpen}
+                    tecnologiasData={tecnologiasData}
+                    tecSubOptions={tecSubOptions}
 
                  /> : null}
                 </div>

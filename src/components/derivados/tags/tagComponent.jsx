@@ -24,12 +24,12 @@ const TagComponentAvanced = (props) => {
 
     
 
-    //Buscar etiquetas
+/*     //Buscar etiquetas
     const tagsFilter = tagsOptions.filter((tag)=>{
         if(tag.toLocaleLowerCase().includes(search.toLowerCase())){
             return tag;
         }
-    });
+    }); */
 
     // Focus y activarFiltros
 
@@ -49,10 +49,11 @@ const TagComponentAvanced = (props) => {
             
             (<div className="tag-container">
                 <select multiple size={props.length} onChange={onChangeHandler} className="select">
-                {tagsFilter.map(opt =>
-                <optgroup label={opt} key={opt}> 
-                {tagsSubOptions.map((subopt,index) =>
-                    <option key={opt+"-" + subopt} value={opt +" "+subopt +" " + index}>{subopt}</option>
+                {tagsOptions.map(opt =>
+                <optgroup label={opt.name} key={opt.name}> 
+                {tagsSubOptions.map((subopt) =>
+                    <option key={opt.name+"-" + subopt[0].name} value={opt.name +" "+subopt[0].name +" " + opt.id+" "+subopt[0].id}>{subopt[0].name}</option>
+                    
                 )};
                
                 </optgroup>
@@ -71,6 +72,7 @@ const TagComponentAvanced = (props) => {
                     <path fillRule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
                     </svg>
                     <span>{tag.split(' ')[1]}</span>
+
                 </p>
             )}
             </div>

@@ -1,7 +1,7 @@
 import axiosConfig from '../utils/config/axios.config';
 
 // Obtener tecnologías
-export const getTecnologias = async (token, setTecnologiasOptions,setTecnologiasID) => {
+export const getTecnologias = async (token, setTecnologiasOptions) => {
     const headers = {
         "content-type": "application/json",
         Authorization: `Bearer ${JSON.parse(token).token}`,
@@ -12,14 +12,29 @@ export const getTecnologias = async (token, setTecnologiasOptions,setTecnologias
             if (response.data) {
                 const res =response.data.data.data;
                 setTecnologiasOptions(res.map(opt=>opt.nombre))
-                setTecnologiasID(res.map(opt=>opt.id))
+            }
+            return response.data;
+        });
+};
+
+export const getTecnologiasPure = async (token, setTecnologiasPure) => {
+    const headers = {
+        "content-type": "application/json",
+        Authorization: `Bearer ${JSON.parse(token).token}`,
+    };
+    return await axiosConfig
+        .get('api/tecnologias', { headers })
+        .then((response) => {
+            if (response.data) {
+                const res =response.data.data.data;
+                setTecnologiasPure(res);
             }
             return response.data;
         });
 };
 
 // Obtener idiomas
-export const getIdiomas = async (token, setLanguagesOptions,setLanguagesID) => {
+export const getIdiomas = async (token, setLanguagesOptions) => {
     const headers = {
         "content-type": "application/json",
         Authorization: `Bearer ${JSON.parse(token).token}`,
@@ -30,7 +45,22 @@ export const getIdiomas = async (token, setLanguagesOptions,setLanguagesID) => {
             if (response.data) {
                 const res =response.data.data.data;
                 setLanguagesOptions(res.map(opt=>opt.nombre))
-                setLanguagesID(res.map(opt=>opt.id))
+            }
+            return response.data;
+        });
+};
+
+export const getIdiomasPure = async (token, setLanguagesPure) => {
+    const headers = {
+        "content-type": "application/json",
+        Authorization: `Bearer ${JSON.parse(token).token}`,
+    };
+    return await axiosConfig
+        .get('api/idiomas', { headers })
+        .then((response) => {
+            if (response.data) {
+                const res =response.data.data.data;
+                setLanguagesPure(res)
             }
             return response.data;
         });
@@ -76,23 +106,16 @@ export const getCandidateById = async (token,id,setCandidate) => {
 
 
 //Crear candidato
-export const postCandidate= (token,name,country,city,phonenumber,mail,remote,transfer,linkedin) => {
+export const postCandidate= (token,body) => {
     const headers = {
         "content-type": "application/json",
         Authorization: `Bearer ${JSON.parse(token).token}`,
     };
 
     return axiosConfig.post('api/candidatos', 
-    { 
-        nombreCompleto: name,
-        pais:country,
-        ciudad:city,
-        telefono: phonenumber, 
-        email:mail,
-        remoto:remote,
-        disponibilidadTraslado:transfer,
-        enlaceLinkedin:linkedin
-    } 
+    
+    body
+
     ,{ headers }) ; 
 
 };

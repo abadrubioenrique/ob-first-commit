@@ -32,6 +32,7 @@ const loginRemember = (email, password) => {
 
 const logout = () => {
     localStorage.removeItem('TOKEN_KEY');
+    sessionStorage.removeItem('TOKEN_KEY');
 };
 
 const userService = {

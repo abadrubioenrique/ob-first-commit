@@ -6,30 +6,14 @@ import TagComponentAvanced from '../derivados/tags/tagComponent';
 const FirstTab = (props) => {
 
     const handleSubmit = e => {
-  
-    const body = {
-        tecnologias: {
-            "1": {
-                nivel: 1
-            },
-            "": {
-                nivel: 1
-            },
-        }
-    }
-    console.log(body)
-
-        putCandidateTecAndLanguage(props.token,props.id,body).then(() => {
+        putCandidateTecAndLanguage(props.token,props.id,props.body).then(() => {
             window.location.reload();
         })
-
-    }
-
+        }
     return (
     <div className="FirstTab">
         <TagComponentAvanced
             options={props.tecOptions}
-            id={props.tecnologiasID}
             suboptions={props.tecSubOptions}
             tagname = 'Tecnologías'
             tags = {props.tags}
@@ -38,7 +22,6 @@ const FirstTab = (props) => {
         ></TagComponentAvanced>
         <TagComponentAvanced
             options={props.lenguageOptions}
-            id={props.languagesID}
             suboptions={props.lenguageSubOptions}
             tagname = 'Idiomas'
             tags = {props.languages}

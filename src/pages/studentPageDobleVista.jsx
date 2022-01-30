@@ -12,6 +12,7 @@ import { getCandidateById } from '../services/axios.CRUD.service';
 const StudentpageDouble = () => {
     const [loading, setLoading] = useState(true);
     const [candidate, setCandidate] = useState("");
+    const [search,setSearch]=useState();
     const {id} = useParams();
     const authTokenRemember = localStorage.getItem('TOKEN_KEY');
     const authTokenSession = sessionStorage.getItem('TOKEN_KEY');
@@ -44,7 +45,10 @@ const StudentpageDouble = () => {
     return (
     <div className='studentsPage'>
         <MenuComponent/>
-        <HeaderComponent/>
+        <HeaderComponent
+            search={search}
+            setSearch={setSearch}
+            />
         <div className="usersPanel">
         <div className='rute'><Link to='/open-recruiter/candidates'><h1>Candidatos</h1></Link><i className="bi bi-chevron-left"></i><Link to={`/open-recruiter/candidates/${id}/abilities`}><h1 className='active-route'>{name}</h1></Link></div>
         <div className="students-data-double">

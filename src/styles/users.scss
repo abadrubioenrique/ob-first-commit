@@ -51,6 +51,12 @@
             padding-top: 4px;
             color: $grey-4;
         }  
+        &:hover{
+            cursor: pointer;
+            .dropdown-content {
+                display: flex;
+            }
+        }
         .name{
             margin: 9px 15px 9px 15px;
             padding: 0;
@@ -63,6 +69,7 @@
                 text-decoration: none;
                 color: $grey-black;
             }
+            
         }
         
         .user-icon{
@@ -84,6 +91,29 @@
                 padding: 10px;
             }
         }
+    }
+}
+.dropdown-content{
+    display: none;
+    color: $rejected;
+    position: absolute;
+    text-align: right;
+    top: 40px;
+    right: 30px;
+    width: 70px;
+    background-color: $grey-1;
+    border: 1px solid $grey-2;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 7px;
+    margin: 0;
+    z-index: 1;
+    p{
+        margin: 0;
+        margin-right:10px;
+    }
+    &:hover{
+        background-color: $grey-2;
+        cursor: pointer;
     }
 }
 
