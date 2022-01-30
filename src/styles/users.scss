@@ -288,7 +288,41 @@
         
     }
 }
+.btn-page{
+    cursor: pointer;
+    height: 40px;
+    padding: 5px 14px 5px 10px;
+    margin-right:5px;
+    margin-left: 5px;
+    border: 1px solid;
+    border-color: $grey-3;
+    border-radius: 8px;
+    background: $white;
+    color: $grey-black;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;  
+}
+.previusPage{
+    position: absolute;
+    display: flex;
+    top: 600px;
+    left:0;
+    p{
+        margin: 12px;
+    }
+}
+.nextPage{
+    position: absolute;
+    display: flex;
+    top: 600px;
+    left:0;
+    p{
+        margin: 12px;
+    }
+}
 
+    
 .search-filter{
     position: absolute;
     width: 330px;
@@ -358,6 +392,8 @@
         
     }
 }
+
+
 
 
 @media screen and (max-width: 767px) {

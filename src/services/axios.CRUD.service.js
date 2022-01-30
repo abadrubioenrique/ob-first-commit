@@ -68,13 +68,13 @@ export const getIdiomasPure = async (token, setLanguagesPure) => {
 
 
 // Obtener candidatos
-export const getCandidatesInfo = async(token, setCandidates, candidates, setCandidatesFilter) => {
+export const getCandidatesInfo = async(token, setCandidates, candidates, setCandidatesFilter,page) => {
     const headers = {
         "content-type": "application/json",
         Authorization: `Bearer ${JSON.parse(token).token}`,
     };
     return await axiosConfig
-        .get('api/candidatos', { headers })
+        .get(`api/candidatos?page=${page}`, { headers })
         .then((response) => {
             if (response.data) {
                 //localStorage.setItem('CANDIDATES', JSON.stringify(response.data.data.data));
