@@ -6,6 +6,7 @@ const TagComponentAvanced = (props) => {
     const [tagsOptions, setTagsOptions] = useState(props.options);
     const [tagsSubOptions, setTagsSubOptions] = useState(props.suboptions);
     const [tagsIDs,setTagsIDs] = useState(props.ids)
+    
     //Añadir etiquetas
     const onChangeHandler = (event) => {
         const selectedOptions = event.currentTarget.selectedOptions;
@@ -22,17 +23,14 @@ const TagComponentAvanced = (props) => {
         props.setTags(prevState => prevState.filter((tag, i) => i !== index))
     }
 
-    
-
-/*     //Buscar etiquetas
+    //Buscar etiquetas
     const tagsFilter = tagsOptions.filter((tag)=>{
-        if(tag.toLocaleLowerCase().includes(search.toLowerCase())){
+        if(tag.name.toLocaleLowerCase().includes(search.toLowerCase())){
             return tag;
         }
-    }); */
+    });
 
     // Focus y activarFiltros
-
     const inputFoucus=()=>{
         setFocus((f)=>!f);
     }
@@ -49,7 +47,7 @@ const TagComponentAvanced = (props) => {
             
             (<div className="tag-container">
                 <select multiple size={props.length} onChange={onChangeHandler} className="select">
-                {tagsOptions.map(opt =>
+                {tagsFilter.map(opt =>
                 <optgroup label={opt.name} key={opt.name}> 
                 {tagsSubOptions.map((subopt) =>
                     <option key={opt.name+"-" + subopt[0].name} value={opt.name +" "+subopt[0].name +" " + opt.id+" "+subopt[0].id}>{subopt[0].name}</option>
