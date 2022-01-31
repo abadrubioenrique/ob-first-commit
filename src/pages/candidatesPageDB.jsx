@@ -21,6 +21,7 @@ const CandidatespageDB = () => {
     const [candidatesFilter, setCandidatesFilter] = useState();
     const [tecnologiasOptions, setTecnologiasOptions] = useState(['']);
     const [page,setPage] = useState(1)
+    const [totalCandidates,setTotalCandidates]=useState(0)
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         setTimeout(()=>{
@@ -32,7 +33,7 @@ const CandidatespageDB = () => {
         setTimeout(()=>{
             setLoading(false);
         },500);
-        getCandidatesInfo(token, setCandidates, candidates, setCandidatesFilter,page);
+        getCandidatesInfo(token, setCandidates, candidates, setCandidatesFilter,setTotalCandidates,page);
     },[page])
 
     const authTokenRemember = localStorage.getItem('TOKEN_KEY');
@@ -137,6 +138,7 @@ const CandidatespageDB = () => {
     function nextPage(){
             setPage(page+1);
     }
+    console.log(totalCandidates)
     return (
         <div className='usersPage'>
             <MenuComponent/>
@@ -238,22 +240,29 @@ const CandidatespageDB = () => {
 
                 </div>
 
-                {page===1
+                {(totalCandidates>(page*10))
                 ?
                 (
-                <div className='previusPage'>
+                <div className='nextPage'>
                 <button className='btn-page' onClick={nextPage}><i className="bi bi-arrow-right"></i></button>                      
                 <p>Page {page}</p>
                 </div>)
                 :
+                    null
+                }
+                {((page>=2))
+                ?
                 (
-                <div className='nextPage'>
+                    <div className='previusPage'>
                     <button className='btn-page' onClick={previusPage}><i className="bi bi-arrow-left"></i></button>
                     <p>Page {page}</p>
-                </div>
-                )
+                </div>)
+                
+                :
+                
+                    null
                 }
-
+                
                 </div>
                 {loading===false ?
                 (<FilterComponentCandidates

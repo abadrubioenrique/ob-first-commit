@@ -68,7 +68,7 @@ export const getIdiomasPure = async (token, setLanguagesPure) => {
 
 
 // Obtener candidatos
-export const getCandidatesInfo = async(token, setCandidates, candidates, setCandidatesFilter,page) => {
+export const getCandidatesInfo = async(token, setCandidates, candidates, setCandidatesFilter,setTotalCandidates, page) => {
     const headers = {
         "content-type": "application/json",
         Authorization: `Bearer ${JSON.parse(token).token}`,
@@ -77,9 +77,10 @@ export const getCandidatesInfo = async(token, setCandidates, candidates, setCand
         .get(`api/candidatos?page=${page}`, { headers })
         .then((response) => {
             if (response.data) {
-                //localStorage.setItem('CANDIDATES', JSON.stringify(response.data.data.data));
                 setCandidates(response.data.data.data);
                 setCandidatesFilter(candidates);
+                const res = response.data.data.meta.total;
+                setTotalCandidates(res);
             }
 
             return response.data;
