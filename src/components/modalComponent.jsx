@@ -92,7 +92,7 @@ const ModalComponent = (props) => {
             <label className='credentials'>Nombre y Apellidos</label>
             <input className='input-text' type='text' name="name" id="name" placeholder='Ej: Juan Perez Lorca' required onChange={handleChange} value={form ? form.name : ''}/>
         </div>
-        <div className="b1">
+       {/*  <div className="b1">
             <label className='credentials'>Foto de perfil</label>
             <div className="upload">
                 <button className="btn-upload">
@@ -117,8 +117,8 @@ const ModalComponent = (props) => {
                     <p>Tamaño de archivo máximo:<span> 20 MB</span></p>
                 </div>
             </div>
-        </div>
-        <div className="d1">
+        </div> */}
+         <div className="d1">
 
         <TagComponentAvanced
             options={props.tecnologiasData}
@@ -129,11 +129,11 @@ const ModalComponent = (props) => {
             length = "4"
         ></TagComponentAvanced>
 
-        </div>
-        <div className="f1">
+        </div> 
+{/*         <div className="f1">
             <label className='credentials'>Perfil Linkedin</label>
             <input className='input-text' type='text' placeholder='Enlace a Linkedin'  name="linkedin" id="linkedin"  onChange={handleChange} value={form ? form.linkedin : ''}/>
-        </div>
+        </div> */}
         <div className="Datos container">
             <div className="a">
                 <label className='credentials'>País</label>
@@ -162,7 +162,7 @@ const ModalComponent = (props) => {
                 <label className='credentials'>Email</label>
                 <input className='input-text' type='email' placeholder='Ej: user@mail.com' name="mail" id="mail" required onChange={handleChange} value={form ? form.mail : ''}/>
             </div>
-            <div className="e">
+{/*             <div className="e">
                 <label className='credentials'>Presencialidad</label>
                 <select className='input-text custom-select' name="remote" id="remote" onChange={handleChange} value={form ? form.remote : ''}>
                     <option value="" disabled>Elige una opción</option>
@@ -177,7 +177,7 @@ const ModalComponent = (props) => {
                     <option value={true}>Si</option>
                     <option value={false}>No</option>
                 </select>
-            </div>
+            </div> */}
 
         </div>
         

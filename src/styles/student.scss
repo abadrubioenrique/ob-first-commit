@@ -204,10 +204,26 @@
 .j2{
 	grid-area: j2;
 	width: 100%;
+	.input-text {
+		margin: 0;
+		margin-top: 12px;
+		padding-right: 0;
+		padding-bottom: 10px;
+		width: calc(100% - 12px);
+		height: calc(40px - 24px);
+	}
 }
 .k2{
 	grid-area: k2;
 	width: 100%;
+	.input-text {
+		margin: 0;
+		margin-top: 12px;
+		padding-right: 0;
+		padding-bottom: 10px;
+		width: calc(100% - 12px);
+		height: calc(40px - 24px);
+	}
 }
 .student-info {
 	position: relative;

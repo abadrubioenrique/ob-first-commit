@@ -34,7 +34,7 @@ const StudentBodyComponent = (props) => {
                 remote:props.remote,
                 transfer:props.transfer,
                 linkedin:props.linkedin,
-                status:props.status
+                status:props.status,
             }
         })
         if((props.transfer==null || props.remote==null || props.linkedin == null)){
@@ -56,6 +56,7 @@ const StudentBodyComponent = (props) => {
             }else{
                 linkedin=props.linkedin;
             }
+            
            
             setDatos( {
                 form: {
@@ -67,7 +68,7 @@ const StudentBodyComponent = (props) => {
                     remote:remote,
                     transfer:transfer,
                     linkedin:linkedin,
-                    status:props.status
+                    status:props.status,
                 }
             })
         }
@@ -96,6 +97,7 @@ const StudentBodyComponent = (props) => {
         let transfer = datos.form.transfer;
         let linkedin = datos.form.linkedin;
         let status = datos.form.status;
+
         putCandidate(props.token,props.id,name,country,city,phonenumber,mail,remote,transfer,linkedin,status).then(() => {
             window.location.reload();
         })
@@ -170,7 +172,7 @@ const StudentBodyComponent = (props) => {
                             <option value="libre">Pendiente de ofertas</option>
                         </select>
                     </div>
-                    <div className="j2">
+                     {/* <div className="j2">
                         <label className='credentials'>Documento CV</label>
                         <div className="upload">
                             <button className="btn-upload">
@@ -182,7 +184,7 @@ const StudentBodyComponent = (props) => {
                             <i className="bi bi-trash"></i>
                             </button>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 {cambios?
                 (<div className='cambios-double'>
