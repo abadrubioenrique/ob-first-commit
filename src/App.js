@@ -1,7 +1,7 @@
 import react, {useState, useEffect} from "react";
 import Loginpage from "./pages/loginPageRedux";
 import {  Route, Routes, Navigate, HashRouter  } from 'react-router-dom';
-import Customerspage from "./pages/customersPage";
+import Customerspage from "./pages/customersPageDB";
 import CandidatespageDB from "./pages/candidatesPageDB";
 import Notfoundpage from "./pages/404";
 import Studentpage from "./pages/studentPage";

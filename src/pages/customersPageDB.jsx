@@ -1,22 +1,23 @@
 import { useState, useEffect } from 'react';
-import FilterComponentCandidates from '../components/derivados/candidate/filterComponentCandidates';
+import FilterComponentCustomers from '../components/derivados/customers/filterComponentCustomers';
 import HeaderComponent from '../components/headerComponent';
 import MenuComponent from '../components/menuComponent';
 import ModalComponent from '../components/modalComponent';
-import TableComponent from '../components/derivados/candidate/candidateTableComponent';
+import TableComponent from '../components/tableComponent';
+import { Student } from '../models/student.class';
 import '../styles/users.scss';
 
 //spinner
 import '../styles/spinner.scss';
-import FilterComponentCandidatesEmpty from '../components/derivados/candidate/filterComponentCandidatesEmpty';
+import FilterComponentCustomersEmpty from '../components/derivados/customers/filterComponentCustomersEmpty';
 
 //Services
 import {getTecnologias,getCandidatesInfo, getTecnologiasPure} from '../services/axios.CRUD.service'
 import { levels } from '../models/niveles';
 import { Tecnologia } from '../models/tecnologia.class';
+import FilterComponent from '../components/filterComponent';
 
-
-const CandidatespageDB = () => {
+const Customerspage  = ()=> {
     const [candidates, setCandidates] = useState("");
     const [candidatesFilter, setCandidatesFilter] = useState();
     const [tecnologiasOptions, setTecnologiasOptions] = useState(['']);
@@ -126,7 +127,6 @@ const CandidatespageDB = () => {
         setTecnologiasData(tecnologiasPure.map(tecnologia=>
         new Tecnologia(tecnologia.id,tecnologia.nombre)
         ))
-        
     }
 
     }, [tecnologiasPure]);
@@ -147,7 +147,7 @@ const CandidatespageDB = () => {
             />
             <div className='usersPanel'>
                 <div className='students'>
-                    <h2>Candidatos</h2>
+                    <h2>Clientes</h2>
                     <div className='search-bar'>
                     <i className="bi bi-search search-icon"></i>
                     <input 
@@ -181,7 +181,10 @@ const CandidatespageDB = () => {
                             </th>
 
                             <th className='phone'>Teléfono</th>
-                            <th onClick={() => {
+                            <th>
+                                Correo Electrónico 
+                            </th>
+                            <th className='end-table-status' onClick={() => {
                                 let newSortedList = sort_lists('tecnologias')
                                 if (newSortedList[0] === candidates[0]) newSortedList = sort_lists('tecnologias', true)
                                 setCandidates(newSortedList)
@@ -189,7 +192,7 @@ const CandidatespageDB = () => {
                                 Tecnologías 
                                 <i className="bi bi-arrow-down-up"></i>
                             </th>
-                            <th className='end-table-status'>Estado</th>
+                            
                             <th className='end-table'></th>
                         </tr>
                     </thead>
@@ -199,7 +202,7 @@ const CandidatespageDB = () => {
                         (onFilter ?
                             (studentFilters.map(candidate=>
 
-                            <TableComponent key={candidate.telefono}
+                                <TableComponent key={candidate.telefono}
                                 id={candidate.id}
                                 name={candidate.nombreCompleto}
                                 city={candidate.ciudad}
@@ -207,7 +210,7 @@ const CandidatespageDB = () => {
                                 phonenumber={candidate.telefono}
                                 tags={candidate.tecnologias.map(tecnologia=>
                                 (tecnologia.nombre))}
-                                status={candidate.estado}
+                                mail={candidate.email}
                             >                           
 
                             </TableComponent>  ) ) 
@@ -223,10 +226,9 @@ const CandidatespageDB = () => {
                             phonenumber={candidate.telefono}
                             tags={candidate.tecnologias.map(tecnologia=>
                             (tecnologia.nombre))}
-                            status={candidate.estado}
+                            mail={candidate.email}
                             >                           
-
-                            </TableComponent>  ) ) 
+                        </TableComponent>                          ) ) 
                         )
 
                         :
@@ -284,8 +286,10 @@ const CandidatespageDB = () => {
                 
                 
                 </div>
+ 
+                
                 {loading===false ?
-                (<FilterComponentCandidates
+                (<FilterComponentCustomers
                     options={tecnologiasOptions}
                     country={country}
                     setCountry={setCountry}
@@ -296,19 +300,18 @@ const CandidatespageDB = () => {
                     setTags = {setTags}
                     setFaceToFace={setFaceToFace}
                     setTransfer={setTransfer}
-                    setFilterStatus={setFilterStatus}
-                ></FilterComponentCandidates>)
+                ></FilterComponentCustomers>)
                 :  
-                (<FilterComponentCandidatesEmpty
+                (<FilterComponentCustomersEmpty
                     country={country}
                     city={city}
                     tags = {tags}
                     setTags = {setTags}
-                ></FilterComponentCandidatesEmpty>)
+                ></FilterComponentCustomersEmpty>)
                 }
                 <div>
                 {isOpen ? <ModalComponent 
-                    modal="candidato"
+                    modal="cliente"
                     setIsOpen={setIsOpen}
                     tecnologiasData={tecnologiasData}
                     tecSubOptions={tecSubOptions}
@@ -321,4 +324,4 @@ const CandidatespageDB = () => {
     );
 }
 
-export default CandidatespageDB;
+export default Customerspage;
