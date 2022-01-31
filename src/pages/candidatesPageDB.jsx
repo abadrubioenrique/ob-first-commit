@@ -239,29 +239,22 @@ const CandidatespageDB = () => {
 
 
                 </div>
-
                 {(totalCandidates>(page*10))
                 ?
                 (
+                    <div className='pages'>
+                <p>{page}</p>
                 <div className='nextPage'>
                 <button className='btn-page' onClick={nextPage}><i className="bi bi-arrow-right"></i></button>                      
-                <p>Page {page}</p>
-                </div>)
-                :
-                    null
-                }
-                {((page>=2))
-                ?
-                (
-                    <div className='previusPage'>
+                </div>
+                <div className='previusPage'>
                     <button className='btn-page' onClick={previusPage}><i className="bi bi-arrow-left"></i></button>
-                    <p>Page {page}</p>
-                </div>)
-                
+                </div>
+                </div>
+               )
                 :
-                
                     null
-                }
+                }               
                 
                 </div>
                 {loading===false ?
