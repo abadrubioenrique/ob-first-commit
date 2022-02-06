@@ -1,4 +1,4 @@
-import react, {useState, useEffect} from "react";
+import {useState} from "react";
 import Loginpage from "./pages/loginPageRedux";
 import {  Route, Routes, Navigate, HashRouter  } from 'react-router-dom';
 import Customerspage from "./pages/customersPageDB";
@@ -9,9 +9,7 @@ import StudentpageDouble from "./pages/studentPageDobleVista";
 import TabsFather from "./components/student-menu-tabs/tabsFather";
 
 //Redux 
-import { useDispatch, useSelector } from 'react-redux';
-//Slices
-import { clearMessage } from './store/slices/message';
+import { useSelector } from 'react-redux';
 
 import { PrivateOutlet } from './routers/PrivateOutlet';
 
@@ -22,15 +20,7 @@ function App() {
   const activeTab2 = "tab2";
   const activeTab3 = "tab3";
 
-  const { isLoggedIn, authToken : token } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if(isLoggedIn){
-    dispatch(clearMessage());
-  }
-     
-  }, [dispatch, isLoggedIn, token]);
+  const { isLoggedIn } = useSelector((state) => state.auth);
 
   return (
 <HashRouter>

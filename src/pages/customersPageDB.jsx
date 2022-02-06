@@ -19,11 +19,19 @@ import FilterComponent from '../components/filterComponent';
 
 const Customerspage  = ()=> {
     const [candidates, setCandidates] = useState("");
-    const [candidatesFilter, setCandidatesFilter] = useState();
     const [tecnologiasOptions, setTecnologiasOptions] = useState(['']);
     const [page,setPage] = useState(1)
     const [totalCandidates,setTotalCandidates]=useState(0)
     const [loading, setLoading] = useState(true);
+    const authTokenRemember = localStorage.getItem('TOKEN_KEY');
+    const authTokenSession = sessionStorage.getItem('TOKEN_KEY');
+    //Obtención del token
+    let token;
+    if(authTokenRemember===null){
+        token=authTokenSession;
+      }else{
+        token=authTokenRemember;
+    }
     useEffect(() => {
         setTimeout(()=>{
             setLoading(false);
@@ -34,18 +42,10 @@ const Customerspage  = ()=> {
         setTimeout(()=>{
             setLoading(false);
         },500);
-        getCandidatesInfo(token, setCandidates, candidates, setCandidatesFilter,setTotalCandidates,page);
-    },[page])
+        getCandidatesInfo(token, setCandidates,setTotalCandidates,page);
+    },[page, token])
 
-    const authTokenRemember = localStorage.getItem('TOKEN_KEY');
-    const authTokenSession = sessionStorage.getItem('TOKEN_KEY');
-    //Obtención del token
-    let token;
-    if(authTokenRemember===null){
-        token=authTokenSession;
-      }else{
-        token=authTokenRemember;
-    }
+    
     
     const [search, setSearch] = useState('');
     //Modal

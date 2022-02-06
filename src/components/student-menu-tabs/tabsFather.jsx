@@ -6,7 +6,7 @@ import '../../styles/tabsmenu.scss'
 import ThirdTab from "./thirdTab";
 import { PROCESS_STATUS } from "../../models/process-enum";
 import {Process} from '../../models/process.class';
-import { getCandidateById, getIdiomas, getIdiomasPure, getTecnologias, getTecnologiasPure} from "../../services/axios.CRUD.service";
+import { getCandidateById, getIdiomasPure,  getTecnologiasPure} from "../../services/axios.CRUD.service";
 import { Tecnologia } from "../../models/tecnologia.class";
 import { levels } from "../../models/niveles";
 import { TagsDB } from "../../models/tagdb.class";
@@ -18,7 +18,7 @@ const TabsFather = (props) => {
   const process3 = new Process("Título Oferta 3","Empresa SA", 3, new Date('10 nov 2022'),PROCESS_STATUS.ENTREVISTADO)
   const process4 = new Process("Título Oferta 4","Empresa SA", 1, new Date('15 nov 2022'),PROCESS_STATUS.ESPERANDO_CV)
   const process5 = new Process("Título Oferta 5","Empresa SA", 2, new Date('18 nov 2022'),PROCESS_STATUS.RECHAZADO)
-  const [processes, setProcesses] = useState([process1 , process2, process3, process4, process5]);
+  const processes= ([process1 , process2, process3, process4, process5]);
 
   const [tecnologiasPure,setTecnologiasPure]= useState(['']);
   const [tecnologiasData,setTecnologiasData] = useState(['']);
@@ -26,10 +26,6 @@ const TabsFather = (props) => {
   const [languagesPure,setLanguagesPure]= useState(['']);
   const [languagesData,setLanguagesData] = useState(['']);
 
-  const [tecnologiasOptions, setTecnologiasOptions] = useState(['']);
-  const [languagesOptions, setLanguagesOptions] = useState(['']);
-
-  const [languagesID,setLanguagesID] = useState(['']);
   const [candidate, setCandidate] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -41,15 +37,16 @@ const TabsFather = (props) => {
   const [langFromDB, setLangFromDB]=useState("")
 
   //Suboptions
+  //Tecnologias
   const tec1=[new levels(1,'INIC.')]
   const tec2=[new levels(2,'INTER.')]
   const tec3=[new levels (3,'AVAN.')]
   const tecSubOptions=[tec1,tec2,tec3];
+  //Languages
   const lang1=[new levels(1,'BÁSICO.')]
   const lang2=[new levels(2,'INTER.')]
   const lang3=[new levels (3,'AVAN.')]
   const lang4=[new levels(4,'NATIVO')]
-
   const languageSubOptions=[lang1,lang2,lang3,lang4];
 
   //Cambios en las etiquetas
@@ -74,8 +71,6 @@ const TabsFather = (props) => {
       getCandidateById(token,id,setCandidate);
       getTecnologiasPure(token, setTecnologiasPure);
       getIdiomasPure(token,setLanguagesPure);
-      getTecnologias(token, setTecnologiasOptions)
-      getIdiomas(token, setLanguagesOptions)
       if((candidate!=="") && (loading===false)){
         //Tecnologías
           setTags(candidate.tecnologias.map(tecnologia=>
@@ -127,6 +122,7 @@ const TabsFather = (props) => {
   const handleTab2 = () => {
     props.setActiveTab("tab2");
   };
+
   const handleTab3 = () => {
     props.setActiveTab("tab3");
   };
@@ -146,15 +142,13 @@ const TabsFather = (props) => {
             className={props.activeTab === "tab2" ? "tab-active" : ""}
             onClick={handleTab2}
         >
-             
             <h2>Currículum Vitae</h2>
         </li></Link>
         <Link to={`/open-recruiter/candidates/${id}/processes`}><li
             className={props.activeTab === "tab3" ? "tab-active" : ""}
             onClick={handleTab3}
         >
-        <h2>Procesos<span className="num-processes">{processesNum}</span></h2>
-            
+            <h2>Procesos<span className="num-processes">{processesNum}</span></h2>
         </li></Link>
       </ul>
       

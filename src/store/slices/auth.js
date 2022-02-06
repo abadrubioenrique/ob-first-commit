@@ -1,6 +1,4 @@
-import React,{ useState } from 'react';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { setMessage } from './message';
 
 import userService from '../../services/user.service';
 
@@ -23,12 +21,6 @@ export const login = createAsyncThunk(
       const data = await userService.login(email, password);
       return { authToken: data };
     } catch (error) {
-      const message = (error.response
-          && error.response.data
-          && error.response.data.message)
-        || error.message
-        || error.toString();
-      thunkAPI.dispatch(setMessage(message));
       return thunkAPI.rejectWithValue();
     }
   },
@@ -41,17 +33,10 @@ export const loginRemember = createAsyncThunk(
       const data = await userService.loginRemember(email, password);
       return { authToken: data };
     } catch (error) {
-      const message = (error.response
-          && error.response.data
-          && error.response.data.message)
-        || error.message
-        || error.toString();
-      thunkAPI.dispatch(setMessage(message));
       return thunkAPI.rejectWithValue();
     }
   },
 );
-
 
 export const logout = createAsyncThunk('auth/logout', async () => {
   await userService.logout();

@@ -34,21 +34,6 @@ export const getTecnologiasPure = async (token, setTecnologiasPure) => {
 };
 
 // Obtener idiomas
-export const getIdiomas = async (token, setLanguagesOptions) => {
-    const headers = {
-        "content-type": "application/json",
-        Authorization: `Bearer ${JSON.parse(token).token}`,
-    };
-    return await axiosConfig
-        .get('api/idiomas', { headers })
-        .then((response) => {
-            if (response.data) {
-                const res =response.data.data.data;
-                setLanguagesOptions(res.map(opt=>opt.nombre))
-            }
-            return response.data;
-        });
-};
 
 export const getIdiomasPure = async (token, setLanguagesPure) => {
     const headers = {
@@ -68,7 +53,7 @@ export const getIdiomasPure = async (token, setLanguagesPure) => {
 
 
 // Obtener candidatos
-export const getCandidatesInfo = async(token, setCandidates, candidates, setCandidatesFilter,setTotalCandidates, page) => {
+export const getCandidatesInfo = async(token, setCandidates,setTotalCandidates, page) => {
     const headers = {
         "content-type": "application/json",
         Authorization: `Bearer ${JSON.parse(token).token}`,
@@ -78,7 +63,6 @@ export const getCandidatesInfo = async(token, setCandidates, candidates, setCand
         .then((response) => {
             if (response.data) {
                 setCandidates(response.data.data.data);
-                setCandidatesFilter(candidates);
                 const res = response.data.data.meta.total;
                 setTotalCandidates(res);
             }
