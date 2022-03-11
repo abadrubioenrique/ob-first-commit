@@ -5,7 +5,6 @@ const TagComponentAvanced = (props) => {
     const [search, setSearch] = useState('');
     const [tagsOptions, setTagsOptions] = useState(props.options);
     const [tagsSubOptions, setTagsSubOptions] = useState(props.suboptions);
-    const [tagsIDs,setTagsIDs] = useState(props.ids)
     
     //Añadir etiquetas
     const onChangeHandler = (event) => {
@@ -43,25 +42,28 @@ const TagComponentAvanced = (props) => {
             <label className='credentials '>{props.tagname}</label>
 
             <input onClick={inputFoucus} className='input-text' value={search}  onChange={(e)=> setSearch(e.target.value)} type='text' placeholder='Escribe para buscar...'/>
+
             {focus ? 
             
-            (<div className="tag-container">
-                <select multiple size={props.length} onChange={onChangeHandler} className="select">
-                {tagsFilter.map(opt =>
-                <optgroup label={opt.name} key={opt.name}> 
-                {tagsSubOptions.map((subopt) =>
-                    <option key={opt.name+"-" + subopt[0].name} value={opt.name +" "+subopt[0].name +" " + opt.id+" "+subopt[0].id}>{subopt[0].name}</option>
-                    
-                )};
-               
-                </optgroup>
-                )};
+                (<div className="tag-container">
+                    <select multiple size={props.length} onChange={onChangeHandler} className="select">
+                    {tagsFilter.map(opt =>
+                    <optgroup label={opt.name} key={opt.name}> 
+                    {tagsSubOptions.map((subopt) =>
+                        <option key={opt.name+"-" + subopt[0].name} value={opt.name +" "+subopt[0].name +" " + opt.id+" "+subopt[0].id}>{subopt[0].name}</option>
+                        
+                    )};
+                
+                    </optgroup>
+                    )};
 
-                </select>
-            </div>) 
+                    </select>
+                </div>) 
+
                 : null
-                }
-                <div>
+
+            }
+            <div>
             {props.tags &&
                 props.tags.map((tag, index) => 
                 <p key= {tag} id={tag}  className="selected_tags">{tag.split(' ')[0]}
